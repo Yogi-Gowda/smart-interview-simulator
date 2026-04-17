@@ -1,0 +1,646 @@
+{
+  "software_developer": {
+    "easy": [
+      {
+        "text": "What is Object-Oriented Programming?",
+        "category": "oop",
+        "expected_keywords": ["class", "object", "inheritance", "encapsulation", "abstraction"],
+        "time_limit": 60
+      },
+      {
+        "text": "What is an API?",
+        "category": "web",
+        "expected_keywords": ["interface", "request", "response", "communication"],
+        "time_limit": 60
+      },
+      {
+        "text": "What is a variable in programming?",
+        "category": "programming",
+        "expected_keywords": ["storage", "value", "data type", "memory"],
+        "time_limit": 45
+      },
+      {
+        "text": "Explain what a database is.",
+        "category": "database",
+        "expected_keywords": ["storage", "data", "table", "records"],
+        "time_limit": 60
+      },
+      {
+        "text": "What is version control?",
+        "category": "tools",
+        "expected_keywords": ["git", "commit", "branch", "repository"],
+        "time_limit": 60
+      },
+      {
+        "text": "What is a function?",
+        "category": "programming",
+        "expected_keywords": ["block", "reusable", "call", "parameter", "return"],
+        "time_limit": 45
+      },
+      {
+        "text": "What is a loop in programming?",
+        "category": "programming",
+        "expected_keywords": ["iteration", "repeat", "for", "while"],
+        "time_limit": 45
+      },
+      {
+        "text": "What is an array?",
+        "category": "data_structures",
+        "expected_keywords": ["collection", "index", "elements", "sequential"],
+        "time_limit": 45
+      },
+      {
+        "text": "What is HTML?",
+        "category": "web",
+        "expected_keywords": ["markup", "tags", "structure", "webpage"],
+        "time_limit": 45
+      },
+      {
+        "text": "What is CSS?",
+        "category": "web",
+        "expected_keywords": ["style", "design", "presentation", "layout"],
+        "time_limit": 45
+      }
+    ],
+    "medium": [
+      {
+        "text": "Explain the difference between REST and SOAP APIs.",
+        "category": "web",
+        "expected_keywords": ["rest", "soap", "xml", "json", "http", "protocol"],
+        "time_limit": 120
+      },
+      {
+        "text": "What is SQL injection and how can you prevent it?",
+        "category": "security",
+        "expected_keywords": ["injection", "parameterized", "validation", "sanitization"],
+        "time_limit": 120
+      },
+      {
+        "text": "Explain the concept of recursion with an example.",
+        "category": "programming",
+        "expected_keywords": ["function", "base case", "stack", "self-call"],
+        "time_limit": 120
+      },
+      {
+        "text": "What is the difference between GET and POST methods?",
+        "category": "web",
+        "expected_keywords": ["request", "data", "security", "idempotent"],
+        "time_limit": 90
+      },
+      {
+        "text": "Explain ACID properties in databases.",
+        "category": "database",
+        "expected_keywords": ["atomicity", "consistency", "isolation", "durability"],
+        "time_limit": 120
+      },
+      {
+        "text": "What is the difference between inner join and left join?",
+        "category": "database",
+        "expected_keywords": ["join", "inner", "left", "matching", "null"],
+        "time_limit": 90
+      },
+      {
+        "text": "Explain the concept of authentication vs authorization.",
+        "category": "security",
+        "expected_keywords": ["authentication", "authorization", "identity", "permission"],
+        "time_limit": 120
+      },
+      {
+        "text": "What is the purpose of indexing in databases?",
+        "category": "database",
+        "expected_keywords": ["index", "performance", "search", "faster"],
+        "time_limit": 90
+      },
+      {
+        "text": "Explain the MVC architecture pattern.",
+        "category": "architecture",
+        "expected_keywords": ["model", "view", "controller", "separation"],
+        "time_limit": 120
+      },
+      {
+        "text": "What is the difference between stack and heap memory?",
+        "category": "programming",
+        "expected_keywords": ["stack", "heap", "memory", "allocation", "performance"],
+        "time_limit": 120
+      }
+    ],
+    "hard": [
+      {
+        "text": "Explain microservices architecture and its advantages over monolithic architecture.",
+        "category": "architecture",
+        "expected_keywords": ["microservices", "deployment", "scalability", "loose coupling", "independent"],
+        "time_limit": 180
+      },
+      {
+        "text": "What is the CAP theorem and how does it apply to distributed systems?",
+        "category": "distributed_systems",
+        "expected_keywords": ["consistency", "availability", "partition tolerance", "tradeoff"],
+        "time_limit": 180
+      },
+      {
+        "text": "Explain the concept of dependency injection and its benefits.",
+        "category": "design_patterns",
+        "expected_keywords": ["inversion of control", "loose coupling", "testability", "dependency"],
+        "time_limit": 150
+      },
+      {
+        "text": "What are design patterns? Explain Singleton and Factory patterns.",
+        "category": "design_patterns",
+        "expected_keywords": ["singleton", "factory", "creational", "object creation", "instance"],
+        "time_limit": 150
+      },
+      {
+        "text": "Explain the working of a hash table and how collisions are handled.",
+        "category": "data_structures",
+        "expected_keywords": ["hash function", "collision", "chaining", "open addressing", "bucket"],
+        "time_limit": 180
+      },
+      {
+        "text": "Explain the concept of race conditions and how to prevent them.",
+        "category": "programming",
+        "expected_keywords": ["race condition", "synchronization", "thread", "lock", "mutex"],
+        "time_limit": 180
+      },
+      {
+        "text": "What is eventual consistency in distributed systems?",
+        "category": "distributed_systems",
+        "expected_keywords": ["eventual", "consistency", "replication", "synchronization"],
+        "time_limit": 150
+      },
+      {
+        "text": "Explain the concept of containerization and its benefits.",
+        "category": "devops",
+        "expected_keywords": ["container", "docker", "isolation", "portability", "deployment"],
+        "time_limit": 150
+      },
+      {
+        "text": "What is the difference between synchronous and asynchronous programming?",
+        "category": "programming",
+        "expected_keywords": ["synchronous", "asynchronous", "blocking", "non-blocking", "callback"],
+        "time_limit": 150
+      },
+      {
+        "text": "Explain the concept of message queues and their use cases.",
+        "category": "architecture",
+        "expected_keywords": ["message queue", "producer", "consumer", "async", "decoupling"],
+        "time_limit": 180
+      }
+    ]
+  },
+  "data_analyst": {
+    "easy": [
+      {
+        "text": "What is data analysis?",
+        "category": "basics",
+        "expected_keywords": ["data", "insights", "patterns", "decision"],
+        "time_limit": 60
+      },
+      {
+        "text": "What is a spreadsheet?",
+        "category": "tools",
+        "expected_keywords": ["rows", "columns", "cells", "grid"],
+        "time_limit": 45
+      },
+      {
+        "text": "Explain the difference between data and information.",
+        "category": "basics",
+        "expected_keywords": ["data", "information", "processed", "meaning"],
+        "time_limit": 60
+      },
+      {
+        "text": "What is a chart or graph?",
+        "category": "visualization",
+        "expected_keywords": ["visual", "data", "representation", "plot"],
+        "time_limit": 45
+      },
+      {
+        "text": "What is data cleaning?",
+        "category": "preprocessing",
+        "expected_keywords": ["missing", "duplicate", "errors", "quality"],
+        "time_limit": 60
+      },
+      {
+        "text": "What is a dataset?",
+        "category": "basics",
+        "expected_keywords": ["collection", "rows", "columns", "records"],
+        "time_limit": 45
+      },
+      {
+        "text": "What is filtering data?",
+        "category": "operations",
+        "expected_keywords": ["filter", "condition", "subset", "select"],
+        "time_limit": 45
+      },
+      {
+        "text": "What is sorting in data analysis?",
+        "category": "operations",
+        "expected_keywords": ["sort", "order", "ascending", "descending"],
+        "time_limit": 45
+      }
+    ],
+    "medium": [
+      {
+        "text": "Explain the difference between correlation and causation.",
+        "category": "statistics",
+        "expected_keywords": ["correlation", "causation", "relationship", "dependence"],
+        "time_limit": 120
+      },
+      {
+        "text": "What is SQL and why is it important for data analysis?",
+        "category": "database",
+        "expected_keywords": ["query", "database", "select", "retrieve"],
+        "time_limit": 120
+      },
+      {
+        "text": "Explain the concept of data normalization.",
+        "category": "preprocessing",
+        "expected_keywords": ["scale", "range", "standardization", "min-max"],
+        "time_limit": 120
+      },
+      {
+        "text": "What are the measures of central tendency?",
+        "category": "statistics",
+        "expected_keywords": ["mean", "median", "mode", "average"],
+        "time_limit": 90
+      },
+      {
+        "text": "Explain what a pivot table is used for.",
+        "category": "tools",
+        "expected_keywords": ["summarize", "aggregate", "filter", "cross-tabulation"],
+        "time_limit": 90
+      },
+      {
+        "text": "What is the difference between primary key and foreign key?",
+        "category": "database",
+        "expected_keywords": ["primary key", "foreign key", "relationship", "unique"],
+        "time_limit": 90
+      },
+      {
+        "text": "Explain the concept of data visualization and its importance.",
+        "category": "visualization",
+        "expected_keywords": ["visual", "chart", "graph", "insights", "story"],
+        "time_limit": 120
+      },
+      {
+        "text": "What is outlier detection?",
+        "category": "preprocessing",
+        "expected_keywords": ["outlier", "anomaly", "detection", "extreme"],
+        "time_limit": 90
+      }
+    ],
+    "hard": [
+      {
+        "text": "Explain the concept of hypothesis testing and p-value.",
+        "category": "statistics",
+        "expected_keywords": ["hypothesis", "p-value", "significance", "null hypothesis", "alternative"],
+        "time_limit": 180
+      },
+      {
+        "text": "What is the difference between supervised and unsupervised learning?",
+        "category": "machine_learning",
+        "expected_keywords": ["supervised", "unsupervised", "labeled", "unlabeled", "training"],
+        "time_limit": 180
+      },
+      {
+        "text": "Explain the bias-variance tradeoff in machine learning.",
+        "category": "machine_learning",
+        "expected_keywords": ["bias", "variance", "overfitting", "underfitting", "model complexity"],
+        "time_limit": 180
+      },
+      {
+        "text": "What is time series analysis and when is it used?",
+        "category": "analysis",
+        "expected_keywords": ["temporal", "trend", "seasonality", "forecast", "time-dependent"],
+        "time_limit": 150
+      },
+      {
+        "text": "Explain the concept of feature engineering in machine learning.",
+        "category": "machine_learning",
+        "expected_keywords": ["features", "transformation", "selection", "engineering", "domain"],
+        "time_limit": 150
+      },
+      {
+        "text": "What is the difference between regression and classification?",
+        "category": "machine_learning",
+        "expected_keywords": ["regression", "classification", "continuous", "categorical", "prediction"],
+        "time_limit": 150
+      },
+      {
+        "text": "Explain the concept of cross-validation in machine learning.",
+        "category": "machine_learning",
+        "expected_keywords": ["cross-validation", "train", "test", "validation", "overfitting"],
+        "time_limit": 150
+      },
+      {
+        "text": "What is dimensionality reduction? Explain PCA.",
+        "category": "machine_learning",
+        "expected_keywords": ["dimensionality", "reduction", "pca", "principal components", "variance"],
+        "time_limit": 180
+      }
+    ]
+  },
+  "software_testing": {
+    "easy": [
+      {
+        "text": "What is software testing?",
+        "category": "basics",
+        "expected_keywords": ["quality", "defects", "verification", "validation"],
+        "time_limit": 60
+      },
+      {
+        "text": "What is a test case?",
+        "category": "basics",
+        "expected_keywords": ["steps", "expected", "result", "input", "output"],
+        "time_limit": 45
+      },
+      {
+        "text": "What is the difference between manual and automated testing?",
+        "category": "basics",
+        "expected_keywords": ["manual", "automated", "tools", "execution"],
+        "time_limit": 60
+      },
+      {
+        "text": "What is a bug?",
+        "category": "basics",
+        "expected_keywords": ["defect", "error", "issue", "failure"],
+        "time_limit": 45
+      },
+      {
+        "text": "Explain what is meant by test execution.",
+        "category": "process",
+        "expected_keywords": ["run", "execute", "results", "test"],
+        "time_limit": 60
+      },
+      {
+        "text": "What is a test scenario?",
+        "category": "basics",
+        "expected_keywords": ["scenario", "test case", "functionality", "condition"],
+        "time_limit": 45
+      },
+      {
+        "text": "What is smoke testing?",
+        "category": "types",
+        "expected_keywords": ["smoke", "basic", "sanity", "critical"],
+        "time_limit": 45
+      },
+      {
+        "text": "What is a test plan?",
+        "category": "documentation",
+        "expected_keywords": ["plan", "scope", "strategy", "schedule"],
+        "time_limit": 45
+      }
+    ],
+    "medium": [
+      {
+        "text": "Explain the different levels of testing.",
+        "category": "levels",
+        "expected_keywords": ["unit", "integration", "system", "acceptance", "testing"],
+        "time_limit": 120
+      },
+      {
+        "text": "What is the difference between functional and non-functional testing?",
+        "category": "types",
+        "expected_keywords": ["functional", "non-functional", "performance", "security"],
+        "time_limit": 120
+      },
+      {
+        "text": "What is regression testing and when is it performed?",
+        "category": "types",
+        "expected_keywords": ["regression", "changes", "existing", "defects"],
+        "time_limit": 120
+      },
+      {
+        "text": "Explain the concept of test-driven development (TDD).",
+        "category": "methodology",
+        "expected_keywords": ["tdd", "test first", "red green refactor", "development"],
+        "time_limit": 120
+      },
+      {
+        "text": "What is a test plan and what does it contain?",
+        "category": "documentation",
+        "expected_keywords": ["scope", "strategy", "schedule", "resources", "test cases"],
+        "time_limit": 90
+      },
+      {
+        "text": "Explain the difference between verification and validation.",
+        "category": "basics",
+        "expected_keywords": ["verification", "validation", "checking", "building", "product"],
+        "time_limit": 90
+      },
+      {
+        "text": "What is boundary value analysis?",
+        "category": "techniques",
+        "expected_keywords": ["boundary", "values", "testing", "edge", "limits"],
+        "time_limit": 90
+      },
+      {
+        "text": "What is equivalence partitioning?",
+        "category": "techniques",
+        "expected_keywords": ["equivalence", "partition", "classes", "input"],
+        "time_limit": 90
+      }
+    ],
+    "hard": [
+      {
+        "text": "Explain the different types of test automation frameworks.",
+        "category": "automation",
+        "expected_keywords": ["framework", "modular", "data-driven", "keyword-driven", "hybrid"],
+        "time_limit": 180
+      },
+      {
+        "text": "What is API testing and how do you perform it?",
+        "category": "testing",
+        "expected_keywords": ["api", "request", "response", "validation", "endpoints"],
+        "time_limit": 180
+      },
+      {
+        "text": "Explain the concept of continuous integration and continuous deployment.",
+        "category": "devops",
+        "expected_keywords": ["ci", "cd", "automation", "pipeline", "integration"],
+        "time_limit": 180
+      },
+      {
+        "text": "What is performance testing and what are its types?",
+        "category": "performance",
+        "expected_keywords": ["load", "stress", "volume", "scalability", "performance"],
+        "time_limit": 150
+      },
+      {
+        "text": "Explain the bug life cycle in software testing.",
+        "category": "process",
+        "expected_keywords": ["new", "assigned", "fixed", "verified", "closed", "bug"],
+        "time_limit": 150
+      },
+      {
+        "text": "What is security testing and what are its types?",
+        "category": "security",
+        "expected_keywords": ["security", "vulnerability", "penetration", "testing", "threats"],
+        "time_limit": 150
+      },
+      {
+        "text": "Explain the concept of test coverage and how to measure it.",
+        "category": "metrics",
+        "expected_keywords": ["coverage", "code", "test", "measurement", "percentage"],
+        "time_limit": 150
+      },
+      {
+        "text": "What is the difference between black box and white box testing?",
+        "category": "types",
+        "expected_keywords": ["black box", "white box", "testing", "internal", "external"],
+        "time_limit": 120
+      }
+    ]
+  },
+  "mca_fresher": {
+    "easy": [
+      {
+        "text": "What is a programming language?",
+        "category": "basics",
+        "expected_keywords": ["instructions", "code", "syntax", "syntax"],
+        "time_limit": 60
+      },
+      {
+        "text": "Explain what is a variable in programming.",
+        "category": "programming",
+        "expected_keywords": ["storage", "value", "memory", "data type"],
+        "time_limit": 45
+      },
+      {
+        "text": "What is an algorithm?",
+        "category": "basics",
+        "expected_keywords": ["steps", "problem", "solution", "procedure"],
+        "time_limit": 60
+      },
+      {
+        "text": "What is data structure?",
+        "category": "data_structures",
+        "expected_keywords": ["organization", "storage", "efficiency", "data"],
+        "time_limit": 60
+      },
+      {
+        "text": "Explain what is a function.",
+        "category": "programming",
+        "expected_keywords": ["block", "reusable", "call", "parameter"],
+        "time_limit": 45
+      },
+      {
+        "text": "What is a loop?",
+        "category": "programming",
+        "expected_keywords": ["iteration", "repeat", "for", "while"],
+        "time_limit": 45
+      },
+      {
+        "text": "What is a conditional statement?",
+        "category": "programming",
+        "expected_keywords": ["if", "else", "condition", "decision"],
+        "time_limit": 45
+      },
+      {
+        "text": "What is a database?",
+        "category": "database",
+        "expected_keywords": ["storage", "data", "table", "records"],
+        "time_limit": 45
+      }
+    ],
+    "medium": [
+      {
+        "text": "Explain the difference between array and linked list.",
+        "category": "data_structures",
+        "expected_keywords": ["array", "linked list", "pointer", "contiguous", "dynamic"],
+        "time_limit": 120
+      },
+      {
+        "text": "What is time complexity and space complexity?",
+        "category": "algorithms",
+        "expected_keywords": ["time", "space", "big O", "efficiency", "complexity"],
+        "time_limit": 120
+      },
+      {
+        "text": "Explain the concept of sorting algorithms.",
+        "category": "algorithms",
+        "expected_keywords": ["sort", "order", "bubble", "quick", "merge"],
+        "time_limit": 120
+      },
+      {
+        "text": "What is DBMS?",
+        "category": "database",
+        "expected_keywords": ["database", "management", "storage", "system"],
+        "time_limit": 90
+      },
+      {
+        "text": "Explain the difference between SQL and NoSQL databases.",
+        "category": "database",
+        "expected_keywords": ["sql", "nosql", "relational", "non-relational", "schema"],
+        "time_limit": 120
+      },
+      {
+        "text": "What is a function and what is its use?",
+        "category": "programming",
+        "expected_keywords": ["function", "modular", "reusable", "call", "return"],
+        "time_limit": 90
+      },
+      {
+        "text": "Explain what is an object in programming.",
+        "category": "oop",
+        "expected_keywords": ["object", "class", "instance", "state", "behavior"],
+        "time_limit": 90
+      },
+      {
+        "text": "What is a pointer in C?",
+        "category": "programming",
+        "expected_keywords": ["pointer", "address", "memory", "reference"],
+        "time_limit": 90
+      }
+    ],
+    "hard": [
+      {
+        "text": "Explain the working of binary search algorithm.",
+        "category": "algorithms",
+        "expected_keywords": ["binary", "search", "divide", "conquer", "sorted"],
+        "time_limit": 180
+      },
+      {
+        "text": "What is recursion? Explain with an example.",
+        "category": "programming",
+        "expected_keywords": ["recursion", "base case", "stack", "self-call"],
+        "time_limit": 150
+      },
+      {
+        "text": "Explain the concept of stack and queue with real-life examples.",
+        "category": "data_structures",
+        "expected_keywords": ["stack", "queue", "lifo", "fifo", "push", "pop"],
+        "time_limit": 150
+      },
+      {
+        "text": "What is normalization in databases? Explain 1NF, 2NF, 3NF.",
+        "category": "database",
+        "expected_keywords": ["normalization", "1nf", "2nf", "3nf", "tables", "dependency"],
+        "time_limit": 180
+      },
+      {
+        "text": "Explain the concept of object-oriented programming principles.",
+        "category": "oop",
+        "expected_keywords": ["encapsulation", "inheritance", "polymorphism", "abstraction"],
+        "time_limit": 180
+      },
+      {
+        "text": "Explain the difference between process and thread.",
+        "category": "operating_system",
+        "expected_keywords": ["process", "thread", "execution", "memory", "parallel"],
+        "time_limit": 150
+      },
+      {
+        "text": "What is deadlock in operating systems?",
+        "category": "operating_system",
+        "expected_keywords": ["deadlock", "process", "waiting", "circular", "resource"],
+        "time_limit": 150
+      },
+      {
+        "text": "Explain the concept of virtual memory.",
+        "category": "operating_system",
+        "expected_keywords": ["virtual", "memory", "address", "physical", "paging"],
+        "time_limit": 150
+      }
+    ]
+  }
+}
