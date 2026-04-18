@@ -1,0 +1,72 @@
+{
+  "session_1776358814.309559": {
+    "session_id": "session_1776358814.309559",
+    "job_role": "software_developer",
+    "difficulty": "medium",
+    "total_questions": 2,
+    "average_score": 62.0,
+    "scores_breakdown": {
+      "content": 84.5,
+      "grammar": 80.0,
+      "technical": 37.5,
+      "confidence": 70.0
+    },
+    "weak_areas": [
+      {
+        "category": "general",
+        "average_score": 37.5,
+        "question_count": 2,
+        "recommendation": "Practice more interview questions"
+      }
+    ],
+    "strengths": [],
+    "overall_feedback": "Decent performance. You have basic understanding but need to strengthen your technical knowledge. Review the weak areas identified.",
+    "improvement_suggestions": [
+      {
+        "area": "general",
+        "action": "Practice more interview questions and review fundamentals",
+        "resources": [
+          "Interview Prep Books",
+          "Online Coding Practice"
+        ],
+        "priority": "high"
+      }
+    ],
+    "completed_at": "2026-04-16T22:32:50.664066"
+  },
+  "session_1776359466.15477": {
+    "session_id": "session_1776359466.15477",
+    "job_role": "software_developer",
+    "difficulty": "medium",
+    "total_questions": 1,
+    "average_score": 45.0,
+    "scores_breakdown": {
+      "content": 60.0,
+      "grammar": 40.0,
+      "technical": 30.0,
+      "confidence": 60.0
+    },
+    "weak_areas": [
+      {
+        "category": "general",
+        "average_score": 30.0,
+        "question_count": 1,
+        "recommendation": "Practice more interview questions"
+      }
+    ],
+    "strengths": [],
+    "overall_feedback": "Keep practicing! This is a learning process. Focus on the fundamentals and gradually build your knowledge. Don't get discouraged - consistent practice will lead to improvement.",
+    "improvement_suggestions": [
+      {
+        "area": "general",
+        "action": "Practice more interview questions and review fundamentals",
+        "resources": [
+          "Interview Prep Books",
+          "Online Coding Practice"
+        ],
+        "priority": "high"
+      }
+    ],
+    "completed_at": "2026-04-16T22:41:36.249005"
+  }
+}
