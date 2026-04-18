@@ -1,0 +1,173 @@
+{
+  "session_1776358814.309559": {
+    "session_id": "session_1776358814.309559",
+    "user_id": "user_1776358716195",
+    "answers": [
+      {
+        "question_id": "q_2",
+        "question": "What is the difference between stack and heap memory?",
+        "answer": " Hello. Can you hear me? What I am saying? Omega.",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 10,
+          "sentence_count": 5,
+          "avg_word_length": 3.9,
+          "technical_terms": [],
+          "key_phrases": [
+            "hello. can",
+            "can you",
+            "you hear",
+            "hear me?",
+            "me? what",
+            "what i",
+            "i am",
+            "am saying?",
+            "saying? omega."
+          ],
+          "clarity_score": 85,
+          "completeness": 60,
+          "category": "general",
+          "sentiment": "neutral",
+          "grammar_quality": 80
+        },
+        "scores": {
+          "content_score": 77,
+          "grammar_score": 80,
+          "technical_score": 30,
+          "confidence_score": 70,
+          "total_score": 57,
+          "grade": "C"
+        },
+        "feedback": {
+          "overall": "Average answer. Consider expanding your knowledge on this topic.",
+          "strengths": [
+            "Good content coverage with adequate length",
+            "Excellent grammar and sentence structure",
+            "Confident and clear communication"
+          ],
+          "weaknesses": [
+            "Missing key technical concepts. Review the fundamentals."
+          ],
+          "improvements": [
+            "Study the key concepts related to this topic"
+          ],
+          "technical_accuracy": "Technical accuracy needs improvement. Review the core concepts.",
+          "grammar_suggestions": "Grammar is good. Keep maintaining clear language.",
+          "next_steps": "Review the feedback and try to improve in the next answer."
+        },
+        "timestamp": "2026-04-16T22:30:51.883928"
+      },
+      {
+        "question_id": "q_3",
+        "question": "Explain the concept of recursion with an example.",
+        "answer": " Recursion is a function which where the function calls itself. So that this is called. As a recursion example, you can take a factorial essay example. When you wanted to calculate the. Sectoral of a number you call factorial function instead of factorial function.",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 44,
+          "sentence_count": 6,
+          "avg_word_length": 5.0227272727272725,
+          "technical_terms": [
+            "function"
+          ],
+          "key_phrases": [
+            "recursion is",
+            "is a",
+            "a function",
+            "function which",
+            "which where",
+            "where the",
+            "the function",
+            "function calls",
+            "calls itself.",
+            "itself. so"
+          ],
+          "clarity_score": 100,
+          "completeness": 85,
+          "category": "general",
+          "sentiment": "neutral",
+          "grammar_quality": 80
+        },
+        "scores": {
+          "content_score": 92,
+          "grammar_score": 80,
+          "technical_score": 45,
+          "confidence_score": 70,
+          "total_score": 67,
+          "grade": "B"
+        },
+        "feedback": {
+          "overall": "Good answer! You have a decent understanding but there's room for improvement.",
+          "strengths": [
+            "Good content coverage with adequate length",
+            "Excellent grammar and sentence structure",
+            "Confident and clear communication"
+          ],
+          "weaknesses": [
+            "Missing key technical concepts. Review the fundamentals."
+          ],
+          "improvements": [
+            "Study the key concepts related to this topic"
+          ],
+          "technical_accuracy": "Technical accuracy needs improvement. Review the core concepts.",
+          "grammar_suggestions": "Grammar is good. Keep maintaining clear language.",
+          "next_steps": "Review the feedback and try to improve in the next answer."
+        },
+        "timestamp": "2026-04-16T22:32:37.972522"
+      }
+    ],
+    "last_updated": "2026-04-16T22:32:37.986210"
+  },
+  "session_1776359466.15477": {
+    "session_id": "session_1776359466.15477",
+    "user_id": "user_1776359273998",
+    "answers": [
+      {
+        "question_id": "q_2",
+        "question": "What is SQL injection and how can you prevent it?",
+        "answer": "i dont know",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 3,
+          "sentence_count": 1,
+          "avg_word_length": 3.0,
+          "technical_terms": [],
+          "key_phrases": [
+            "i dont",
+            "dont know"
+          ],
+          "clarity_score": 70,
+          "completeness": 50,
+          "category": "general",
+          "sentiment": "positive",
+          "grammar_quality": 40
+        },
+        "scores": {
+          "content_score": 60,
+          "grammar_score": 40,
+          "technical_score": 30,
+          "confidence_score": 60,
+          "total_score": 45,
+          "grade": "D"
+        },
+        "feedback": {
+          "overall": "Average answer. Consider expanding your knowledge on this topic.",
+          "strengths": [],
+          "weaknesses": [
+            "Grammar needs improvement. Proofread your answers.",
+            "Missing key technical concepts. Review the fundamentals."
+          ],
+          "improvements": [
+            "Try to provide more detailed explanations",
+            "Study the key concepts related to this topic",
+            "Structure your answer with multiple sentences"
+          ],
+          "technical_accuracy": "Technical accuracy needs improvement. Review the core concepts.",
+          "grammar_suggestions": "Work on grammar: check sentence structure, punctuation, and word usage.",
+          "next_steps": "Review the feedback and try to improve in the next answer."
+        },
+        "timestamp": "2026-04-16T22:41:18.237466"
+      }
+    ],
+    "last_updated": "2026-04-16T22:41:18.237899"
+  }
+}
