@@ -23,46 +23,40 @@ const Home = () => {
     {
       icon: Brain,
       title: 'AI-Powered Questions',
-      description: 'Intelligent question generation based on job role and difficulty level',
-      color: 'from-purple-500 to-pink-500'
+      description: 'Intelligent question generation based on job role and difficulty level'
     },
     {
       icon: Mic,
       title: 'Voice & Text Input',
-      description: 'Practice with both voice and text answers for flexibility',
-      color: 'from-blue-500 to-cyan-500'
+      description: 'Practice with both voice and text answers for flexibility'
     },
     {
       icon: BarChart3,
       title: 'Real-Time Analytics',
-      description: 'Detailed performance metrics and improvement insights',
-      color: 'from-green-500 to-emerald-500'
+      description: 'Detailed performance metrics and improvement insights'
     },
     {
       icon: Target,
       title: 'Weak Area Detection',
-      description: 'Identify knowledge gaps and focus on improvement areas',
-      color: 'from-orange-500 to-red-500'
+      description: 'Identify knowledge gaps and focus on improvement areas'
     },
     {
       icon: TrendingUp,
       title: 'Progress Tracking',
-      description: 'Watch your interview skills improve over time',
-      color: 'from-indigo-500 to-blue-500'
+      description: 'Watch your interview skills improve over time'
     },
     {
       icon: Zap,
       title: 'Instant Feedback',
-      description: 'Get immediate AI-powered feedback on your responses',
-      color: 'from-yellow-500 to-orange-500'
+      description: 'Get immediate AI-powered feedback on your responses'
     }
   ];
 
   const jobRoles = [
-    { name: 'Software Developer', icon: Code2, color: 'from-blue-500 to-blue-600' },
-    { name: 'Data Analyst', icon: BarChart3, color: 'from-green-500 to-green-600' },
-    { name: 'QA Engineer', icon: CheckCircle2, color: 'from-purple-500 to-purple-600' },
-    { name: 'MCA Fresher', icon: Sparkles, color: 'from-pink-500 to-pink-600' }
+    { name: 'Software Developer', icon: '💻' },
+    { name: 'Data Analyst', icon: '📊' },
+    { name: 'QA Engineer', icon: '🧪' },
+    { name: 'MCA Fresher', icon: '🎓' }
   ];
 
   const containerVariants = {
@@ -77,127 +71,201 @@ const Home = () => {
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.5, ease: 'easeOut' },
+      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-      {/* Hero Section - Modern */}
+    <div className="home">
+      {/* Background Effects */}
+      <div className="hero-bg">
+        <div className="hero-grid"></div>
+        <div className="orb orb-1"></div>
+        <div className="orb orb-2"></div>
+        <div className="orb orb-3"></div>
+      </div>
+
+      {/* Hero Section */}
       <motion.section 
-        className="relative min-h-screen flex items-center justify-center pt-20 pb-20 px-4 overflow-hidden"
+        className="hero"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-20 left-1/4 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-          <div className="absolute top-40 right-1/4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-          <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-        </div>
-
-        <motion.div 
-          className="max-w-4xl mx-auto text-center space-y-8"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
+        <div className="hero-content">
           {/* Badge */}
           <motion.div 
+            className="hero-badge"
             variants={itemVariants}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 rounded-full backdrop-blur-xl"
+            initial="hidden"
+            animate="visible"
           >
-            <Sparkles size={16} className="text-indigo-400" />
-            <span className="text-sm font-semibold text-indigo-200">AI-Powered Interview Platform</span>
+            <div className="hero-badge-icon">
+              <Sparkles size={12} />
+            </div>
+            <span className="hero-badge-text">AI-Powered Interview Platform</span>
           </motion.div>
 
-          {/* Main Headline */}
-          <motion.div variants={itemVariants} className="space-y-4">
-            <h1 className="text-6xl md:text-7xl font-bold tracking-tight">
-              <span className="text-white">Master Your</span>
-              <br />
-              <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 text-transparent bg-clip-text">
-                Interview Skills
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-              Practice with AI-generated questions, get instant feedback, and build confidence for your next opportunity.
-            </p>
-          </motion.div>
+          {/* Title */}
+          <motion.h1 
+            className="hero-title"
+            variants={itemVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <span className="hero-title-line">Master Your</span>
+            <span className="hero-title-line">Interview Skills</span>
+          </motion.h1>
+
+          {/* Subtitle */}
+          <motion.p 
+            className="hero-subtitle"
+            variants={itemVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            Practice with AI-generated questions, get instant feedback, and build confidence for your next opportunity.
+          </motion.p>
 
           {/* CTA Buttons */}
           <motion.div 
+            className="hero-actions"
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 justify-center pt-4"
+            initial="hidden"
+            animate="visible"
           >
-            <Link
-              to="/interview-setup"
-              className="btn btn-primary btn-lg group"
-            >
-              <span>Start Interview</span>
-              <motion.div
-                animate={{ x: [0, 4, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                <ArrowRight size={20} />
-              </motion.div>
+            <Link to="/interview-setup" className="hero-cta-primary">
+              Start Interview
+              <ArrowRight size={20} />
             </Link>
-            <Link
-              to="/dashboard"
-              className="btn btn-secondary btn-lg"
-            >
+            <Link to="/dashboard" className="hero-cta-secondary">
               View Dashboard
             </Link>
           </motion.div>
 
           {/* Stats */}
           <motion.div 
+            className="hero-stats"
             variants={itemVariants}
-            className="grid grid-cols-3 gap-4 pt-8"
+            initial="hidden"
+            animate="visible"
           >
-            {[
-              { value: '500+', label: 'Questions' },
-              { value: '4', label: 'Job Roles' },
-              { value: '3', label: 'Difficulty Levels' }
-            ].map((stat, idx) => (
-              <div key={idx} className="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-xl hover:bg-white/10 transition-all duration-300">
-                <div className="text-2xl font-bold text-indigo-400">{stat.value}</div>
-                <div className="text-xs text-slate-400 mt-1">{stat.label}</div>
-              </div>
-            ))}
+            <div className="hero-stat">
+              <div className="hero-stat-value">500+</div>
+              <div className="hero-stat-label">Questions</div>
+            </div>
+            <div className="hero-stat-divider"></div>
+            <div className="hero-stat">
+              <div className="hero-stat-value">4</div>
+              <div className="hero-stat-label">Job Roles</div>
+            </div>
+            <div className="hero-stat-divider"></div>
+            <div className="hero-stat">
+              <div className="hero-stat-value">3</div>
+              <div className="hero-stat-label">Difficulty Levels</div>
+            </div>
           </motion.div>
-        </motion.div>
+        </div>
       </motion.section>
 
-      {/* Features Section - Modern Grid */}
+      {/* Features Section */}
       <motion.section 
-        className="py-24 px-4 relative"
+        className="features"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
       >
-        <div className="container-lg">
-          <motion.div 
-            className="text-center mb-16 space-y-4"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-white">Powerful Features</h2>
-            <p className="text-xl text-slate-400">Everything you need to ace your interviews</p>
-          </motion.div>
+        <div className="features-header">
+          <h2 className="features-title">Powerful Features</h2>
+          <p className="features-subtitle">Everything you need to ace your interviews</p>
+        </div>
 
-          <motion.div 
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-            variants={containerVariants}
-            initial="hidden"
+        <div className="features-grid">
+          {features.map((feature, index) => (
+            <motion.div 
+              key={index}
+              className="feature-card"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ 
+                duration: 0.5, 
+                delay: index * 0.1,
+                ease: [0.16, 1, 0.3, 1]
+              }}
+            >
+              <div className="feature-icon">
+                <feature.icon size={28} />
+              </div>
+              <h3 className="feature-title">{feature.title}</h3>
+              <p className="feature-desc">{feature.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* Job Roles Section */}
+      <motion.section 
+        className="roles"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="roles-header">
+          <h2 className="roles-title">Choose Your Path</h2>
+          <p className="roles-subtitle">Select a job role to start practicing</p>
+        </div>
+
+        <div className="roles-grid">
+          {jobRoles.map((role, index) => (
+            <motion.div 
+              key={index}
+              className="role-card"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ 
+                duration: 0.4, 
+                delay: index * 0.1,
+                ease: [0.16, 1, 0.3, 1]
+              }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <span className="role-icon">{role.icon}</span>
+              <span className="role-name">{role.name}</span>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* CTA Section */}
+      <motion.section 
+        className="cta-section"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="cta-content">
+          <h2 className="cta-title">Ready to Begin?</h2>
+          <p className="cta-subtitle">Start your interview practice journey today</p>
+          <Link to="/interview-setup" className="cta-button">
+            Get Started
+            <ArrowRight size={20} />
+          </Link>
+        </div>
+      </motion.section>
+    </div>
+  );
+};
+
+export default Home;
             whileInView="visible"
             viewport={{ once: true }}
           >
