@@ -1,5 +1,6 @@
 import React, { useState, createContext, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import InterviewSetup from './pages/InterviewSetup';
 import Interview from './pages/Interview';
@@ -29,6 +30,7 @@ function App() {
     <AppContext.Provider value={value}>
       <Router>
         <div className="app">
+          <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/interview-setup" element={<InterviewSetup />} />
