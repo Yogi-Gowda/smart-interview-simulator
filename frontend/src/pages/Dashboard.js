@@ -54,7 +54,7 @@ const Dashboard = () => {
     }
   };
 
-  const COLORS = ['#4F46E5', '#10B981', '#F59E0B', '#EF4444', '#3B82F6', '#8B5CF6'];
+  const COLORS = ['#8b8bf5', '#34d399', '#fbbf24', '#f87171', '#60a5fa', '#a78bfa'];
 
   if (isLoading) {
     return (
@@ -174,23 +174,24 @@ const Dashboard = () => {
             <div className="chart-container">
               <ResponsiveContainer width="100%" height={250}>
                 <LineChart data={performanceData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-                  <XAxis dataKey="name" stroke="#64748B" fontSize={12} />
-                  <YAxis stroke="#64748B" fontSize={12} domain={[0, 100]} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />
+                  <XAxis dataKey="name" stroke="#424249" fontSize={11} tickLine={false} axisLine={false} />
+                  <YAxis stroke="#424249" fontSize={11} domain={[0, 100]} tickLine={false} axisLine={false} />
                   <Tooltip 
                     contentStyle={{ 
-                      background: '#1E293B', 
-                      border: '1px solid #334155',
-                      borderRadius: '8px'
+                      background: '#19191f', 
+                      border: '1px solid rgba(255,255,255,0.08)',
+                      borderRadius: '8px',
+                      fontSize: '12px'
                     }}
                   />
                   <Line 
                     type="monotone" 
                     dataKey="score" 
-                    stroke="#4F46E5" 
-                    strokeWidth={3}
-                    dot={{ fill: '#4F46E5', strokeWidth: 2 }}
-                    activeDot={{ r: 6 }}
+                    stroke="#8b8bf5" 
+                    strokeWidth={2}
+                    dot={{ fill: '#8b8bf5', strokeWidth: 0, r: 3 }}
+                    activeDot={{ r: 5, strokeWidth: 0 }}
                   />
                 </LineChart>
               </ResponsiveContainer>
@@ -221,9 +222,10 @@ const Dashboard = () => {
                   </Pie>
                   <Tooltip 
                     contentStyle={{ 
-                      background: '#1E293B', 
-                      border: '1px solid #334155',
-                      borderRadius: '8px'
+                      background: '#19191f', 
+                      border: '1px solid rgba(255,255,255,0.08)',
+                      borderRadius: '8px',
+                      fontSize: '12px'
                     }}
                   />
                 </PieChart>
@@ -258,14 +260,14 @@ const Dashboard = () => {
                   <div key={index} className="analysis-item">
                     <div className="item-info">
                       <span className="item-name">{area.category}</span>
-                      <span className="item-score" style={{ color: '#EF4444' }}>
+                      <span className="item-score" style={{ color: '#f87171' }}>
                         {area.score}%
                       </span>
                     </div>
                     <div className="item-bar">
                       <div 
                         className="bar-fill" 
-                        style={{ width: `${area.score}%`, background: '#EF4444' }}
+                        style={{ width: `${area.score}%`, background: '#f87171' }}
                       ></div>
                     </div>
                   </div>
@@ -291,14 +293,14 @@ const Dashboard = () => {
                   <div key={index} className="analysis-item">
                     <div className="item-info">
                       <span className="item-name">{strength.category}</span>
-                      <span className="item-score" style={{ color: '#10B981' }}>
+                      <span className="item-score" style={{ color: '#34d399' }}>
                         {strength.score}%
                       </span>
                     </div>
                     <div className="item-bar">
                       <div 
                         className="bar-fill" 
-                        style={{ width: `${strength.score}%`, background: '#10B981' }}
+                        style={{ width: `${strength.score}%`, background: '#34d399' }}
                       ></div>
                     </div>
                   </div>
@@ -336,8 +338,8 @@ const Dashboard = () => {
                   <div 
                     className="recent-score"
                     style={{ 
-                      background: interview.average_score >= 70 ? '#10B981' : 
-                                 interview.average_score >= 50 ? '#F59E0B' : '#EF4444' 
+                      background: interview.average_score >= 70 ? '#34d399' : 
+                                 interview.average_score >= 50 ? '#fbbf24' : '#f87171' 
                     }}
                   >
                     {Math.round(interview.average_score)}
