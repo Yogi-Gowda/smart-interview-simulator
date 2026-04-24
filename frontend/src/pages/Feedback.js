@@ -66,11 +66,11 @@ const Feedback = () => {
   ];
 
   const getGradeColor = (grade) => {
-    if (!grade) return '#64748B';
-    if (grade.startsWith('A')) return '#10B981';
-    if (grade.startsWith('B')) return '#3B82F6';
-    if (grade === 'C') return '#F59E0B';
-    return '#EF4444';
+    if (!grade) return '#424249';
+    if (grade.startsWith('A')) return '#34d399';
+    if (grade.startsWith('B')) return '#8b8bf5';
+    if (grade === 'C') return '#fbbf24';
+    return '#f87171';
   };
 
   // Safe access to report properties
@@ -208,15 +208,15 @@ const Feedback = () => {
           <div className="radar-container">
             <ResponsiveContainer width="100%" height={300}>
               <RadarChart data={scoreData}>
-                <PolarGrid stroke="#334155" />
-                <PolarAngleAxis dataKey="subject" tick={{ fill: '#94A3B8', fontSize: 12 }} />
-                <PolarRadiusAxis angle={30} domain={[0, 100]} tick={{ fill: '#64748B' }} />
+                <PolarGrid stroke="rgba(255,255,255,0.06)" />
+                <PolarAngleAxis dataKey="subject" tick={{ fill: '#737380', fontSize: 11 }} />
+                <PolarRadiusAxis angle={30} domain={[0, 100]} tick={{ fill: '#424249', fontSize: 10 }} />
                 <Radar
                   name="Score"
                   dataKey="value"
-                  stroke="#4F46E5"
-                  fill="#4F46E5"
-                  fillOpacity={0.3}
+                  stroke="#8b8bf5"
+                  fill="#8b8bf5"
+                  fillOpacity={0.15}
                 />
               </RadarChart>
             </ResponsiveContainer>
