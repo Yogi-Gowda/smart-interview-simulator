@@ -243,7 +243,7 @@ const Interview = () => {
           </div>
           
           <div className="timer-display" style={{ 
-            '--timer-color': timeLeft < 30 ? '#EF4444' : timeLeft < 60 ? '#F59E0B' : '#10B981' 
+            '--timer-color': timeLeft < 30 ? '#f87171' : timeLeft < 60 ? '#fbbf24' : '#34d399' 
           }}>
             <Clock size={20} />
             <span className="timer-value">{formatTime(timeLeft)}</span>
