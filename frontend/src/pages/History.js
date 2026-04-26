@@ -51,10 +51,10 @@ const HistoryPage = () => {
   };
 
   const getScoreColor = (score) => {
-    if (score >= 80) return '#10B981';
-    if (score >= 60) return '#3B82F6';
-    if (score >= 40) return '#F59E0B';
-    return '#EF4444';
+    if (score >= 80) return '#34d399';
+    if (score >= 60) return '#8b8bf5';
+    if (score >= 40) return '#fbbf24';
+    return '#f87171';
   };
 
   const getGrade = (score) => {
