@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useApp } from '../App';
-import { 
-  Briefcase, 
-  Upload, 
-  FileText, 
-  CheckCircle, 
+import {
+  Briefcase,
+  Upload,
+  FileText,
+  CheckCircle,
   ArrowRight,
   Loader
 } from 'lucide-react';
@@ -16,13 +16,13 @@ const jobRoles = [
   { id: 'software_developer', name: 'Software Developer', icon: '💻' },
   { id: 'data_analyst', name: 'Data Analyst', icon: '📊' },
   { id: 'software_testing', name: 'Software Testing', icon: '🧪' },
-  { id: 'mca_fresher', name: 'MCA Fresher', icon: '🎓' }
+  { id: 'fresher', name: 'Fresher', icon: '🎓' }
 ];
 
 const difficulties = [
-  { id: 'easy', name: 'Easy', description: 'Basic concepts', color: '#10B981' },
-  { id: 'medium', name: 'Medium', description: 'Intermediate topics', color: '#F59E0B' },
-  { id: 'hard', name: 'Hard', description: 'Advanced concepts', color: '#EF4444' }
+  { id: 'easy', name: 'Easy', description: 'Basic concepts', color: '#34d399' },
+  { id: 'medium', name: 'Medium', description: 'Intermediate topics', color: '#fbbf24' },
+  { id: 'hard', name: 'Hard', description: 'Advanced concepts', color: '#f87171' }
 ];
 
 const InterviewSetup = () => {
@@ -178,7 +178,7 @@ const InterviewSetup = () => {
             <p className="section-description">
               Upload your resume to get personalized questions based on your skills
             </p>
-            
+
             {!resumePreview ? (
               <div className="upload-area">
                 <input
@@ -203,7 +203,7 @@ const InterviewSetup = () => {
                     <span className="resume-meta">{resumePreview.type} • {resumePreview.size}</span>
                   </div>
                 </div>
-                <button 
+                <button
                   className="btn btn-secondary"
                   onClick={() => {
                     setResumeFile(null);
