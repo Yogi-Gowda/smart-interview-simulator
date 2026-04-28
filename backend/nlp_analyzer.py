@@ -137,7 +137,9 @@ class NLPAnalyzer:
                 return len(sent_tokenize(text))
             except:
                 pass
-        return len(re.split(r'[.!?]+', text))
+        # Fallback: split on sentence-ending punctuation and ignore empty segments
+        sentences = [s.strip() for s in re.split(r'[.!?]+', text) if s.strip()]
+        return len(sentences)
     
     def _avg_word_length(self, text: str) -> float:
         """Calculate average word length"""
@@ -169,10 +171,10 @@ class NLPAnalyzer:
                 if len(chunk.text.split()) <= 3:
                     phrases.append(chunk.text.lower())
         else:
-            # Fallback: extract common phrases
-            words = text.split()
+            # Fallback: extract common bigram phrases (words only)
+            words = re.findall(r"\b\w+\b", text.lower())
             for i in range(len(words) - 1):
-                phrases.append(f"{words[i]} {words[i+1]}".lower())
+                phrases.append(f"{words[i]} {words[i+1]}")
         
         return phrases[:10]  # Limit to 10 phrases
     
