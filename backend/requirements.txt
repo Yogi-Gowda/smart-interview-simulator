@@ -20,7 +20,7 @@ spacy==3.7.4
 nltk==3.8.1
 
 # Machine Learning (optional, for advanced NLP)
-scikit-learn==1.4.0
+# scikit-learn==1.4.0  # Not required by default; uncomment if adding trained models
 
 # Utilities
 python-multipart==0.0.6
