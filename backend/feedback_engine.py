@@ -16,6 +16,35 @@ class FeedbackEngine:
                         expected_keywords: List[str], 
                         question_category: str) -> Dict:
         """Calculate various scores for the answer"""
+        # If analysis indicates a low-effort / explicit "I don't know" answer,
+        # assign low scores and short-circuit the usual scoring logic.
+        if analysis.get("low_effort"):
+            reason = analysis.get("low_effort_reason", "")
+            content_score = 10
+            grammar_score = analysis.get("grammar_quality", 50)
+            technical_score = 5
+            confidence_score = 10
+
+            total_score = round(
+                (content_score * 0.25) +
+                (grammar_score * 0.15) +
+                (technical_score * 0.40) +
+                (confidence_score * 0.20)
+            )
+
+            scores = {
+                "content_score": content_score,
+                "grammar_score": grammar_score,
+                "technical_score": technical_score,
+                "confidence_score": confidence_score,
+                "total_score": total_score,
+                "grade": self._get_grade(total_score),
+                "low_effort": True,
+                "low_effort_reason": reason
+            }
+
+            self.feedback_history.append(scores)
+            return scores
         
         # Content Score (based on length and completeness)
         content_score = self._calculate_content_score(answer, analysis)
@@ -158,6 +187,17 @@ class FeedbackEngine:
         
         # Overall feedback
         total_score = scores.get("total_score", 0)
+        # Special handling for low-effort responses
+        if scores.get("low_effort"):
+            feedback["overall"] = (
+                "It looks like you indicated you didn't know the answer. "
+                "Try to provide at least a short attempt, outline how you would approach solving it, "
+                "or list assumptions you would make."
+            )
+            feedback["weaknesses"].append("No attempt provided; avoid answering only 'I don't know'.")
+            feedback["improvements"].append("Provide a short attempt, outline steps, or mention assumptions.")
+            feedback["next_steps"] = "Try to re-answer with an attempted approach; practice outlining solutions."
+            return feedback
         if total_score >= 80:
             feedback["overall"] = "Excellent answer! You demonstrated strong understanding of the topic."
         elif total_score >= 60:
