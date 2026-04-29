@@ -1,9 +1,15 @@
 # NLP Analyzer Module
 # Analyzes user answers using NLP techniques
 
+import os
 import re
 from typing import Dict, List, Optional
 from collections import Counter
+
+try:
+    import joblib
+except ImportError:
+    joblib = None
 
 try:
     import spacy
@@ -81,6 +87,20 @@ class NLPAnalyzer:
     
     def __init__(self):
         self.analysis_history = []
+        
+        # Attempt to load ML topic classifier
+        self.topic_classifier = None
+        if joblib:
+            try:
+                model_path = os.path.join(
+                    os.path.dirname(os.path.dirname(__file__)), 
+                    "models", 
+                    "topic_classifier.joblib"
+                )
+                if os.path.exists(model_path):
+                    self.topic_classifier = joblib.load(model_path)
+            except Exception as e:
+                print(f"Warning: Failed to load topic classifier: {e}")
     
     def analyze_answer(self, answer: str) -> Dict:
         """Main method to analyze a user's answer"""
@@ -102,6 +122,10 @@ class NLPAnalyzer:
             "sentiment": self._analyze_sentiment(answer),
             "grammar_quality": self._assess_grammar(answer)
         }
+        # Detect explicit "I don't know" / very short / low-effort responses
+        low_effort, reason = self._detect_low_effort(answer)
+        analysis["low_effort"] = low_effort
+        analysis["low_effort_reason"] = reason
         
         self.analysis_history.append(analysis)
         return analysis
@@ -232,6 +256,16 @@ class NLPAnalyzer:
     
     def _categorize_answer(self, text: str) -> str:
         """Categorize the answer topic"""
+        
+        # Use ML model if available
+        if self.topic_classifier:
+            try:
+                prediction = self.topic_classifier.predict([text])[0]
+                return prediction
+            except Exception as e:
+                print(f"ML categorization failed: {e}. Falling back to rule-based.")
+        
+        # Fallback rule-based approach
         text_lower = text.lower()
         
         # Check for category keywords
@@ -285,6 +319,44 @@ class NLPAnalyzer:
         
         score -= issues * 5
         return max(0, min(100, score))
+
+    def _detect_low_effort(self, text: str) -> (bool, str):
+        """Detect low-effort or explicit unknown responses.
+
+        Returns (is_low_effort, reason)
+        """
+        if not text:
+            return True, "empty"
+
+        t = text.lower().strip()
+
+        # Normalize common punctuation variants
+        t = t.replace("’", "'").replace("`", "'")
+
+        # Explicit unknown phrases
+        explicit_patterns = [
+            r"\bi\s*(?:do not|dont|do n't|don't)\s*know\b",
+            r"\bno\s*idea\b",
+            r"\bnot\s*sure\b",
+            r"\bidk\b",
+            r"\bcan't\s*say\b",
+            r"\bcannot\s*say\b",
+            r"\bi\s*(?:do not|dont|don't)\s*remember\b",
+            r"\bi\s*have\s*no\s*idea\b",
+        ]
+
+        for pat in explicit_patterns:
+            if re.search(pat, t):
+                return True, "explicit_unknown"
+
+        # Short or single-word answers with no technical terms -> low effort
+        wc = self._count_words(text)
+        if wc <= 3:
+            tech = self._extract_technical_terms(text)
+            if not tech:
+                return True, "too_short"
+
+        return False, ""
     
     def compare_with_keywords(self, answer: str, expected_keywords: List[str]) -> Dict:
         """Compare answer with expected keywords"""
