@@ -68,5 +68,110 @@
       }
     ],
     "completed_at": "2026-04-16T22:41:36.249005"
+  },
+  "session_1777392142.796751": {
+    "session_id": "session_1777392142.796751",
+    "job_role": "fresher",
+    "difficulty": "medium",
+    "total_questions": 1,
+    "average_score": 45.0,
+    "scores_breakdown": {
+      "content": 60.0,
+      "grammar": 40.0,
+      "technical": 30.0,
+      "confidence": 60.0
+    },
+    "weak_areas": [
+      {
+        "category": "general",
+        "average_score": 30.0,
+        "question_count": 1,
+        "recommendation": "Practice more interview questions"
+      }
+    ],
+    "strengths": [],
+    "overall_feedback": "Keep practicing! This is a learning process. Focus on the fundamentals and gradually build your knowledge. Don't get discouraged - consistent practice will lead to improvement.",
+    "improvement_suggestions": [
+      {
+        "area": "general",
+        "action": "Practice more interview questions and review fundamentals",
+        "resources": [
+          "Interview Prep Books",
+          "Online Coding Practice"
+        ],
+        "priority": "high"
+      }
+    ],
+    "completed_at": "2026-04-28T21:32:45.489488"
+  },
+  "session_1777392944.911392": {
+    "session_id": "session_1777392944.911392",
+    "job_role": "software_developer",
+    "difficulty": "easy",
+    "total_questions": 1,
+    "average_score": 45.0,
+    "scores_breakdown": {
+      "content": 60.0,
+      "grammar": 40.0,
+      "technical": 30.0,
+      "confidence": 60.0
+    },
+    "weak_areas": [
+      {
+        "category": "general",
+        "average_score": 30.0,
+        "question_count": 1,
+        "recommendation": "Practice more interview questions"
+      }
+    ],
+    "strengths": [],
+    "overall_feedback": "Keep practicing! This is a learning process. Focus on the fundamentals and gradually build your knowledge. Don't get discouraged - consistent practice will lead to improvement.",
+    "improvement_suggestions": [
+      {
+        "area": "general",
+        "action": "Practice more interview questions and review fundamentals",
+        "resources": [
+          "Interview Prep Books",
+          "Online Coding Practice"
+        ],
+        "priority": "high"
+      }
+    ],
+    "completed_at": "2026-04-28T21:46:00.367036"
+  },
+  "session_1777393527.761849": {
+    "session_id": "session_1777393527.761849",
+    "job_role": "data_analyst",
+    "difficulty": "medium",
+    "total_questions": 1,
+    "average_score": 45.0,
+    "scores_breakdown": {
+      "content": 60.0,
+      "grammar": 40.0,
+      "technical": 30.0,
+      "confidence": 60.0
+    },
+    "weak_areas": [
+      {
+        "category": "general",
+        "average_score": 30.0,
+        "question_count": 1,
+        "recommendation": "Practice more interview questions"
+      }
+    ],
+    "strengths": [],
+    "overall_feedback": "Keep practicing! This is a learning process. Focus on the fundamentals and gradually build your knowledge. Don't get discouraged - consistent practice will lead to improvement.",
+    "improvement_suggestions": [
+      {
+        "area": "general",
+        "action": "Practice more interview questions and review fundamentals",
+        "resources": [
+          "Interview Prep Books",
+          "Online Coding Practice"
+        ],
+        "priority": "high"
+      }
+    ],
+    "completed_at": "2026-04-28T21:55:45.029683"
   }
 }
