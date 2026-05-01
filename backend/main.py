@@ -221,7 +221,8 @@ async def submit_answer(submission: AnswerSubmission):
         answer=submission.answer_text,
         analysis=analysis,
         scores=scores,
-        question=current_q["question"]
+        question=current_q["question"],
+        expected_keywords=current_q.get("expected_keywords", []),
     )
     
     # Store answer
