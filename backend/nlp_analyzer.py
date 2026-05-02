@@ -87,20 +87,30 @@ class NLPAnalyzer:
     
     def __init__(self):
         self.analysis_history = []
-        
-        # Attempt to load ML topic classifier
+
+        # Attempt to load ML models from the models/ directory
         self.topic_classifier = None
+        self.quality_classifier = None
+
         if joblib:
+            models_dir = os.path.join(
+                os.path.dirname(os.path.dirname(__file__)), "models"
+            )
+            # Topic classifier
             try:
-                model_path = os.path.join(
-                    os.path.dirname(os.path.dirname(__file__)), 
-                    "models", 
-                    "topic_classifier.joblib"
-                )
+                model_path = os.path.join(models_dir, "topic_classifier.joblib")
                 if os.path.exists(model_path):
                     self.topic_classifier = joblib.load(model_path)
             except Exception as e:
                 print(f"Warning: Failed to load topic classifier: {e}")
+
+            # Answer quality classifier
+            try:
+                quality_path = os.path.join(models_dir, "answer_quality_classifier.joblib")
+                if os.path.exists(quality_path):
+                    self.quality_classifier = joblib.load(quality_path)
+            except Exception as e:
+                print(f"Warning: Failed to load quality classifier: {e}")
     
     def analyze_answer(self, answer: str) -> Dict:
         """Main method to analyze a user's answer"""
@@ -120,13 +130,14 @@ class NLPAnalyzer:
             "completeness": self._assess_completeness(answer),
             "category": self._categorize_answer(answer),
             "sentiment": self._analyze_sentiment(answer),
-            "grammar_quality": self._assess_grammar(answer)
+            "grammar_quality": self._assess_grammar(answer),
+            "quality_prediction": self._predict_quality(answer),
         }
         # Detect explicit "I don't know" / very short / low-effort responses
         low_effort, reason = self._detect_low_effort(answer)
         analysis["low_effort"] = low_effort
         analysis["low_effort_reason"] = reason
-        
+
         self.analysis_history.append(analysis)
         return analysis
     
@@ -142,7 +153,8 @@ class NLPAnalyzer:
             "completeness": 0,
             "category": "unknown",
             "sentiment": "neutral",
-            "grammar_quality": 0
+            "grammar_quality": 0,
+            "quality_prediction": "poor",
         }
     
     def _count_words(self, text: str) -> int:
@@ -255,26 +267,39 @@ class NLPAnalyzer:
         return max(0, min(100, score))
     
     def _categorize_answer(self, text: str) -> str:
-        """Categorize the answer topic"""
-        
-        # Use ML model if available
+        """Categorize the answer topic using ML model or rule-based fallback"""
+
+        # Use ML topic classifier if available
         if self.topic_classifier:
             try:
                 prediction = self.topic_classifier.predict([text])[0]
-                return prediction
+                return str(prediction)
             except Exception as e:
                 print(f"ML categorization failed: {e}. Falling back to rule-based.")
-        
-        # Fallback rule-based approach
+
+        # Rule-based fallback
         text_lower = text.lower()
-        
-        # Check for category keywords
         for category, keywords in self.TECHNICAL_KEYWORDS.items():
             matches = sum(1 for kw in keywords if kw in text_lower)
             if matches >= 2:
                 return category
-        
         return "general"
+
+    def _predict_quality(self, text: str) -> str:
+        """Predict answer quality (poor/average/good) using ML model."""
+        if self.quality_classifier:
+            try:
+                return str(self.quality_classifier.predict([text])[0])
+            except Exception as e:
+                print(f"ML quality prediction failed: {e}")
+
+        # Rule-based fallback based on word count
+        wc = self._count_words(text)
+        if wc >= 40:
+            return "good"
+        elif wc >= 15:
+            return "average"
+        return "poor"
     
     def _analyze_sentiment(self, text: str) -> str:
         """Basic sentiment analysis"""
