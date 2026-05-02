@@ -173,5 +173,125 @@
       }
     ],
     "completed_at": "2026-04-28T21:55:45.029683"
+  },
+  "session_1777642496.63096": {
+    "session_id": "session_1777642496.63096",
+    "job_role": "fresher",
+    "difficulty": "medium",
+    "total_questions": 2,
+    "average_score": 52.0,
+    "scores_breakdown": {
+      "content": 61.0,
+      "grammar": 45.0,
+      "technical": 45.0,
+      "confidence": 60.0
+    },
+    "weak_areas": [
+      {
+        "category": "software_testing",
+        "average_score": 45.0,
+        "question_count": 1,
+        "recommendation": "Learn testing methodologies and tools"
+      },
+      {
+        "category": "database",
+        "average_score": 45.0,
+        "question_count": 1,
+        "recommendation": "Learn SQL and database design principles"
+      }
+    ],
+    "strengths": [],
+    "overall_feedback": "Keep practicing! This is a learning process. Focus on the fundamentals and gradually build your knowledge. Don't get discouraged - consistent practice will lead to improvement.",
+    "improvement_suggestions": [
+      {
+        "area": "software_testing",
+        "action": "Learn testing frameworks and write test cases",
+        "resources": [
+          "Selenium Documentation",
+          "Testing Best Practices"
+        ],
+        "priority": "high"
+      },
+      {
+        "area": "database",
+        "action": "Practice SQL queries and learn database design patterns",
+        "resources": [
+          "SQL Tutorial",
+          "Database Normalization Guide"
+        ],
+        "priority": "high"
+      }
+    ],
+    "completed_at": "2026-05-01T19:05:57.787515"
+  },
+  "session_1777642601.528479": {
+    "session_id": "session_1777642601.528479",
+    "job_role": "software_developer",
+    "difficulty": "medium",
+    "total_questions": 2,
+    "average_score": 28.5,
+    "scores_breakdown": {
+      "content": 35.0,
+      "grammar": 40.0,
+      "technical": 17.5,
+      "confidence": 35.0
+    },
+    "weak_areas": [
+      {
+        "category": "general",
+        "average_score": 17.5,
+        "question_count": 2,
+        "recommendation": "Practice more interview questions"
+      }
+    ],
+    "strengths": [],
+    "overall_feedback": "Keep practicing! This is a learning process. Focus on the fundamentals and gradually build your knowledge. Don't get discouraged - consistent practice will lead to improvement.",
+    "improvement_suggestions": [
+      {
+        "area": "general",
+        "action": "Practice more interview questions and review fundamentals",
+        "resources": [
+          "Interview Prep Books",
+          "Online Coding Practice"
+        ],
+        "priority": "high"
+      }
+    ],
+    "completed_at": "2026-05-01T19:07:10.642331"
+  },
+  "session_1777643373.53471": {
+    "session_id": "session_1777643373.53471",
+    "job_role": "data_analyst",
+    "difficulty": "medium",
+    "total_questions": 1,
+    "average_score": 45.0,
+    "scores_breakdown": {
+      "content": 60.0,
+      "grammar": 40.0,
+      "technical": 30.0,
+      "confidence": 60.0
+    },
+    "weak_areas": [
+      {
+        "category": "general",
+        "average_score": 30.0,
+        "question_count": 1,
+        "recommendation": "Practice more interview questions"
+      }
+    ],
+    "strengths": [],
+    "overall_feedback": "Keep practicing! This is a learning process. Focus on the fundamentals and gradually build your knowledge. Don't get discouraged - consistent practice will lead to improvement.",
+    "improvement_suggestions": [
+      {
+        "area": "general",
+        "action": "Practice more interview questions and review fundamentals",
+        "resources": [
+          "Interview Prep Books",
+          "Online Coding Practice"
+        ],
+        "priority": "high"
+      }
+    ],
+    "completed_at": "2026-05-01T19:19:59.444364"
   }
 }
