@@ -2,9 +2,15 @@
 # Generates interview questions based on job role, difficulty, and resume
 
 import json
+import os
 import random
 from typing import Dict, List, Optional
 from pathlib import Path
+
+try:
+    import joblib
+except ImportError:
+    joblib = None
 
 
 class QuestionGenerator:
@@ -15,9 +21,22 @@ class QuestionGenerator:
         if dataset_path is None:
             # Default dataset path
             dataset_path = Path(__file__).parent.parent / "dataset" / "questions.json"
-        
+
         self.dataset = self._load_dataset(dataset_path)
         self.generated_questions = []
+
+        # Load ML difficulty predictor (optional)
+        self.difficulty_predictor = None
+        if joblib:
+            try:
+                predictor_path = os.path.join(
+                    os.path.dirname(os.path.dirname(__file__)),
+                    "models", "difficulty_predictor.joblib"
+                )
+                if os.path.exists(predictor_path):
+                    self.difficulty_predictor = joblib.load(predictor_path)
+            except Exception as e:
+                print(f"Warning: Could not load difficulty predictor: {e}")
     
     def _load_dataset(self, path: Path) -> Dict:
         """Load question dataset from JSON file"""
@@ -165,6 +184,18 @@ class QuestionGenerator:
             "expected_keywords": ["background", "skills", "experience"],
             "time_limit": 120
         }
+
+    def predict_difficulty(self, question_text: str) -> str:
+        """Use the ML model to predict the difficulty of a question.
+
+        Falls back to 'medium' if the model is unavailable.
+        """
+        if self.difficulty_predictor and question_text and question_text.strip():
+            try:
+                return str(self.difficulty_predictor.predict([question_text.strip()])[0])
+            except Exception as e:
+                print(f"Difficulty prediction error: {e}")
+        return "medium"
     
     def _generate_resume_based_question(self, job_role: str, difficulty: str,
                                        resume_data: Dict) -> Optional[Dict]:
@@ -333,3 +364,14 @@ if __name__ == "__main__":
     generator = QuestionGenerator()
     q = generator.generate_question("software_developer", "medium")
     print("Generated Question:", q)
+
+    # Test difficulty predictor
+    test_questions = [
+        "What is a variable?",
+        "Explain the difference between REST and SOAP.",
+        "What is the CAP theorem in distributed systems?",
+    ]
+    print("\nDifficulty Predictions:")
+    for tq in test_questions:
+        d = generator.predict_difficulty(tq)
+        print(f"  [{d}] {tq}")
