@@ -169,5 +169,541 @@
       }
     ],
     "last_updated": "2026-04-16T22:41:18.237899"
+  },
+  "session_1777392142.796751": {
+    "session_id": "session_1777392142.796751",
+    "user_id": "user_1777392075892",
+    "answers": [
+      {
+        "question_id": "q_2",
+        "question": "What is HTML?",
+        "answer": "poiuytrewyuiopdf",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 1,
+          "sentence_count": 1,
+          "avg_word_length": 16.0,
+          "technical_terms": [],
+          "key_phrases": [],
+          "clarity_score": 70,
+          "completeness": 50,
+          "category": "general",
+          "sentiment": "neutral",
+          "grammar_quality": 40
+        },
+        "scores": {
+          "content_score": 60,
+          "grammar_score": 40,
+          "technical_score": 30,
+          "confidence_score": 60,
+          "total_score": 45,
+          "grade": "D"
+        },
+        "feedback": {
+          "overall": "Average answer. Consider expanding your knowledge on this topic.",
+          "strengths": [],
+          "weaknesses": [
+            "Grammar needs improvement. Proofread your answers.",
+            "Missing key technical concepts. Review the fundamentals."
+          ],
+          "improvements": [
+            "Try to provide more detailed explanations",
+            "Study the key concepts related to this topic",
+            "Structure your answer with multiple sentences"
+          ],
+          "technical_accuracy": "Technical accuracy needs improvement. Review the core concepts.",
+          "grammar_suggestions": "Work on grammar: check sentence structure, punctuation, and word usage.",
+          "next_steps": "Review the feedback and try to improve in the next answer."
+        },
+        "timestamp": "2026-04-28T21:32:30.771452"
+      }
+    ],
+    "last_updated": "2026-04-28T21:32:30.772177"
+  },
+  "session_1777392944.911392": {
+    "session_id": "session_1777392944.911392",
+    "user_id": "user_1777392933271",
+    "answers": [
+      {
+        "question_id": "q_2",
+        "question": "What is Object-Oriented Programming?",
+        "answer": "i dont know",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 3,
+          "sentence_count": 1,
+          "avg_word_length": 3.0,
+          "technical_terms": [],
+          "key_phrases": [
+            "i dont",
+            "dont know"
+          ],
+          "clarity_score": 70,
+          "completeness": 50,
+          "category": "general",
+          "sentiment": "positive",
+          "grammar_quality": 40
+        },
+        "scores": {
+          "content_score": 60,
+          "grammar_score": 40,
+          "technical_score": 30,
+          "confidence_score": 60,
+          "total_score": 45,
+          "grade": "D"
+        },
+        "feedback": {
+          "overall": "Average answer. Consider expanding your knowledge on this topic.",
+          "strengths": [],
+          "weaknesses": [
+            "Grammar needs improvement. Proofread your answers.",
+            "Missing key technical concepts. Review the fundamentals."
+          ],
+          "improvements": [
+            "Try to provide more detailed explanations",
+            "Study the key concepts related to this topic",
+            "Structure your answer with multiple sentences"
+          ],
+          "technical_accuracy": "Technical accuracy needs improvement. Review the core concepts.",
+          "grammar_suggestions": "Work on grammar: check sentence structure, punctuation, and word usage.",
+          "next_steps": "Review the feedback and try to improve in the next answer."
+        },
+        "timestamp": "2026-04-28T21:45:54.030320"
+      }
+    ],
+    "last_updated": "2026-04-28T21:45:54.030824"
+  },
+  "session_1777393527.761849": {
+    "session_id": "session_1777393527.761849",
+    "user_id": "user_1777392933271",
+    "answers": [
+      {
+        "question_id": "q_2",
+        "question": "Explain what a pivot table is used for.",
+        "answer": "i dont know\n",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 3,
+          "sentence_count": 1,
+          "avg_word_length": 3.0,
+          "technical_terms": [],
+          "key_phrases": [
+            "i dont",
+            "dont know"
+          ],
+          "clarity_score": 70,
+          "completeness": 50,
+          "category": "general",
+          "sentiment": "positive",
+          "grammar_quality": 40
+        },
+        "scores": {
+          "content_score": 60,
+          "grammar_score": 40,
+          "technical_score": 30,
+          "confidence_score": 60,
+          "total_score": 45,
+          "grade": "D"
+        },
+        "feedback": {
+          "overall": "Average answer. Consider expanding your knowledge on this topic.",
+          "strengths": [],
+          "weaknesses": [
+            "Grammar needs improvement. Proofread your answers.",
+            "Missing key technical concepts. Review the fundamentals."
+          ],
+          "improvements": [
+            "Try to provide more detailed explanations",
+            "Study the key concepts related to this topic",
+            "Structure your answer with multiple sentences"
+          ],
+          "technical_accuracy": "Technical accuracy needs improvement. Review the core concepts.",
+          "grammar_suggestions": "Work on grammar: check sentence structure, punctuation, and word usage.",
+          "next_steps": "Review the feedback and try to improve in the next answer."
+        },
+        "timestamp": "2026-04-28T21:55:38.986728"
+      }
+    ],
+    "last_updated": "2026-04-28T21:55:38.987253"
+  },
+  "session_1777478045.773549": {
+    "session_id": "session_1777478045.773549",
+    "user_id": "user_1777475997665",
+    "answers": [
+      {
+        "question_id": "q_2",
+        "question": "What is an array?",
+        "answer": "i dont know",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 3,
+          "sentence_count": 1,
+          "avg_word_length": 3.0,
+          "technical_terms": [],
+          "key_phrases": [
+            "i dont",
+            "dont know"
+          ],
+          "clarity_score": 70,
+          "completeness": 50,
+          "category": "general",
+          "sentiment": "positive",
+          "grammar_quality": 40,
+          "low_effort": true,
+          "low_effort_reason": "explicit_unknown"
+        },
+        "scores": {
+          "content_score": 10,
+          "grammar_score": 40,
+          "technical_score": 5,
+          "confidence_score": 10,
+          "total_score": 12,
+          "grade": "F",
+          "low_effort": true,
+          "low_effort_reason": "explicit_unknown"
+        },
+        "feedback": {
+          "overall": "It looks like you indicated you didn't know the answer. Try to provide at least a short attempt, outline how you would approach solving it, or list assumptions you would make.",
+          "strengths": [],
+          "weaknesses": [
+            "No attempt provided; avoid answering only 'I don't know'."
+          ],
+          "improvements": [
+            "Provide a short attempt, outline steps, or mention assumptions."
+          ],
+          "technical_accuracy": "",
+          "grammar_suggestions": "",
+          "next_steps": "Try to re-answer with an attempted approach; practice outlining solutions."
+        },
+        "timestamp": "2026-04-29T21:24:16.267448"
+      },
+      {
+        "question_id": "q_3",
+        "question": "What is a loop in programming?",
+        "answer": "loop is looping the loop",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 5,
+          "sentence_count": 1,
+          "avg_word_length": 4.0,
+          "technical_terms": [
+            "loop"
+          ],
+          "key_phrases": [
+            "loop is",
+            "is looping",
+            "looping the",
+            "the loop"
+          ],
+          "clarity_score": 70,
+          "completeness": 55,
+          "category": "general",
+          "sentiment": "neutral",
+          "grammar_quality": 40,
+          "low_effort": false,
+          "low_effort_reason": ""
+        },
+        "scores": {
+          "content_score": 61,
+          "grammar_score": 40,
+          "technical_score": 30,
+          "confidence_score": 60,
+          "total_score": 45,
+          "grade": "D"
+        },
+        "feedback": {
+          "overall": "Average answer. Consider expanding your knowledge on this topic.",
+          "strengths": [],
+          "weaknesses": [
+            "Grammar needs improvement. Proofread your answers.",
+            "Missing key technical concepts. Review the fundamentals."
+          ],
+          "improvements": [
+            "Try to provide more detailed explanations",
+            "Study the key concepts related to this topic",
+            "Structure your answer with multiple sentences"
+          ],
+          "technical_accuracy": "Technical accuracy needs improvement. Review the core concepts.",
+          "grammar_suggestions": "Work on grammar: check sentence structure, punctuation, and word usage.",
+          "next_steps": "Review the feedback and try to improve in the next answer."
+        },
+        "timestamp": "2026-04-29T21:24:45.326473"
+      }
+    ],
+    "last_updated": "2026-04-29T21:24:45.344720"
+  },
+  "session_1777642496.63096": {
+    "session_id": "session_1777642496.63096",
+    "user_id": "user_1777642393671",
+    "answers": [
+      {
+        "question_id": "q_2",
+        "question": "What is an API?",
+        "answer": "Application Programming interface\n",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 3,
+          "sentence_count": 1,
+          "avg_word_length": 10.333333333333334,
+          "technical_terms": [
+            "interface"
+          ],
+          "key_phrases": [
+            "application programming",
+            "programming interface"
+          ],
+          "clarity_score": 70,
+          "completeness": 55,
+          "category": "software_testing",
+          "sentiment": "neutral",
+          "grammar_quality": 45,
+          "low_effort": false,
+          "low_effort_reason": ""
+        },
+        "scores": {
+          "content_score": 61,
+          "grammar_score": 45,
+          "technical_score": 45,
+          "confidence_score": 60,
+          "total_score": 52,
+          "grade": "C"
+        },
+        "feedback": {
+          "overall": "Average answer. Consider expanding your knowledge on this topic.",
+          "strengths": [],
+          "weaknesses": [
+            "Grammar needs improvement. Proofread your answers.",
+            "Missing key technical concepts. Review the fundamentals."
+          ],
+          "improvements": [
+            "Try to provide more detailed explanations",
+            "Study the key concepts related to this topic",
+            "Structure your answer with multiple sentences"
+          ],
+          "technical_accuracy": "Technical accuracy needs improvement. Review the core concepts.",
+          "grammar_suggestions": "Work on grammar: check sentence structure, punctuation, and word usage.",
+          "next_steps": "Review the feedback and try to improve in the next answer."
+        },
+        "timestamp": "2026-05-01T19:05:10.364865"
+      },
+      {
+        "question_id": "q_3",
+        "question": "What is HTML?",
+        "answer": " HTML is an hyper text markup language used for frontend ",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 10,
+          "sentence_count": 1,
+          "avg_word_length": 4.6,
+          "technical_terms": [
+            "html"
+          ],
+          "key_phrases": [
+            "html is",
+            "is an",
+            "an hyper",
+            "hyper text",
+            "text markup",
+            "markup language",
+            "language used",
+            "used for",
+            "for frontend"
+          ],
+          "clarity_score": 85,
+          "completeness": 55,
+          "category": "database",
+          "sentiment": "neutral",
+          "grammar_quality": 45,
+          "low_effort": false,
+          "low_effort_reason": ""
+        },
+        "scores": {
+          "content_score": 61,
+          "grammar_score": 45,
+          "technical_score": 45,
+          "confidence_score": 60,
+          "total_score": 52,
+          "grade": "C"
+        },
+        "feedback": {
+          "overall": "Average answer. Consider expanding your knowledge on this topic.",
+          "strengths": [],
+          "weaknesses": [
+            "Grammar needs improvement. Proofread your answers.",
+            "Missing key technical concepts. Review the fundamentals."
+          ],
+          "improvements": [
+            "Try to provide more detailed explanations",
+            "Study the key concepts related to this topic",
+            "Structure your answer with multiple sentences"
+          ],
+          "technical_accuracy": "Technical accuracy needs improvement. Review the core concepts.",
+          "grammar_suggestions": "Work on grammar: check sentence structure, punctuation, and word usage.",
+          "next_steps": "Review the feedback and try to improve in the next answer."
+        },
+        "timestamp": "2026-05-01T19:05:52.978014"
+      }
+    ],
+    "last_updated": "2026-05-01T19:05:52.996116"
+  },
+  "session_1777642601.528479": {
+    "session_id": "session_1777642601.528479",
+    "user_id": "user_1777642393671",
+    "answers": [
+      {
+        "question_id": "q_2",
+        "question": "What is SQL injection and how can you prevent it?",
+        "answer": "i dont know",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 3,
+          "sentence_count": 1,
+          "avg_word_length": 3.0,
+          "technical_terms": [],
+          "key_phrases": [
+            "i dont",
+            "dont know"
+          ],
+          "clarity_score": 70,
+          "completeness": 50,
+          "category": "general",
+          "sentiment": "positive",
+          "grammar_quality": 40,
+          "low_effort": true,
+          "low_effort_reason": "explicit_unknown"
+        },
+        "scores": {
+          "content_score": 10,
+          "grammar_score": 40,
+          "technical_score": 5,
+          "confidence_score": 10,
+          "total_score": 12,
+          "grade": "F",
+          "low_effort": true,
+          "low_effort_reason": "explicit_unknown"
+        },
+        "feedback": {
+          "overall": "It looks like you indicated you didn't know the answer. Try to provide at least a short attempt, outline how you would approach solving it, or list assumptions you would make.",
+          "strengths": [],
+          "weaknesses": [
+            "No attempt provided; avoid answering only 'I don't know'."
+          ],
+          "improvements": [
+            "Provide a short attempt, outline steps, or mention assumptions."
+          ],
+          "technical_accuracy": "",
+          "grammar_suggestions": "",
+          "next_steps": "Try to re-answer with an attempted approach; practice outlining solutions."
+        },
+        "timestamp": "2026-05-01T19:06:49.856926"
+      },
+      {
+        "question_id": "q_3",
+        "question": "What is the difference between GET and POST methods?",
+        "answer": "why should i tell you",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 5,
+          "sentence_count": 1,
+          "avg_word_length": 3.4,
+          "technical_terms": [],
+          "key_phrases": [
+            "why should",
+            "should i",
+            "i tell",
+            "tell you"
+          ],
+          "clarity_score": 70,
+          "completeness": 50,
+          "category": "general",
+          "sentiment": "neutral",
+          "grammar_quality": 40,
+          "low_effort": false,
+          "low_effort_reason": ""
+        },
+        "scores": {
+          "content_score": 60,
+          "grammar_score": 40,
+          "technical_score": 30,
+          "confidence_score": 60,
+          "total_score": 45,
+          "grade": "D"
+        },
+        "feedback": {
+          "overall": "Average answer. Consider expanding your knowledge on this topic.",
+          "strengths": [],
+          "weaknesses": [
+            "Grammar needs improvement. Proofread your answers.",
+            "Missing key technical concepts. Review the fundamentals."
+          ],
+          "improvements": [
+            "Try to provide more detailed explanations",
+            "Study the key concepts related to this topic",
+            "Structure your answer with multiple sentences"
+          ],
+          "technical_accuracy": "Technical accuracy needs improvement. Review the core concepts.",
+          "grammar_suggestions": "Work on grammar: check sentence structure, punctuation, and word usage.",
+          "next_steps": "Review the feedback and try to improve in the next answer."
+        },
+        "timestamp": "2026-05-01T19:07:06.602702"
+      }
+    ],
+    "last_updated": "2026-05-01T19:07:06.622289"
+  },
+  "session_1777643373.53471": {
+    "session_id": "session_1777643373.53471",
+    "user_id": "user_1777643358959",
+    "answers": [
+      {
+        "question_id": "q_2",
+        "question": "Explain the concept of data visualization and its importance.",
+        "answer": "why it is importnat",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 4,
+          "sentence_count": 1,
+          "avg_word_length": 4.0,
+          "technical_terms": [],
+          "key_phrases": [
+            "why it",
+            "it is",
+            "is importnat"
+          ],
+          "clarity_score": 70,
+          "completeness": 50,
+          "category": "general",
+          "sentiment": "neutral",
+          "grammar_quality": 40,
+          "low_effort": false,
+          "low_effort_reason": ""
+        },
+        "scores": {
+          "content_score": 60,
+          "grammar_score": 40,
+          "technical_score": 30,
+          "confidence_score": 60,
+          "total_score": 45,
+          "grade": "D"
+        },
+        "feedback": {
+          "overall": "Average answer. Consider expanding your knowledge on this topic.",
+          "strengths": [],
+          "weaknesses": [
+            "Grammar needs improvement. Proofread your answers.",
+            "Missing key technical concepts. Review the fundamentals."
+          ],
+          "improvements": [
+            "Try to provide more detailed explanations",
+            "Study the key concepts related to this topic",
+            "Structure your answer with multiple sentences"
+          ],
+          "technical_accuracy": "Technical accuracy needs improvement. Review the core concepts.",
+          "grammar_suggestions": "Work on grammar: check sentence structure, punctuation, and word usage.",
+          "next_steps": "Review the feedback and try to improve in the next answer."
+        },
+        "timestamp": "2026-05-01T19:19:52.227511"
+      }
+    ],
+    "last_updated": "2026-05-01T19:19:52.228259"
   }
 }
