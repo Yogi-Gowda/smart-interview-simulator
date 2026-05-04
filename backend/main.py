@@ -209,10 +209,11 @@ async def submit_answer(submission: AnswerSubmission):
     analysis = nlp_analyzer.analyze_answer(submission.answer_text)
     
     # Calculate scores
+    expected_keywords = current_q.get("expected_keywords", [])
     scores = feedback_engine.calculate_scores(
         answer=submission.answer_text,
         analysis=analysis,
-        expected_keywords=current_q.get("expected_keywords", []),
+        expected_keywords=expected_keywords,
         question_category=current_q.get("category", "")
     )
     
@@ -222,18 +223,22 @@ async def submit_answer(submission: AnswerSubmission):
         analysis=analysis,
         scores=scores,
         question=current_q["question"],
-        expected_keywords=current_q.get("expected_keywords", []),
+        expected_keywords=expected_keywords,
     )
     
     # Store answer
     answer_data = {
         "question_id": submission.question_id,
         "question": current_q["question"],
+        "question_category": current_q.get("category", ""),
+        "expected_keywords": expected_keywords,
         "answer": submission.answer_text,
         "answer_type": submission.answer_type,
         "analysis": analysis,
         "scores": scores,
         "feedback": feedback,
+        "verdict": scores.get("verdict", "wrong"),
+        "is_correct": scores.get("is_correct", False),
         "timestamp": datetime.now().isoformat()
     }
     
@@ -249,9 +254,13 @@ async def submit_answer(submission: AnswerSubmission):
     
     return {
         "success": True,
+        "verdict": scores.get("verdict", "wrong"),
+        "answer_status": scores.get("answer_status", "Wrong"),
+        "is_correct": scores.get("is_correct", False),
         "analysis": analysis,
         "scores": scores,
         "feedback": feedback,
+        "accuracy_report": feedback.get("accuracy_report", {}),
         "suggestions": feedback.get("improvements", [])
     }
 
@@ -287,6 +296,9 @@ async def end_interview(session_id: str):
         raise HTTPException(status_code=400, detail="No answers recorded")
     
     avg_score = sum(s["total_score"] for s in session["scores"]) / total_questions
+    correct_answers = sum(1 for answer in session["answers"] if answer.get("scores", {}).get("is_correct", False))
+    wrong_answers = total_questions - correct_answers
+    accuracy_percentage = round((correct_answers / total_questions) * 100, 2)
     
     # Identify weak areas
     weak_areas = feedback_engine.identify_weak_areas(session["answers"])
@@ -297,6 +309,9 @@ async def end_interview(session_id: str):
         "job_role": session["job_role"],
         "difficulty": session["difficulty"],
         "total_questions": total_questions,
+        "correct_answers": correct_answers,
+        "wrong_answers": wrong_answers,
+        "accuracy_percentage": accuracy_percentage,
         "average_score": round(avg_score, 2),
         "scores_breakdown": {
             "content": round(sum(s["content_score"] for s in session["scores"]) / total_questions, 2),
@@ -304,9 +319,24 @@ async def end_interview(session_id: str):
             "technical": round(sum(s["technical_score"] for s in session["scores"]) / total_questions, 2),
             "confidence": round(sum(s["confidence_score"] for s in session["scores"]) / total_questions, 2)
         },
+        "answer_results": [
+            {
+                "question_id": answer.get("question_id"),
+                "question": answer.get("question"),
+                "category": answer.get("question_category"),
+                "verdict": answer.get("scores", {}).get("answer_status", "Wrong"),
+                "is_correct": answer.get("scores", {}).get("is_correct", False),
+                "score": answer.get("scores", {}).get("total_score", 0),
+                "technical_score": answer.get("scores", {}).get("technical_score", 0),
+                "matched_concepts": answer.get("scores", {}).get("found_keywords", []),
+                "missing_concepts": answer.get("scores", {}).get("missing_keywords", []),
+                "reason": answer.get("scores", {}).get("verdict_reason", "")
+            }
+            for answer in session["answers"]
+        ],
         "weak_areas": weak_areas,
         "strengths": feedback_engine.identify_strengths(session["answers"]),
-        "overall_feedback": feedback_engine.generate_final_feedback(avg_score, weak_areas),
+        "overall_feedback": feedback_engine.generate_final_feedback(avg_score, weak_areas, accuracy_percentage),
         "improvement_suggestions": feedback_engine.generate_improvement_plan(weak_areas),
         "completed_at": datetime.now().isoformat()
     }
