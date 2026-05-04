@@ -1,28 +1,124 @@
 # Feedback Engine Module
-# Generates feedback and scores for user answers
+# Generates strict answer verdicts, scores, and reports.
 
-import random
-from typing import Dict, List, Optional
+import math
+import re
 from collections import Counter
+from typing import Dict, List, Set
 
 
 class FeedbackEngine:
-    """Generate feedback and calculate scores for answers"""
+    """Generate feedback and calculate answer correctness."""
 
-    # ── Score weights ────────────────────────────────────────
-    # technical_score drives quality the most — it measures
-    # whether the candidate actually knows the answer.
-    WEIGHT_TECHNICAL  = 0.50
-    WEIGHT_CONTENT    = 0.25
-    WEIGHT_CONFIDENCE = 0.15
-    WEIGHT_GRAMMAR    = 0.10
+    # Technical accuracy should dominate the final score. Grammar and confidence
+    # can improve presentation, but they must not make a wrong answer look correct.
+    WEIGHT_TECHNICAL = 0.65
+    WEIGHT_CONTENT = 0.20
+    WEIGHT_CONFIDENCE = 0.05
+    WEIGHT_GRAMMAR = 0.10
+
+    CORRECT_MATCH_RATIO = 0.70
+    MIN_WORDS_FOR_CORRECT = 8
+    WRONG_SCORE_CAP = 49
+
+    STOP_WORDS = {
+        "a", "an", "and", "are", "as", "at", "be", "by", "for", "from",
+        "has", "have", "in", "into", "is", "it", "its", "of", "on", "or",
+        "that", "the", "their", "this", "to", "was", "were", "with", "we",
+        "you", "your", "i", "they", "them", "can", "will", "would", "should",
+    }
+
+    CATEGORY_GROUPS = {
+        "web": {"web_development", "security", "architecture", "devops"},
+        "web_development": {"web", "security", "architecture", "devops"},
+        "oop": {"programming", "design_patterns"},
+        "programming": {"oop", "algorithms", "data_structures", "operating_system"},
+        "database": {"data_science", "data_analysis", "preprocessing"},
+        "machine_learning": {"data_science", "analysis", "statistics"},
+        "data_science": {"machine_learning", "analysis", "statistics"},
+        "basics": {"general", "programming", "database", "software_testing"},
+        "types": {"software_testing", "testing"},
+        "testing": {"software_testing", "types"},
+    }
+
+    CONCEPT_ALIASES = {
+        "abstraction": ["abstract", "hide implementation", "essential details"],
+        "acceptance": ["uat", "user acceptance"],
+        "api": ["application programming interface"],
+        "array": ["indexed collection", "fixed collection"],
+        "async": ["asynchronous", "non blocking", "non-blocking"],
+        "authentication": ["login", "identity verification", "verify identity"],
+        "authorization": ["permission", "access control", "allowed access"],
+        "availability": ["available", "uptime"],
+        "base case": ["stopping condition", "termination condition"],
+        "big o": ["big-o", "time complexity notation", "asymptotic"],
+        "black box": ["black-box"],
+        "class": ["classes", "blueprint", "template"],
+        "client": ["frontend", "browser"],
+        "collection": ["group", "set"],
+        "communication": ["communicate", "exchange data", "talk to each other"],
+        "consistency": ["consistent"],
+        "container": ["containers", "docker container"],
+        "data type": ["datatype", "type of data"],
+        "database": ["db", "data store", "datastore"],
+        "deadlock": ["circular wait"],
+        "defect": ["bug", "issue"],
+        "deployment": ["deploy", "release"],
+        "durability": ["durable", "persisted", "persistence"],
+        "encapsulation": ["encapsulate", "data hiding", "hide internal state", "private data"],
+        "equivalence": ["equivalent"],
+        "factory": ["factory pattern"],
+        "foreign key": ["foreign-key", "referential key", "relationship key"],
+        "function": ["method", "procedure", "routine"],
+        "hash function": ["hashing function"],
+        "html": ["hypertext markup language"],
+        "http": ["hypertext transfer protocol"],
+        "inheritance": ["inherit", "inherits", "extends", "parent class", "child class", "subclass"],
+        "integration": ["integrated"],
+        "interface": ["contract"],
+        "isolation": ["isolated"],
+        "json": ["javascript object notation"],
+        "lifo": ["last in first out"],
+        "loose coupling": ["loosely coupled", "decoupled"],
+        "manual": ["human executed", "manual testing"],
+        "memory": ["ram"],
+        "message queue": ["queue", "broker"],
+        "microservices": ["microservice", "small independent services"],
+        "model": ["data model"],
+        "normalization": ["normalisation", "normalize", "normalise"],
+        "object": ["objects", "instance", "instances"],
+        "open addressing": ["linear probing", "quadratic probing"],
+        "parameter": ["argument"],
+        "parameterized": ["prepared statement", "parameterised", "bind parameter"],
+        "partition tolerance": ["network partition", "partition tolerant"],
+        "pca": ["principal component analysis"],
+        "polymorphism": ["many forms", "method overriding", "override behavior"],
+        "primary key": ["primary-key", "unique identifier", "unique id"],
+        "red green refactor": ["red-green-refactor", "red green refactoring"],
+        "request": ["api call", "http call"],
+        "response": ["reply", "result"],
+        "rest": ["representational state transfer", "restful"],
+        "sanitization": ["sanitisation", "sanitize", "clean input", "escape input"],
+        "schema": ["structure"],
+        "security": ["secure"],
+        "server": ["backend"],
+        "singleton": ["singleton pattern", "single instance"],
+        "soap": ["simple object access protocol"],
+        "storage": ["store", "stores", "stored", "save", "keeps"],
+        "supervised": ["labelled", "labeled data"],
+        "synchronization": ["synchronisation", "sync", "locking"],
+        "test case": ["testcase"],
+        "test first": ["write tests first"],
+        "thread": ["threads", "lightweight process"],
+        "validation": ["validate", "checking correctness"],
+        "variable": ["named storage", "identifier"],
+        "virtual dom": ["vdom"],
+        "white box": ["white-box"],
+    }
 
     def __init__(self):
         self.feedback_history = []
 
-    # ─────────────────────────────────────────────────────────
-    # MAIN SCORING ENTRY POINT
-    # ─────────────────────────────────────────────────────────
     def calculate_scores(
         self,
         answer: str,
@@ -30,210 +126,259 @@ class FeedbackEngine:
         expected_keywords: List[str],
         question_category: str,
     ) -> Dict:
-        """Calculate all sub-scores and a weighted total score."""
+        """Calculate sub-scores and a strict correct/wrong verdict."""
 
-        # ── Low-effort / "I don't know" short-circuit ────────
+        expected_keywords = self._dedupe_keywords(expected_keywords or [])
+        kw_result = self._keyword_analysis(answer or "", expected_keywords)
+
         if analysis.get("low_effort"):
-            reason = analysis.get("low_effort_reason", "")
-            content_score    = 5
-            grammar_score    = analysis.get("grammar_quality", 50)
-            technical_score  = 0
-            confidence_score = 5
-
-            total_score = round(
-                (technical_score  * self.WEIGHT_TECHNICAL)  +
-                (content_score    * self.WEIGHT_CONTENT)    +
-                (confidence_score * self.WEIGHT_CONFIDENCE) +
-                (grammar_score    * self.WEIGHT_GRAMMAR)
-            )
-
             scores = {
-                "content_score":    content_score,
-                "grammar_score":    grammar_score,
-                "technical_score":  technical_score,
-                "confidence_score": confidence_score,
-                "total_score":      total_score,
-                "grade":            self._get_grade(total_score),
-                "low_effort":       True,
-                "low_effort_reason": reason,
-                "found_keywords":   [],
-                "missing_keywords": expected_keywords,
+                "content_score": 0,
+                "grammar_score": analysis.get("grammar_quality", 0),
+                "technical_score": 0,
+                "confidence_score": 0,
+                "total_score": 0,
+                "grade": "F",
+                "low_effort": True,
+                "low_effort_reason": analysis.get("low_effort_reason", "low_effort"),
+                "found_keywords": kw_result["found"],
+                "missing_keywords": kw_result["missing"],
+                "matched_keyword_count": len(kw_result["found"]),
+                "expected_keyword_count": len(expected_keywords),
+                "required_keyword_count": self._required_keyword_count(len(expected_keywords)),
+                "match_percentage": kw_result["match_pct"],
+                "concept_evidence": kw_result["evidence"],
+                "contradictions": [],
+                "is_correct": False,
+                "verdict": "wrong",
+                "answer_status": "Wrong",
+                "decision_reasons": ["No meaningful answer was provided."],
+                "verdict_reason": "No meaningful answer was provided.",
             }
             self.feedback_history.append(scores)
             return scores
 
-        # ── Normal scoring ────────────────────────────────────
-        kw_result        = self._keyword_analysis(answer, expected_keywords)
-        technical_score  = self._calculate_technical_score(answer, analysis, kw_result)
-        content_score    = self._calculate_content_score(answer, analysis, technical_score)
-        grammar_score    = analysis.get("grammar_quality", 70)
+        technical_score = self._calculate_technical_score(answer, analysis, kw_result)
+        content_score = self._calculate_content_score(answer, analysis, technical_score)
+        grammar_score = int(max(0, min(100, analysis.get("grammar_quality", 70))))
         confidence_score = self._calculate_confidence_score(answer, analysis)
 
-        total_score = round(
-            (technical_score  * self.WEIGHT_TECHNICAL)  +
-            (content_score    * self.WEIGHT_CONTENT)    +
-            (confidence_score * self.WEIGHT_CONFIDENCE) +
-            (grammar_score    * self.WEIGHT_GRAMMAR)
+        verdict_info = self._decide_verdict(
+            answer=answer,
+            analysis=analysis,
+            kw_result=kw_result,
+            technical_score=technical_score,
+            expected_keywords=expected_keywords,
+            question_category=question_category,
         )
 
+        total_score = round(
+            (technical_score * self.WEIGHT_TECHNICAL)
+            + (content_score * self.WEIGHT_CONTENT)
+            + (confidence_score * self.WEIGHT_CONFIDENCE)
+            + (grammar_score * self.WEIGHT_GRAMMAR)
+        )
+
+        if not verdict_info["is_correct"]:
+            total_score = min(total_score, self.WRONG_SCORE_CAP)
+
         scores = {
-            "content_score":    content_score,
-            "grammar_score":    grammar_score,
-            "technical_score":  technical_score,
+            "content_score": content_score,
+            "grammar_score": grammar_score,
+            "technical_score": technical_score,
             "confidence_score": confidence_score,
-            "total_score":      total_score,
-            "grade":            self._get_grade(total_score),
-            "found_keywords":   kw_result["found"],
+            "total_score": total_score,
+            "grade": self._get_grade(total_score),
+            "low_effort": False,
+            "found_keywords": kw_result["found"],
             "missing_keywords": kw_result["missing"],
+            "matched_keyword_count": len(kw_result["found"]),
+            "expected_keyword_count": len(expected_keywords),
+            "required_keyword_count": self._required_keyword_count(len(expected_keywords)),
+            "match_percentage": kw_result["match_pct"],
+            "concept_evidence": kw_result["evidence"],
+            "contradictions": verdict_info["contradictions"],
+            "is_correct": verdict_info["is_correct"],
+            "verdict": "correct" if verdict_info["is_correct"] else "wrong",
+            "answer_status": "Correct" if verdict_info["is_correct"] else "Wrong",
+            "decision_reasons": verdict_info["reasons"],
+            "verdict_reason": " ".join(verdict_info["reasons"]),
         }
         self.feedback_history.append(scores)
         return scores
 
-    # ─────────────────────────────────────────────────────────
-    # KEYWORD ANALYSIS (shared between scoring & feedback)
-    # ─────────────────────────────────────────────────────────
     def _keyword_analysis(self, answer: str, expected_keywords: List[str]) -> Dict:
         """
-        Check expected keywords against the answer.
-        Uses exact match + partial/root match for robustness.
-        Returns {"found": [...], "missing": [...], "match_pct": float}
+        Match expected concepts against the answer.
+
+        Matching uses exact phrases, common aliases, word boundaries, simple stems,
+        and singular/plural variants. This avoids the old substring-only behavior
+        that could count unrelated words as correct.
         """
-        answer_lower = answer.lower()
-        found   = []
+        normalized_answer = self._normalize_text(answer)
+        answer_tokens = self._tokenize(normalized_answer)
+        answer_stems = {self._stem(token) for token in answer_tokens}
+
+        found = []
         missing = []
+        evidence = {}
 
-        for kw in expected_keywords:
-            kw_lower = kw.lower()
-            if kw_lower in answer_lower:
-                found.append(kw)
+        for keyword in expected_keywords:
+            matched_by = self._matched_variant(keyword, normalized_answer, answer_stems)
+            if matched_by:
+                found.append(keyword)
+                evidence[keyword] = matched_by
             else:
-                # Partial root match — e.g. "encapsulation" in "encapsulate"
-                root = kw_lower.split()[0]
-                if len(root) > 4 and root in answer_lower:
-                    found.append(kw)
-                else:
-                    missing.append(kw)
+                missing.append(keyword)
 
-        match_pct = (len(found) / len(expected_keywords) * 100) if expected_keywords else 0
-        return {"found": found, "missing": missing, "match_pct": match_pct}
+        match_pct = round((len(found) / len(expected_keywords) * 100), 2) if expected_keywords else 0
+        return {
+            "found": found,
+            "missing": missing,
+            "match_pct": match_pct,
+            "evidence": evidence,
+        }
 
-    # ─────────────────────────────────────────────────────────
-    # TECHNICAL SCORE  (0 – 100, no inflated base)
-    # ─────────────────────────────────────────────────────────
-    def _calculate_technical_score(
-        self, answer: str, analysis: Dict, kw_result: Dict
-    ) -> int:
-        """
-        Score purely on keyword coverage.
-        No base score — an answer with 0 matching keywords scores ≤15.
-        """
-        match_pct = kw_result["match_pct"]
-        quality   = analysis.get("quality_prediction", "average")
+    def _calculate_technical_score(self, answer: str, analysis: Dict, kw_result: Dict) -> int:
+        expected_count = len(kw_result["found"]) + len(kw_result["missing"])
+        quality = analysis.get("quality_prediction", "average")
 
-        if not kw_result["found"] and not kw_result["missing"]:
-            # No expected keywords defined → use quality prediction
-            base = {"good": 72, "average": 50, "poor": 20}.get(quality, 50)
-            return base
+        if expected_count == 0:
+            return {"good": 72, "average": 50, "poor": 20}.get(quality, 50)
 
-        # Pure keyword-match driven (0 – 100)
-        score = int(match_pct)
+        score = int(round(kw_result["match_pct"]))
 
-        # Soft quality adjustment (±10 max)
-        if quality == "good"    and score >= 40:  score = min(100, score + 10)
-        if quality == "average" and score >= 60:  score = min(100, score + 5)
-        if quality == "poor":                      score = max(0,   score - 10)
-
-        return min(100, max(0, score))
-
-    # ─────────────────────────────────────────────────────────
-    # CONTENT SCORE  (0 – 100)
-    # ─────────────────────────────────────────────────────────
-    def _calculate_content_score(
-        self, answer: str, analysis: Dict, technical_score: int
-    ) -> int:
-        """
-        Score based on depth, length, and ML quality prediction.
-        Anchored to technical_score so a wrong answer can't score high here.
-        """
-        quality      = analysis.get("quality_prediction", "average")
-        word_count   = analysis.get("word_count", 0)
-        sent_count   = analysis.get("sentence_count", 0)
-
-        # Quality-anchored base (poor answers can't score high content)
-        quality_base = {"good": 60, "average": 40, "poor": 15}.get(quality, 40)
-        score = quality_base
-
-        # Word count bonus
-        if quality != "poor":
-            if word_count >= 80:  score += 25
-            elif word_count >= 50: score += 18
-            elif word_count >= 30: score += 10
-            elif word_count >= 15: score += 5
-        else:
-            if word_count >= 40:  score += 5   # minimal bonus even for poor answers
-
-        # Multi-sentence structure bonus
-        if sent_count >= 5 and quality != "poor":  score += 10
-        elif sent_count >= 3:                       score += 5
-
-        # Cap content score relative to technical accuracy:
-        # A completely wrong answer can't score well on content
-        if technical_score < 20:
-            score = min(score, 35)
-        elif technical_score < 40:
-            score = min(score, 55)
-
-        return min(100, max(0, score))
-
-    # ─────────────────────────────────────────────────────────
-    # CONFIDENCE SCORE  (0 – 100)
-    # ─────────────────────────────────────────────────────────
-    def _calculate_confidence_score(self, answer: str, analysis: Dict) -> int:
-        """
-        Measure confident, structured delivery.
-        Base is 40 (not 60) so wrong answers don't inflate the total.
-        """
-        score = 40   # realistic base
-
-        answer_lower = answer.lower()
-
-        # Penalise hedging / uncertainty words
-        hedging = ["maybe", "perhaps", "i think", "i guess",
-                   "not sure", "possibly", "i believe", "kind of"]
-        hedging_count = sum(1 for w in hedging if w in answer_lower)
-        score -= hedging_count * 5
-
-        # Reward confident, definitive language
-        definitive = ["definitely", "certainly", "absolutely",
-                      "clearly", "specifically", "in summary", "in conclusion"]
-        definitive_count = sum(1 for w in definitive if w in answer_lower)
-        score += definitive_count * 5
-
-        # Reward concrete examples
-        if "for example" in answer_lower or "for instance" in answer_lower:
-            score += 15
-
-        # Reward structured multi-sentence answers
-        if analysis.get("sentence_count", 0) >= 5:  score += 15
-        elif analysis.get("sentence_count", 0) >= 3: score += 8
+        # A complete, substantial answer can earn a small presentation bonus, but
+        # missing concepts still control the result.
+        if score >= 70 and analysis.get("word_count", 0) >= self.MIN_WORDS_FOR_CORRECT:
+            score += 5
+        if quality == "poor":
+            score -= 10
 
         return max(0, min(100, score))
 
-    # ─────────────────────────────────────────────────────────
-    # GRADE MAPPING
-    # ─────────────────────────────────────────────────────────
-    def _get_grade(self, score: int) -> str:
-        if score >= 90:  return "A+"
-        elif score >= 80: return "A"
-        elif score >= 70: return "B+"
-        elif score >= 60: return "B"
-        elif score >= 50: return "C"
-        elif score >= 40: return "D"
-        else:             return "F"
+    def _calculate_content_score(self, answer: str, analysis: Dict, technical_score: int) -> int:
+        quality = analysis.get("quality_prediction", "average")
+        word_count = analysis.get("word_count", 0)
+        sentence_count = analysis.get("sentence_count", 0)
 
-    # ─────────────────────────────────────────────────────────
-    # FEEDBACK GENERATION
-    # ─────────────────────────────────────────────────────────
+        quality_base = {"good": 55, "average": 35, "poor": 10}.get(quality, 35)
+        score = quality_base
+
+        if word_count >= 80:
+            score += 25
+        elif word_count >= 50:
+            score += 18
+        elif word_count >= 30:
+            score += 10
+        elif word_count >= 15:
+            score += 5
+
+        if sentence_count >= 4:
+            score += 10
+        elif sentence_count >= 2:
+            score += 5
+
+        if technical_score < 40:
+            score = min(score, 35)
+        elif technical_score < 70:
+            score = min(score, 60)
+
+        return max(0, min(100, score))
+
+    def _calculate_confidence_score(self, answer: str, analysis: Dict) -> int:
+        score = 40
+        answer_lower = self._normalize_text(answer)
+
+        hedging = [
+            "maybe", "perhaps", "i think", "i guess", "not sure",
+            "possibly", "i believe", "kind of", "sort of",
+        ]
+        definitive = [
+            "definitely", "certainly", "clearly", "specifically",
+            "in summary", "in conclusion",
+        ]
+
+        score -= sum(1 for word in hedging if word in answer_lower) * 6
+        score += sum(1 for word in definitive if word in answer_lower) * 4
+
+        if "for example" in answer_lower or "for instance" in answer_lower:
+            score += 15
+
+        if analysis.get("sentence_count", 0) >= 4:
+            score += 15
+        elif analysis.get("sentence_count", 0) >= 2:
+            score += 8
+
+        return max(0, min(100, score))
+
+    def _decide_verdict(
+        self,
+        answer: str,
+        analysis: Dict,
+        kw_result: Dict,
+        technical_score: int,
+        expected_keywords: List[str],
+        question_category: str,
+    ) -> Dict:
+        reasons = []
+        expected_count = len(expected_keywords)
+        matched_count = len(kw_result["found"])
+        required_count = self._required_keyword_count(expected_count)
+        contradictions = self._find_contradictions(answer, expected_keywords)
+        has_substance = self._answer_has_substance(answer, analysis)
+
+        if expected_count:
+            if matched_count < required_count:
+                reasons.append(
+                    f"Matched {matched_count}/{expected_count} required concepts; "
+                    f"at least {required_count} are needed."
+                )
+            else:
+                reasons.append(
+                    f"Matched {matched_count}/{expected_count} required concepts."
+                )
+        elif technical_score < 70:
+            reasons.append("The answer did not show enough technical detail.")
+
+        if not has_substance:
+            reasons.append("The answer is too short to prove understanding.")
+
+        if contradictions:
+            reasons.append(
+                "Possible contradiction detected around: "
+                + ", ".join(contradictions[:3])
+                + "."
+            )
+
+        answer_category = analysis.get("category", "general")
+        category_matches = self._category_matches(question_category, answer_category)
+        if not category_matches and matched_count < required_count:
+            reasons.append(
+                f"The answer appears off-topic for {question_category or 'this'} question."
+            )
+
+        is_correct = (
+            matched_count >= required_count
+            and technical_score >= 70
+            and has_substance
+            and not contradictions
+        ) if expected_count else (
+            technical_score >= 70 and has_substance and not contradictions
+        )
+
+        if is_correct and not reasons:
+            reasons.append("Answer meets the required technical concepts.")
+
+        if not is_correct and not reasons:
+            reasons.append("Answer does not meet the required correctness threshold.")
+
+        return {
+            "is_correct": is_correct,
+            "reasons": reasons,
+            "contradictions": contradictions,
+        }
+
     def generate_feedback(
         self,
         answer: str,
@@ -242,349 +387,433 @@ class FeedbackEngine:
         question: str,
         expected_keywords: List[str] = None,
     ) -> Dict:
-        """Generate detailed, specific feedback for the answer."""
+        """Generate detailed, direct feedback for the answer."""
+        expected_keywords = self._dedupe_keywords(expected_keywords or [])
+        is_correct = scores.get("is_correct", False)
+        found_kws = scores.get("found_keywords", [])
+        missing_kws = scores.get("missing_keywords", [])
+        technical_score = scores.get("technical_score", 0)
+        content_score = scores.get("content_score", 0)
+        grammar_score = scores.get("grammar_score", 0)
+        confidence_score = scores.get("confidence_score", 0)
 
         feedback = {
-            "overall":          "",
-            "strengths":        [],
-            "weaknesses":       [],
-            "improvements":     [],
+            "overall": "",
+            "verdict": "correct" if is_correct else "wrong",
+            "answer_status": "Correct" if is_correct else "Wrong",
+            "is_correct": is_correct,
+            "strengths": [],
+            "weaknesses": [],
+            "improvements": [],
             "technical_accuracy": "",
             "grammar_suggestions": "",
-            "next_steps":       "",
-            "missing_concepts": [],
-            "found_concepts":   [],
+            "next_steps": "",
+            "missing_concepts": missing_kws,
+            "found_concepts": found_kws,
+            "accuracy_report": {
+                "question": question,
+                "required_concepts": expected_keywords,
+                "matched_concepts": found_kws,
+                "missing_concepts": missing_kws,
+                "matched_count": scores.get("matched_keyword_count", 0),
+                "required_to_pass": scores.get("required_keyword_count", 0),
+                "expected_count": scores.get("expected_keyword_count", 0),
+                "match_percentage": scores.get("match_percentage", 0),
+                "decision_reasons": scores.get("decision_reasons", []),
+                "concept_evidence": scores.get("concept_evidence", {}),
+            },
         }
 
-        total_score     = scores.get("total_score", 0)
-        technical_score = scores.get("technical_score", 0)
-        content_score   = scores.get("content_score", 0)
-        grammar_score   = scores.get("grammar_score", 0)
-        confidence_score = scores.get("confidence_score", 0)
-        found_kws       = scores.get("found_keywords",   [])
-        missing_kws     = scores.get("missing_keywords", [])
-        quality         = analysis.get("quality_prediction", "average")
-
-        feedback["found_concepts"]   = found_kws
-        feedback["missing_concepts"] = missing_kws
-
-        # ── Low-effort short-circuit ─────────────────────────
         if scores.get("low_effort"):
-            feedback["overall"] = (
-                "It looks like you didn't attempt the answer. "
-                "Even a partial attempt or outlining your approach shows effort."
-            )
-            feedback["weaknesses"].append("No answer or 'I don't know' response detected.")
+            feedback["overall"] = "Wrong. No meaningful answer was provided."
+            feedback["weaknesses"].append("No answer or an explicit unknown response was detected.")
             feedback["improvements"].append(
-                "Try to outline your approach even if unsure. "
-                "Structure: define the concept → give an example → explain why it matters."
+                "Attempt the answer by giving a definition, one example, and why the concept matters."
             )
             if expected_keywords:
                 feedback["improvements"].append(
-                    f"Key concepts to study for this question: "
-                    f"{', '.join(expected_keywords[:6])}."
+                    "Study these required concepts: " + ", ".join(expected_keywords[:6]) + "."
                 )
-            feedback["next_steps"] = "Review this topic and try to answer again."
+            feedback["technical_accuracy"] = "Verdict: Wrong. The answer did not attempt the topic."
+            feedback["grammar_suggestions"] = "Grammar cannot be meaningfully evaluated without an answer."
+            feedback["next_steps"] = "Review the topic and retry this question."
             return feedback
 
-        # ── Overall message ───────────────────────────────────
-        if total_score >= 85:
+        if is_correct:
             feedback["overall"] = (
-                "Excellent answer! You demonstrated a strong understanding of the topic "
-                "and covered the key concepts clearly."
-            )
-        elif total_score >= 70:
-            feedback["overall"] = (
-                "Good answer! You have a solid understanding but missed a few key points."
-            )
-        elif total_score >= 55:
-            feedback["overall"] = (
-                "Partial answer. You touched on some ideas but the core concepts "
-                "were not fully covered."
-            )
-        elif total_score >= 35:
-            feedback["overall"] = (
-                "Your answer needs significant improvement. "
-                "The key technical concepts for this question were missing."
+                "Correct. Your answer covered enough required concepts to be marked correct."
             )
         else:
-            feedback["overall"] = (
-                "Incorrect or off-topic answer. "
-                "Review the fundamentals of this topic before your next attempt."
-            )
+            reason = scores.get("verdict_reason") or "The answer missed required concepts."
+            feedback["overall"] = f"Wrong. {reason}"
 
-        # ── Strengths ────────────────────────────────────────
         if found_kws:
-            feedback["strengths"].append(
-                f"You correctly mentioned: {', '.join(found_kws[:5])}."
-            )
-        if content_score >= 70:
-            feedback["strengths"].append("Good depth — your answer was detailed and structured.")
+            feedback["strengths"].append("Relevant concepts mentioned: " + ", ".join(found_kws[:6]) + ".")
+        if is_correct and content_score >= 70:
+            feedback["strengths"].append("The answer has good depth and structure.")
         if grammar_score >= 80:
-            feedback["strengths"].append("Clear language and good grammar throughout.")
-        if confidence_score >= 70:
-            feedback["strengths"].append("Confident and well-structured delivery.")
-        if analysis.get("sentence_count", 0) >= 4:
-            feedback["strengths"].append("Good multi-sentence explanation style.")
+            feedback["strengths"].append("Language and grammar are clear.")
+        if confidence_score >= 65:
+            feedback["strengths"].append("Delivery is direct and confident.")
 
-        # ── Weaknesses ───────────────────────────────────────
         if missing_kws:
-            feedback["weaknesses"].append(
-                f"Missing key concepts: {', '.join(missing_kws[:6])}."
-            )
-        if technical_score < 40:
-            feedback["weaknesses"].append(
-                "The answer did not demonstrate sufficient technical knowledge for this question."
-            )
+            feedback["weaknesses"].append("Missing required concepts: " + ", ".join(missing_kws[:6]) + ".")
+        if technical_score < 70:
+            feedback["weaknesses"].append("Technical coverage is below the correctness threshold.")
         if content_score < 40:
-            feedback["weaknesses"].append(
-                "Answer is too brief or lacks depth. Aim for at least 40–60 words."
-            )
+            feedback["weaknesses"].append("Answer is too brief or lacks explanation.")
         if grammar_score < 60:
             feedback["weaknesses"].append("Grammar and sentence structure need improvement.")
         if confidence_score < 40:
-            feedback["weaknesses"].append(
-                "Answer sounds uncertain. Reduce hedging words like 'maybe', 'I think'."
-            )
-        if quality == "poor":
-            feedback["weaknesses"].append(
-                "The overall response quality was low. Work on providing complete answers."
-            )
+            feedback["weaknesses"].append("Answer sounds uncertain or underdeveloped.")
 
-        # ── Specific improvement suggestions ─────────────────
         if missing_kws:
-            missing_display = ", ".join(missing_kws[:6])
             feedback["improvements"].append(
-                f"Study and include these key concepts in your answer: {missing_display}."
-            )
-        if technical_score < 50:
-            feedback["improvements"].append(
-                "Review the fundamentals of this topic. "
-                "Focus on understanding the definition, purpose, and a concrete example."
+                "Add these concepts to make the answer correct: " + ", ".join(missing_kws[:6]) + "."
             )
         if analysis.get("word_count", 0) < 30:
             feedback["improvements"].append(
-                "Expand your answer: define the concept, give an example, "
-                "and explain when/why it is used."
+                "Expand the response with a definition, example, and practical use."
             )
-        if analysis.get("sentence_count", 0) < 3:
+        if analysis.get("sentence_count", 0) < 2:
             feedback["improvements"].append(
-                "Structure your answer with at least 3 sentences: "
-                "definition → example → real-world use."
+                "Use at least two clear sentences so the evaluator can verify your reasoning."
             )
         if confidence_score < 50:
             feedback["improvements"].append(
-                "Use direct, confident language. Replace 'I think' / 'maybe' "
-                "with definitive statements."
+                "Use direct statements and avoid phrases like 'maybe' or 'I think'."
             )
         if not feedback["improvements"]:
-            feedback["improvements"].append(
-                "Good job! Keep practising to maintain this level of accuracy."
-            )
+            feedback["improvements"].append("Keep this structure: definition, key concepts, and example.")
 
-        # ── Technical accuracy summary ────────────────────────
-        if technical_score >= 80:
-            feedback["technical_accuracy"] = (
-                f"Excellent technical accuracy. You covered "
-                f"{len(found_kws)}/{len(found_kws) + len(missing_kws)} key concepts."
-            )
-        elif technical_score >= 60:
-            feedback["technical_accuracy"] = (
-                f"Moderate technical accuracy. "
-                f"You covered {len(found_kws)} of {len(found_kws)+len(missing_kws)} key concepts."
-            )
-        elif technical_score >= 30:
-            feedback["technical_accuracy"] = (
-                f"Weak technical accuracy. Only {len(found_kws)} keyword(s) found. "
-                f"Missing: {', '.join(missing_kws[:4])}."
-            )
-        else:
-            feedback["technical_accuracy"] = (
-                "Very low technical accuracy. "
-                f"None or very few of the expected concepts were mentioned. "
-                f"Expected: {', '.join((found_kws + missing_kws)[:6])}."
-            )
+        feedback["technical_accuracy"] = (
+            f"Verdict: {feedback['answer_status']}. "
+            f"Matched {scores.get('matched_keyword_count', 0)}/"
+            f"{scores.get('expected_keyword_count', 0)} expected concepts "
+            f"({scores.get('match_percentage', 0)}%)."
+        )
 
-        # ── Grammar suggestions ───────────────────────────────
         if grammar_score < 70:
             feedback["grammar_suggestions"] = (
-                "Work on grammar: check punctuation, avoid run-on sentences, "
-                "and capitalise the first word of each sentence."
+                "Check punctuation, avoid run-on sentences, and capitalize sentence starts."
             )
         else:
-            feedback["grammar_suggestions"] = "Grammar is good — keep it up."
+            feedback["grammar_suggestions"] = "Grammar is clear."
 
-        # ── Next steps ────────────────────────────────────────
-        if total_score >= 75:
-            feedback["next_steps"] = "Move on to the next question. You're doing well!"
-        elif total_score >= 50:
-            feedback["next_steps"] = (
-                "Brush up on the missing concepts and try a similar question again."
-            )
-        else:
-            feedback["next_steps"] = (
-                f"Review this topic thoroughly. "
-                + (f"Focus on: {', '.join(missing_kws[:4])}." if missing_kws else
-                   "Focus on the core definition and use-cases.")
-            )
+        feedback["next_steps"] = (
+            "Move to the next question." if is_correct
+            else "Review the missing concepts and retry a similar question."
+        )
 
         return feedback
 
-    # ─────────────────────────────────────────────────────────
-    # WEAK / STRONG AREA ANALYSIS
-    # ─────────────────────────────────────────────────────────
     def identify_weak_areas(self, answers: List[Dict]) -> List[Dict]:
         """Identify weak topic areas from answer history."""
         category_scores = {}
         category_missing = {}
+        category_wrong = {}
 
         for answer in answers:
-            category = answer.get("analysis", {}).get("category", "unknown")
-            score    = answer.get("scores",   {}).get("technical_score", 0)
-            missing  = answer.get("scores",   {}).get("missing_keywords", [])
+            category = answer.get("question_category") or answer.get("analysis", {}).get("category", "unknown")
+            score = answer.get("scores", {}).get("technical_score", 0)
+            missing = answer.get("scores", {}).get("missing_keywords", [])
+            is_correct = answer.get("scores", {}).get("is_correct", False)
 
-            if category not in category_scores:
-                category_scores[category]  = []
-                category_missing[category] = []
-            category_scores[category].append(score)
-            category_missing[category].extend(missing)
+            category_scores.setdefault(category, []).append(score)
+            category_missing.setdefault(category, []).extend(missing)
+            category_wrong[category] = category_wrong.get(category, 0) + (0 if is_correct else 1)
 
         weak_areas = []
-        for category, s_list in category_scores.items():
-            avg_score = sum(s_list) / len(s_list)
-            if avg_score < 60:
-                # Most frequently missing keywords for this category
-                freq   = Counter(category_missing[category])
-                top_kw = [kw for kw, _ in freq.most_common(4)]
+        for category, score_list in category_scores.items():
+            avg_score = sum(score_list) / len(score_list)
+            wrong_count = category_wrong.get(category, 0)
+            if avg_score < 70 or wrong_count:
+                freq = Counter(category_missing.get(category, []))
+                top_keywords = [keyword for keyword, _ in freq.most_common(4)]
                 weak_areas.append({
-                    "category":        category,
-                    "average_score":   round(avg_score, 2),
-                    "question_count":  len(s_list),
-                    "missing_concepts": top_kw,
-                    "recommendation":  self._get_weakness_recommendation(category),
+                    "category": category,
+                    "average_score": round(avg_score, 2),
+                    "question_count": len(score_list),
+                    "wrong_count": wrong_count,
+                    "missing_concepts": top_keywords,
+                    "recommendation": self._get_weakness_recommendation(category),
                 })
 
-        return sorted(weak_areas, key=lambda x: x["average_score"])
-
-    def _get_weakness_recommendation(self, category: str) -> str:
-        recommendations = {
-            "programming":       "Practice coding fundamentals: variables, loops, functions, recursion.",
-            "web_development":   "Study HTTP, REST APIs, HTML/CSS/JS, and frontend frameworks.",
-            "web":               "Study HTTP, REST APIs, HTML/CSS/JS, and frontend frameworks.",
-            "database":          "Practice SQL queries, JOINs, normalization, and ACID properties.",
-            "data_science":      "Study ML algorithms, evaluation metrics, and model validation.",
-            "software_testing":  "Learn testing levels, TDD, automation tools like Selenium/pytest.",
-            "oop":               "Review OOP principles: encapsulation, inheritance, polymorphism, abstraction.",
-            "algorithms":        "Practice Big-O analysis, sorting, searching, and data structures.",
-            "operating_system":  "Study processes, threads, memory management, and scheduling.",
-            "general":           "Practice forming clear, complete answers even when uncertain.",
-        }
-        return recommendations.get(category, "Review this topic in depth with examples.")
+        return sorted(weak_areas, key=lambda item: (item["average_score"], -item["wrong_count"]))
 
     def identify_strengths(self, answers: List[Dict]) -> List[Dict]:
         """Identify strong topic areas from answer history."""
         category_scores = {}
+        category_correct = {}
 
         for answer in answers:
-            category = answer.get("analysis", {}).get("category", "unknown")
-            score    = answer.get("scores",   {}).get("technical_score", 0)
+            category = answer.get("question_category") or answer.get("analysis", {}).get("category", "unknown")
+            score = answer.get("scores", {}).get("technical_score", 0)
+            is_correct = answer.get("scores", {}).get("is_correct", False)
 
-            if category not in category_scores:
-                category_scores[category] = []
-            category_scores[category].append(score)
+            category_scores.setdefault(category, []).append(score)
+            category_correct[category] = category_correct.get(category, 0) + (1 if is_correct else 0)
 
         strengths = []
-        for category, s_list in category_scores.items():
-            avg_score = sum(s_list) / len(s_list)
-            if avg_score >= 65:
+        for category, score_list in category_scores.items():
+            avg_score = sum(score_list) / len(score_list)
+            correct_count = category_correct.get(category, 0)
+            if avg_score >= 75 and correct_count == len(score_list):
                 strengths.append({
-                    "category":      category,
+                    "category": category,
                     "average_score": round(avg_score, 2),
-                    "question_count": len(s_list),
+                    "question_count": len(score_list),
+                    "correct_count": correct_count,
                 })
 
-        return sorted(strengths, key=lambda x: x["average_score"], reverse=True)
+        return sorted(strengths, key=lambda item: item["average_score"], reverse=True)
 
-    # ─────────────────────────────────────────────────────────
-    # FINAL REPORT HELPERS
-    # ─────────────────────────────────────────────────────────
-    def generate_final_feedback(self, average_score: float, weak_areas: List[Dict]) -> str:
+    def generate_final_feedback(
+        self,
+        average_score: float,
+        weak_areas: List[Dict],
+        accuracy_percentage: float = None,
+    ) -> str:
+        if accuracy_percentage is not None:
+            if accuracy_percentage >= 80:
+                return (
+                    f"You answered {accuracy_percentage}% correctly. Strong performance; "
+                    "keep refining explanations with examples."
+                )
+            if accuracy_percentage >= 50:
+                return (
+                    f"You answered {accuracy_percentage}% correctly. Several answers were related "
+                    "but missed required concepts, so review the weak areas carefully."
+                )
+            return (
+                f"You answered {accuracy_percentage}% correctly. Focus on fundamentals first: "
+                "definitions, required keywords, and one concrete example for each topic."
+            )
+
         if average_score >= 80:
-            return (
-                "Outstanding performance! You demonstrated strong technical knowledge "
-                "and communication skills. Keep building on your strengths."
-            )
-        elif average_score >= 70:
-            return (
-                "Good job! You have a solid understanding of the topics. "
-                "Focus on improving your weak areas to achieve even better results."
-            )
-        elif average_score >= 55:
-            return (
-                "Decent performance. You have basic understanding but need to "
-                "strengthen your technical answers. Review the weak areas identified."
-            )
-        elif average_score >= 40:
-            return (
-                "Below average. Many key concepts were missing from your answers. "
-                "Focus on understanding definitions, examples, and use-cases for each topic."
-            )
-        else:
-            return (
-                "Keep practising! Focus on the fundamentals: learn core definitions, "
-                "memorise key terms, and practice explaining with examples. "
-                "Consistent practice will lead to improvement."
-            )
+            return "Outstanding performance. You demonstrated strong technical knowledge."
+        if average_score >= 70:
+            return "Good performance. Focus on weak areas to improve further."
+        if average_score >= 55:
+            return "Decent performance, but your technical answers need more complete coverage."
+        if average_score >= 40:
+            return "Below average. Many key concepts were missing from your answers."
+        return "Keep practising. Start with core definitions and simple examples."
 
     def generate_improvement_plan(self, weak_areas: List[Dict]) -> List[Dict]:
         """Generate a personalised improvement plan from weak areas."""
         plan = []
         for area in weak_areas:
             category = area.get("category", "general")
-            missing  = area.get("missing_concepts", [])
+            missing = area.get("missing_concepts", [])
             plan.append({
-                "area":           category,
-                "action":         self._get_improvement_action(category),
+                "area": category,
+                "action": self._get_improvement_action(category),
                 "focus_concepts": missing,
-                "resources":      self._get_learning_resources(category),
-                "priority":       "high" if area.get("average_score", 100) < 40 else "medium",
+                "resources": self._get_learning_resources(category),
+                "priority": "high" if area.get("wrong_count", 0) or area.get("average_score", 100) < 50 else "medium",
             })
         return plan
 
+    def _required_keyword_count(self, expected_count: int) -> int:
+        if expected_count <= 0:
+            return 0
+        if expected_count == 1:
+            return 1
+        return max(2, math.ceil(expected_count * self.CORRECT_MATCH_RATIO))
+
+    def _dedupe_keywords(self, keywords: List[str]) -> List[str]:
+        seen = set()
+        result = []
+        for keyword in keywords:
+            cleaned = str(keyword).strip()
+            lowered = cleaned.lower()
+            if cleaned and lowered not in seen:
+                seen.add(lowered)
+                result.append(cleaned)
+        return result
+
+    def _matched_variant(self, keyword: str, normalized_answer: str, answer_stems: Set[str]) -> str:
+        for variant in self._keyword_variants(keyword):
+            if self._variant_matches(variant, normalized_answer, answer_stems):
+                return variant
+        return ""
+
+    def _keyword_variants(self, keyword: str) -> List[str]:
+        base = self._normalize_text(keyword)
+        variants = {base}
+
+        if base in self.CONCEPT_ALIASES:
+            variants.update(self._normalize_text(alias) for alias in self.CONCEPT_ALIASES[base])
+
+        words = self._tokenize(base)
+        if len(words) == 1:
+            word = words[0]
+            variants.add(self._stem(word))
+            if word.endswith("s") and not word.endswith("ss"):
+                variants.add(word[:-1])
+            else:
+                variants.add(word + "s")
+
+        return [variant for variant in variants if variant]
+
+    def _variant_matches(self, variant: str, normalized_answer: str, answer_stems: Set[str]) -> bool:
+        words = self._tokenize(variant)
+        if not words:
+            return False
+
+        if len(words) == 1:
+            return self._stem(words[0]) in answer_stems
+
+        phrase_pattern = r"\b" + r"\s+".join(re.escape(word) for word in words) + r"\b"
+        if re.search(phrase_pattern, normalized_answer):
+            return True
+
+        # Accept loose matching for compact technical phrases, e.g. "primary key"
+        # even when the answer says "key that uniquely identifies a primary record".
+        return all(self._stem(word) in answer_stems for word in words)
+
+    def _find_contradictions(self, answer: str, expected_keywords: List[str]) -> List[str]:
+        normalized_answer = self._normalize_text(answer)
+        contradictions = []
+
+        for keyword in expected_keywords:
+            base = self._normalize_text(keyword)
+            if not base:
+                continue
+            words = self._tokenize(base)
+            phrase = r"\s+".join(re.escape(word) for word in words)
+            patterns = [
+                rf"\b(?:not|never|no)\s+(?:a\s+|an\s+|the\s+)?{phrase}\b",
+                rf"\b{phrase}\s+(?:is|are|means)\s+not\b",
+            ]
+            if any(re.search(pattern, normalized_answer) for pattern in patterns):
+                contradictions.append(keyword)
+
+        return contradictions
+
+    def _answer_has_substance(self, answer: str, analysis: Dict) -> bool:
+        if analysis.get("word_count", 0) < self.MIN_WORDS_FOR_CORRECT:
+            return False
+
+        tokens = self._tokenize(answer)
+        meaningful_tokens = [
+            token for token in tokens
+            if token not in self.STOP_WORDS and len(token) > 2
+        ]
+        return len(meaningful_tokens) >= 4
+
+    def _category_matches(self, question_category: str, answer_category: str) -> bool:
+        question_category = (question_category or "").lower()
+        answer_category = (answer_category or "").lower()
+
+        if not question_category or question_category in {"general", "basics"}:
+            return True
+        if not answer_category or answer_category in {"general", "unknown"}:
+            return True
+        if question_category == answer_category:
+            return True
+        return answer_category in self.CATEGORY_GROUPS.get(question_category, set())
+
+    def _normalize_text(self, text: str) -> str:
+        text = (text or "").lower()
+        text = text.replace("'", " ")
+        text = re.sub(r"[^a-z0-9+#\s-]", " ", text)
+        text = text.replace("-", " ")
+        return re.sub(r"\s+", " ", text).strip()
+
+    def _tokenize(self, text: str) -> List[str]:
+        normalized = self._normalize_text(text)
+        return re.findall(r"[a-z0-9+#]+", normalized)
+
+    def _stem(self, word: str) -> str:
+        word = word.lower()
+        if len(word) <= 4:
+            return word
+
+        suffixes = [
+            "izations", "isation", "ization", "ations", "ation",
+            "ments", "ment", "ingly", "edly", "ing", "ied", "ed", "es", "s",
+        ]
+        for suffix in suffixes:
+            if word.endswith(suffix) and len(word) - len(suffix) >= 3:
+                if suffix == "s" and word.endswith("ss"):
+                    continue
+                if suffix == "ied":
+                    return word[:-3] + "y"
+                return word[:-len(suffix)]
+        return word
+
+    def _get_grade(self, score: int) -> str:
+        if score >= 90:
+            return "A+"
+        if score >= 80:
+            return "A"
+        if score >= 70:
+            return "B+"
+        if score >= 60:
+            return "B"
+        if score >= 50:
+            return "C"
+        if score >= 40:
+            return "D"
+        return "F"
+
+    def _get_weakness_recommendation(self, category: str) -> str:
+        recommendations = {
+            "programming": "Practice coding fundamentals: variables, loops, functions, recursion.",
+            "web_development": "Study HTTP, REST APIs, HTML/CSS/JS, and frontend frameworks.",
+            "web": "Study HTTP, REST APIs, HTML/CSS/JS, and frontend frameworks.",
+            "database": "Practice SQL queries, JOINs, normalization, and ACID properties.",
+            "data_science": "Study ML algorithms, evaluation metrics, and model validation.",
+            "machine_learning": "Study ML algorithms, evaluation metrics, and model validation.",
+            "software_testing": "Learn testing levels, TDD, and automation tools like Selenium or pytest.",
+            "oop": "Review OOP principles: encapsulation, inheritance, polymorphism, abstraction.",
+            "algorithms": "Practice Big-O analysis, sorting, searching, and data structures.",
+            "data_structures": "Review arrays, linked lists, stacks, queues, trees, and hash tables.",
+            "operating_system": "Study processes, threads, memory management, and scheduling.",
+            "security": "Study validation, authorization, authentication, and secure coding patterns.",
+            "general": "Practice forming clear, complete answers even when uncertain.",
+        }
+        return recommendations.get(category, "Review this topic in depth with examples.")
+
     def _get_improvement_action(self, category: str) -> str:
         actions = {
-            "programming":       "Practice coding problems daily; focus on data structures and algorithms.",
-            "web_development":   "Build small web projects to understand HTTP, APIs, and frameworks.",
-            "web":               "Build small web projects to understand HTTP, APIs, and frameworks.",
-            "database":          "Practice SQL queries and learn database design patterns.",
-            "oop":               "Study design patterns and practice object-oriented design exercises.",
-            "data_science":      "Complete ML tutorials and work on real datasets via Kaggle.",
-            "software_testing":  "Learn testing frameworks and write test cases for a personal project.",
-            "algorithms":        "Solve algorithm challenges on LeetCode / HackerRank daily.",
-            "operating_system":  "Read OS textbook chapters on memory, processes, and scheduling.",
-            "general":           "Practice more interview questions and review fundamentals.",
+            "programming": "Practice coding problems and explain each solution aloud.",
+            "web_development": "Build small web projects to understand HTTP, APIs, and frameworks.",
+            "web": "Build small web projects to understand HTTP, APIs, and frameworks.",
+            "database": "Practice SQL queries and learn database design patterns.",
+            "oop": "Study design patterns and practice object-oriented design exercises.",
+            "data_science": "Complete ML tutorials and work on small real datasets.",
+            "machine_learning": "Review ML concepts with examples and evaluation metrics.",
+            "software_testing": "Write test cases for a small project and map them to testing levels.",
+            "algorithms": "Solve algorithm challenges and write down time and space complexity.",
+            "data_structures": "Implement core data structures and explain their tradeoffs.",
+            "operating_system": "Review memory, processes, threads, and scheduling with diagrams.",
+            "security": "Practice secure input handling and common vulnerability prevention.",
+            "general": "Practice more interview questions and review fundamentals.",
         }
         return actions.get(category, "Review and practice this topic with examples.")
 
     def _get_learning_resources(self, category: str) -> List[str]:
         resources = {
-            "programming":       ["LeetCode", "HackerRank", "GeeksforGeeks"],
-            "web_development":   ["MDN Web Docs", "React Documentation", "REST API Tutorial"],
-            "web":               ["MDN Web Docs", "React Documentation", "REST API Tutorial"],
-            "database":          ["SQLZoo", "Database Normalization Guide", "Use The Index, Luke"],
-            "oop":               ["Refactoring Guru (Design Patterns)", "SOLID Principles Guide"],
-            "data_science":      ["Kaggle Learn", "Coursera ML by Andrew Ng", "Scikit-learn Docs"],
-            "software_testing":  ["Selenium Documentation", "pytest Docs", "ISTQB Study Guide"],
-            "algorithms":        ["LeetCode", "VisuAlgo", "CLRS (Introduction to Algorithms)"],
-            "operating_system":  ["OS by Tanenbaum", "GeeksforGeeks OS Articles"],
-            "general":           ["Interview Prep Books", "Pramp (Mock Interviews)"],
+            "programming": ["LeetCode", "HackerRank", "GeeksforGeeks"],
+            "web_development": ["MDN Web Docs", "React Documentation", "REST API Tutorial"],
+            "web": ["MDN Web Docs", "React Documentation", "REST API Tutorial"],
+            "database": ["SQLZoo", "Database Normalization Guide", "Use The Index, Luke"],
+            "oop": ["Refactoring Guru", "SOLID Principles Guide"],
+            "data_science": ["Kaggle Learn", "Scikit-learn Docs", "Google ML Crash Course"],
+            "machine_learning": ["Kaggle Learn", "Scikit-learn Docs", "Google ML Crash Course"],
+            "software_testing": ["Selenium Documentation", "pytest Docs", "ISTQB Study Guide"],
+            "algorithms": ["LeetCode", "VisuAlgo", "CLRS"],
+            "data_structures": ["VisuAlgo", "GeeksforGeeks", "LeetCode Explore"],
+            "operating_system": ["Operating Systems: Three Easy Pieces", "GeeksforGeeks OS"],
+            "security": ["OWASP Top 10", "PortSwigger Web Security Academy"],
+            "general": ["Interview practice notes", "Mock interviews"],
         }
         return resources.get(category, ["Online tutorials", "Practice exercises"])
 
 
-# ─────────────────────────────────────────────────────────────
-# Standalone test
-# ─────────────────────────────────────────────────────────────
 def _demo():
     engine = FeedbackEngine()
 
@@ -592,69 +821,46 @@ def _demo():
         {
             "label": "CORRECT answer",
             "answer": (
-                "Object-oriented programming organises code into classes and objects. "
-                "It uses inheritance to share behaviour between parent and child classes, "
-                "encapsulation to hide internal state, polymorphism to allow different types "
-                "to be treated uniformly, and abstraction to expose only essential details."
+                "Object-oriented programming organizes code into classes and objects. "
+                "It uses inheritance, encapsulation, polymorphism, and abstraction."
             ),
             "expected": ["class", "object", "inheritance", "encapsulation", "abstraction"],
             "category": "oop",
         },
         {
-            "label": "PARTIALLY CORRECT",
-            "answer": "OOP is about using classes and objects. Inheritance lets one class use another's methods.",
+            "label": "WRONG partial answer",
+            "answer": "OOP is about using classes and objects.",
             "expected": ["class", "object", "inheritance", "encapsulation", "abstraction"],
             "category": "oop",
         },
         {
-            "label": "WRONG / off-topic answer",
-            "answer": (
-                "OOP is a way to optimise database queries using indexes and normalization. "
-                "It involves writing SQL joins to retrieve data from multiple tables efficiently."
-            ),
-            "expected": ["class", "object", "inheritance", "encapsulation", "abstraction"],
-            "category": "oop",
-        },
-        {
-            "label": "BLANK / I don't know",
-            "answer": "I don't know.",
+            "label": "WRONG off-topic answer",
+            "answer": "It is mainly SQL joins, indexes, and query optimization in databases.",
             "expected": ["class", "object", "inheritance", "encapsulation", "abstraction"],
             "category": "oop",
         },
     ]
 
     from nlp_analyzer import NLPAnalyzer
-    analyzer = NLPAnalyzer()
 
-    print("=" * 60)
-    print("  Feedback Engine — Score Accuracy Demo")
-    print("=" * 60)
-    for c in cases:
-        analysis = analyzer.analyze_answer(c["answer"])
-        scores   = engine.calculate_scores(
-            answer=c["answer"],
+    analyzer = NLPAnalyzer()
+    for case in cases:
+        analysis = analyzer.analyze_answer(case["answer"])
+        scores = engine.calculate_scores(
+            answer=case["answer"],
             analysis=analysis,
-            expected_keywords=c["expected"],
-            question_category=c["category"],
+            expected_keywords=case["expected"],
+            question_category=case["category"],
         )
-        fb = engine.generate_feedback(
-            answer=c["answer"],
+        feedback = engine.generate_feedback(
+            answer=case["answer"],
             analysis=analysis,
             scores=scores,
             question="What is OOP?",
-            expected_keywords=c["expected"],
+            expected_keywords=case["expected"],
         )
-        print(f"\n[{c['label']}]")
-        print(f"  Total Score   : {scores['total_score']}  ({scores['grade']})")
-        print(f"  Technical     : {scores['technical_score']}")
-        print(f"  Content       : {scores['content_score']}")
-        print(f"  Confidence    : {scores['confidence_score']}")
-        print(f"  Grammar       : {scores['grammar_score']}")
-        print(f"  Quality (ML)  : {analysis.get('quality_prediction','N/A')}")
-        print(f"  Found KWs     : {scores['found_keywords']}")
-        print(f"  Missing KWs   : {scores['missing_keywords']}")
-        print(f"  Overall FB    : {fb['overall']}")
-        print(f"  Improvements  : {fb['improvements']}")
+        print(f"{case['label']}: {scores['answer_status']} ({scores['total_score']})")
+        print(feedback["overall"])
 
 
 if __name__ == "__main__":
