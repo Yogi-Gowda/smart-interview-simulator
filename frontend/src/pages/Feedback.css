@@ -125,7 +125,7 @@
 .score-details {
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   gap: 16px;
 }
 
@@ -148,6 +148,111 @@
   font-weight: 600;
   color: var(--text-1);
   text-transform: capitalize;
+}
+
+.detail-value.correct-value {
+  color: var(--green);
+}
+
+.detail-value.wrong-value {
+  color: var(--red);
+}
+
+/* Answer Results */
+.answer-results-section {
+  margin-bottom: 24px;
+}
+
+.answer-results-section h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+
+.answer-results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.answer-result {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-m);
+}
+
+.answer-result.correct {
+  border-color: rgba(52, 211, 153, 0.18);
+}
+
+.answer-result.wrong {
+  border-color: rgba(248, 113, 113, 0.18);
+}
+
+.answer-result-icon {
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+.answer-result.correct .answer-result-icon {
+  color: var(--green);
+}
+
+.answer-result.wrong .answer-result-icon {
+  color: var(--red);
+}
+
+.answer-result-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.answer-result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.answer-result-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+.answer-result-verdict {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.answer-result.correct .answer-result-verdict {
+  color: var(--green);
+}
+
+.answer-result.wrong .answer-result-verdict {
+  color: var(--red);
+}
+
+.answer-result-question,
+.answer-result-missing {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.answer-result-question {
+  color: var(--text-1);
+  margin-bottom: 6px;
+}
+
+.answer-result-missing {
+  color: var(--text-3);
 }
 
 /* Breakdown Section */
