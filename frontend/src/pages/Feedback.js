@@ -6,6 +6,7 @@ import {
   TrendingUp, 
   AlertTriangle, 
   CheckCircle, 
+  XCircle,
   BookOpen,
   ArrowRight,
   Home,
@@ -76,12 +77,16 @@ const Feedback = () => {
   // Safe access to report properties
   const averageScore = report?.average_score ?? 0;
   const totalQuestions = report?.total_questions ?? 0;
+  const correctAnswers = report?.correct_answers ?? 0;
+  const wrongAnswers = report?.wrong_answers ?? Math.max(totalQuestions - correctAnswers, 0);
+  const accuracyPercentage = report?.accuracy_percentage ?? 0;
   const jobRole = report?.job_role ?? 'Interview';
   const difficulty = report?.difficulty ?? 'N/A';
   const weakAreas = report?.weak_areas ?? [];
   const strengths = report?.strengths ?? [];
   const improvementSuggestions = report?.improvement_suggestions ?? [];
   const overallFeedback = report?.overall_feedback ?? 'No feedback available.';
+  const answerResults = report?.answer_results ?? [];
 
   return (
     <div className="feedback">
@@ -134,6 +139,18 @@ const Feedback = () => {
               <span className="detail-value">{totalQuestions}</span>
             </div>
             <div className="detail-item">
+              <span className="detail-label">Correct</span>
+              <span className="detail-value correct-value">{correctAnswers}</span>
+            </div>
+            <div className="detail-item">
+              <span className="detail-label">Wrong</span>
+              <span className="detail-value wrong-value">{wrongAnswers}</span>
+            </div>
+            <div className="detail-item">
+              <span className="detail-label">Accuracy</span>
+              <span className="detail-value">{accuracyPercentage}%</span>
+            </div>
+            <div className="detail-item">
               <span className="detail-label">Job Role</span>
               <span className="detail-value">{jobRole.replace('_', ' ')}</span>
             </div>
@@ -143,6 +160,38 @@ const Feedback = () => {
             </div>
           </div>
         </div>
+
+        {/* Answer Results */}
+        {answerResults.length > 0 && (
+          <div className="answer-results-section">
+            <h2>Answer Results</h2>
+            <div className="answer-results-list">
+              {answerResults.map((item, index) => {
+                const isCorrect = item.is_correct;
+                const missing = item.missing_concepts || [];
+                return (
+                  <div key={item.question_id || index} className={`answer-result ${isCorrect ? 'correct' : 'wrong'}`}>
+                    <div className="answer-result-icon">
+                      {isCorrect ? <CheckCircle size={18} /> : <XCircle size={18} />}
+                    </div>
+                    <div className="answer-result-body">
+                      <div className="answer-result-header">
+                        <span className="answer-result-title">Question {index + 1}</span>
+                        <span className="answer-result-verdict">{item.verdict}</span>
+                      </div>
+                      <p className="answer-result-question">{item.question}</p>
+                      {missing.length > 0 && (
+                        <p className="answer-result-missing">
+                          Missing: {missing.slice(0, 5).join(', ')}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         {/* Score Breakdown */}
         <div className="breakdown-section">
