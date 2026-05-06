@@ -3,7 +3,7 @@
 
 import os
 import re
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 from collections import Counter
 
 try:
@@ -155,6 +155,8 @@ class NLPAnalyzer:
             "sentiment": "neutral",
             "grammar_quality": 0,
             "quality_prediction": "poor",
+            "low_effort": True,
+            "low_effort_reason": "empty",
         }
     
     def _count_words(self, text: str) -> int:
@@ -191,10 +193,21 @@ class NLPAnalyzer:
         
         for category, terms in self.TECHNICAL_KEYWORDS.items():
             for term in terms:
-                if term.lower() in text_lower:
+                if self._phrase_in_text(term.lower(), text_lower):
                     found_terms.append(term)
         
         return list(set(found_terms))
+
+    def _phrase_in_text(self, phrase: str, text: str) -> bool:
+        """Match a word or phrase using word boundaries."""
+        words = re.findall(r"\b\w+\b", phrase.lower())
+        if not words:
+            return False
+        if len(words) == 1:
+            word = re.escape(words[0])
+            return bool(re.search(rf"\b{word}(?:s|es)?\b", text.lower()))
+        pattern = r"\b" + r"\s+".join(re.escape(word) for word in words) + r"\b"
+        return bool(re.search(pattern, text.lower()))
     
     def _extract_key_phrases(self, text: str) -> List[str]:
         """Extract key phrases using NLP"""
@@ -280,7 +293,7 @@ class NLPAnalyzer:
         # Rule-based fallback
         text_lower = text.lower()
         for category, keywords in self.TECHNICAL_KEYWORDS.items():
-            matches = sum(1 for kw in keywords if kw in text_lower)
+            matches = sum(1 for kw in keywords if self._phrase_in_text(kw, text_lower))
             if matches >= 2:
                 return category
         return "general"
@@ -345,7 +358,7 @@ class NLPAnalyzer:
         score -= issues * 5
         return max(0, min(100, score))
 
-    def _detect_low_effort(self, text: str) -> (bool, str):
+    def _detect_low_effort(self, text: str) -> Tuple[bool, str]:
         """Detect low-effort or explicit unknown responses.
 
         Returns (is_low_effort, reason)
@@ -354,6 +367,14 @@ class NLPAnalyzer:
             return True, "empty"
 
         t = text.lower().strip()
+        compact = re.sub(r"[^a-z0-9+#/]+", " ", t).strip()
+
+        filler_responses = {
+            "ok", "okay", "yes", "no", "test", "testing", "none", "nothing",
+            "na", "n a", "n/a", "not applicable", "skip", "pass", "unknown",
+        }
+        if compact in filler_responses:
+            return True, "filler_response"
 
         # Normalize common punctuation variants
         t = t.replace("’", "'").replace("`", "'")
@@ -374,12 +395,21 @@ class NLPAnalyzer:
             if re.search(pat, t):
                 return True, "explicit_unknown"
 
-        # Short or single-word answers with no technical terms -> low effort
+        # Single-word and very short answers cannot prove interview knowledge.
         wc = self._count_words(text)
         if wc <= 3:
+            return True, "too_short"
+
+        if wc <= 5:
             tech = self._extract_technical_terms(text)
             if not tech:
                 return True, "too_short"
+
+        words = re.findall(r"\b[a-z0-9+#]+\b", compact)
+        if len(words) >= 6:
+            counts = Counter(words)
+            if counts.most_common(1)[0][1] / len(words) >= 0.6:
+                return True, "repetitive"
 
         return False, ""
     
@@ -391,7 +421,7 @@ class NLPAnalyzer:
         missing_keywords = []
         
         for keyword in expected_keywords:
-            if keyword.lower() in answer_lower:
+            if self._phrase_in_text(keyword.lower(), answer_lower):
                 found_keywords.append(keyword)
             else:
                 missing_keywords.append(keyword)
