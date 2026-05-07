@@ -705,5 +705,408 @@
       }
     ],
     "last_updated": "2026-05-01T19:19:52.228259"
+  },
+  "session_1777915282.601108": {
+    "session_id": "session_1777915282.601108",
+    "user_id": "user_1777913586136",
+    "answers": [
+      {
+        "question_id": "q_2",
+        "question": "What is outlier detection?",
+        "answer": "predicting out of box",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 4,
+          "sentence_count": 1,
+          "avg_word_length": 4.5,
+          "technical_terms": [],
+          "key_phrases": [
+            "predicting out",
+            "out of",
+            "of box"
+          ],
+          "clarity_score": 70,
+          "completeness": 50,
+          "category": "software_testing",
+          "sentiment": "neutral",
+          "grammar_quality": 40,
+          "quality_prediction": "poor",
+          "low_effort": false,
+          "low_effort_reason": ""
+        },
+        "scores": {
+          "content_score": 15,
+          "grammar_score": 40,
+          "technical_score": 0,
+          "confidence_score": 40,
+          "total_score": 14,
+          "grade": "F",
+          "found_keywords": [],
+          "missing_keywords": [
+            "outlier",
+            "anomaly",
+            "detection",
+            "extreme"
+          ]
+        },
+        "feedback": {
+          "overall": "Incorrect or off-topic answer. Review the fundamentals of this topic before your next attempt.",
+          "strengths": [],
+          "weaknesses": [
+            "Missing key concepts: outlier, anomaly, detection, extreme.",
+            "The answer did not demonstrate sufficient technical knowledge for this question.",
+            "Answer is too brief or lacks depth. Aim for at least 40\u201360 words.",
+            "Grammar and sentence structure need improvement.",
+            "The overall response quality was low. Work on providing complete answers."
+          ],
+          "improvements": [
+            "Study and include these key concepts in your answer: outlier, anomaly, detection, extreme.",
+            "Review the fundamentals of this topic. Focus on understanding the definition, purpose, and a concrete example.",
+            "Expand your answer: define the concept, give an example, and explain when/why it is used.",
+            "Structure your answer with at least 3 sentences: definition \u2192 example \u2192 real-world use.",
+            "Use direct, confident language. Replace 'I think' / 'maybe' with definitive statements."
+          ],
+          "technical_accuracy": "Very low technical accuracy. None or very few of the expected concepts were mentioned. Expected: outlier, anomaly, detection, extreme.",
+          "grammar_suggestions": "Work on grammar: check punctuation, avoid run-on sentences, and capitalise the first word of each sentence.",
+          "next_steps": "Review this topic thoroughly. Focus on: outlier, anomaly, detection, extreme.",
+          "missing_concepts": [
+            "outlier",
+            "anomaly",
+            "detection",
+            "extreme"
+          ],
+          "found_concepts": []
+        },
+        "timestamp": "2026-05-04T22:51:36.741711"
+      },
+      {
+        "question_id": "q_3",
+        "question": "What is SQL and why is it important for data analysis?",
+        "answer": "It is a query language which is used for maintaining databases. Using it for Data analysis is helpfull because it ensures the database activity.",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 24,
+          "sentence_count": 2,
+          "avg_word_length": 5.041666666666667,
+          "technical_terms": [
+            "query",
+            "database"
+          ],
+          "key_phrases": [
+            "it is",
+            "is a",
+            "a query",
+            "query language",
+            "language which",
+            "which is",
+            "is used",
+            "used for",
+            "for maintaining",
+            "maintaining databases"
+          ],
+          "clarity_score": 100,
+          "completeness": 60,
+          "category": "database",
+          "sentiment": "neutral",
+          "grammar_quality": 80,
+          "quality_prediction": "poor",
+          "low_effort": false,
+          "low_effort_reason": ""
+        },
+        "scores": {
+          "content_score": 15,
+          "grammar_score": 80,
+          "technical_score": 40,
+          "confidence_score": 40,
+          "total_score": 38,
+          "grade": "F",
+          "found_keywords": [
+            "query",
+            "database"
+          ],
+          "missing_keywords": [
+            "select",
+            "retrieve"
+          ]
+        },
+        "feedback": {
+          "overall": "Your answer needs significant improvement. The key technical concepts for this question were missing.",
+          "strengths": [
+            "You correctly mentioned: query, database.",
+            "Clear language and good grammar throughout."
+          ],
+          "weaknesses": [
+            "Missing key concepts: select, retrieve.",
+            "Answer is too brief or lacks depth. Aim for at least 40\u201360 words.",
+            "The overall response quality was low. Work on providing complete answers."
+          ],
+          "improvements": [
+            "Study and include these key concepts in your answer: select, retrieve.",
+            "Review the fundamentals of this topic. Focus on understanding the definition, purpose, and a concrete example.",
+            "Expand your answer: define the concept, give an example, and explain when/why it is used.",
+            "Structure your answer with at least 3 sentences: definition \u2192 example \u2192 real-world use.",
+            "Use direct, confident language. Replace 'I think' / 'maybe' with definitive statements."
+          ],
+          "technical_accuracy": "Weak technical accuracy. Only 2 keyword(s) found. Missing: select, retrieve.",
+          "grammar_suggestions": "Grammar is good \u2014 keep it up.",
+          "next_steps": "Review this topic thoroughly. Focus on: select, retrieve.",
+          "missing_concepts": [
+            "select",
+            "retrieve"
+          ],
+          "found_concepts": [
+            "query",
+            "database"
+          ]
+        },
+        "timestamp": "2026-05-04T22:53:33.994883"
+      }
+    ],
+    "last_updated": "2026-05-04T22:53:34.045728"
+  },
+  "session_1778039518.133955": {
+    "session_id": "session_1778039518.133955",
+    "user_id": "user_1778039483857",
+    "answers": [
+      {
+        "question_id": "q_2",
+        "question": "What is a function?",
+        "question_category": "programming",
+        "expected_keywords": [
+          "block",
+          "reusable",
+          "call",
+          "parameter",
+          "return"
+        ],
+        "answer": "i dont know",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 3,
+          "sentence_count": 1,
+          "avg_word_length": 3.0,
+          "technical_terms": [],
+          "key_phrases": [
+            "i dont",
+            "dont know"
+          ],
+          "clarity_score": 70,
+          "completeness": 50,
+          "category": "general",
+          "sentiment": "positive",
+          "grammar_quality": 40,
+          "quality_prediction": "poor",
+          "low_effort": true,
+          "low_effort_reason": "explicit_unknown"
+        },
+        "scores": {
+          "content_score": 0,
+          "grammar_score": 40,
+          "technical_score": 0,
+          "confidence_score": 0,
+          "total_score": 0,
+          "grade": "F",
+          "low_effort": true,
+          "low_effort_reason": "explicit_unknown",
+          "found_keywords": [],
+          "missing_keywords": [
+            "block",
+            "reusable",
+            "call",
+            "parameter",
+            "return"
+          ],
+          "matched_keyword_count": 0,
+          "expected_keyword_count": 5,
+          "required_keyword_count": 4,
+          "match_percentage": 0.0,
+          "concept_evidence": {},
+          "contradictions": [],
+          "is_correct": false,
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "decision_reasons": [
+            "No meaningful answer was provided."
+          ],
+          "verdict_reason": "No meaningful answer was provided."
+        },
+        "feedback": {
+          "overall": "Wrong. No meaningful answer was provided.",
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "is_correct": false,
+          "strengths": [],
+          "weaknesses": [
+            "No answer or an explicit unknown response was detected."
+          ],
+          "improvements": [
+            "Attempt the answer by giving a definition, one example, and why the concept matters.",
+            "Study these required concepts: block, reusable, call, parameter, return."
+          ],
+          "technical_accuracy": "Verdict: Wrong. The answer did not attempt the topic.",
+          "grammar_suggestions": "Grammar cannot be meaningfully evaluated without an answer.",
+          "next_steps": "Review the topic and retry this question.",
+          "missing_concepts": [
+            "block",
+            "reusable",
+            "call",
+            "parameter",
+            "return"
+          ],
+          "found_concepts": [],
+          "accuracy_report": {
+            "question": "What is a function?",
+            "required_concepts": [
+              "block",
+              "reusable",
+              "call",
+              "parameter",
+              "return"
+            ],
+            "matched_concepts": [],
+            "missing_concepts": [
+              "block",
+              "reusable",
+              "call",
+              "parameter",
+              "return"
+            ],
+            "matched_count": 0,
+            "required_to_pass": 4,
+            "expected_count": 5,
+            "match_percentage": 0.0,
+            "decision_reasons": [
+              "No meaningful answer was provided."
+            ],
+            "concept_evidence": {}
+          }
+        },
+        "verdict": "wrong",
+        "is_correct": false,
+        "timestamp": "2026-05-06T09:22:05.015547"
+      },
+      {
+        "question_id": "q_3",
+        "question": "What is an API?",
+        "question_category": "web",
+        "expected_keywords": [
+          "interface",
+          "request",
+          "response",
+          "communication"
+        ],
+        "answer": "Application Progamming interface",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 3,
+          "sentence_count": 1,
+          "avg_word_length": 10.0,
+          "technical_terms": [
+            "interface"
+          ],
+          "key_phrases": [
+            "application progamming",
+            "progamming interface"
+          ],
+          "clarity_score": 70,
+          "completeness": 55,
+          "category": "oop",
+          "sentiment": "neutral",
+          "grammar_quality": 45,
+          "quality_prediction": "good",
+          "low_effort": true,
+          "low_effort_reason": "too_short"
+        },
+        "scores": {
+          "content_score": 0,
+          "grammar_score": 45,
+          "technical_score": 0,
+          "confidence_score": 0,
+          "total_score": 0,
+          "grade": "F",
+          "low_effort": true,
+          "low_effort_reason": "too_short",
+          "found_keywords": [
+            "interface"
+          ],
+          "missing_keywords": [
+            "request",
+            "response",
+            "communication"
+          ],
+          "matched_keyword_count": 1,
+          "expected_keyword_count": 4,
+          "required_keyword_count": 3,
+          "match_percentage": 25.0,
+          "concept_evidence": {
+            "interface": "interface"
+          },
+          "contradictions": [],
+          "is_correct": false,
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "decision_reasons": [
+            "No meaningful answer was provided."
+          ],
+          "verdict_reason": "No meaningful answer was provided."
+        },
+        "feedback": {
+          "overall": "Wrong. No meaningful answer was provided.",
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "is_correct": false,
+          "strengths": [],
+          "weaknesses": [
+            "No answer or an explicit unknown response was detected."
+          ],
+          "improvements": [
+            "Attempt the answer by giving a definition, one example, and why the concept matters.",
+            "Study these required concepts: interface, request, response, communication."
+          ],
+          "technical_accuracy": "Verdict: Wrong. The answer did not attempt the topic.",
+          "grammar_suggestions": "Grammar cannot be meaningfully evaluated without an answer.",
+          "next_steps": "Review the topic and retry this question.",
+          "missing_concepts": [
+            "request",
+            "response",
+            "communication"
+          ],
+          "found_concepts": [
+            "interface"
+          ],
+          "accuracy_report": {
+            "question": "What is an API?",
+            "required_concepts": [
+              "interface",
+              "request",
+              "response",
+              "communication"
+            ],
+            "matched_concepts": [
+              "interface"
+            ],
+            "missing_concepts": [
+              "request",
+              "response",
+              "communication"
+            ],
+            "matched_count": 1,
+            "required_to_pass": 3,
+            "expected_count": 4,
+            "match_percentage": 25.0,
+            "decision_reasons": [
+              "No meaningful answer was provided."
+            ],
+            "concept_evidence": {
+              "interface": "interface"
+            }
+          }
+        },
+        "verdict": "wrong",
+        "is_correct": false,
+        "timestamp": "2026-05-06T09:23:43.651320"
+      }
+    ],
+    "last_updated": "2026-05-06T09:23:43.679352"
   }
 }
