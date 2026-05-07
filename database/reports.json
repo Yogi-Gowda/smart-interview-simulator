@@ -293,5 +293,77 @@
       }
     ],
     "completed_at": "2026-05-01T19:19:59.444364"
+  },
+  "session_1777915282.601108": {
+    "session_id": "session_1777915282.601108",
+    "job_role": "data_analyst",
+    "difficulty": "medium",
+    "total_questions": 2,
+    "average_score": 26.0,
+    "scores_breakdown": {
+      "content": 15.0,
+      "grammar": 60.0,
+      "technical": 20.0,
+      "confidence": 40.0
+    },
+    "weak_areas": [
+      {
+        "category": "software_testing",
+        "average_score": 0.0,
+        "question_count": 1,
+        "missing_concepts": [
+          "outlier",
+          "anomaly",
+          "detection",
+          "extreme"
+        ],
+        "recommendation": "Learn testing levels, TDD, automation tools like Selenium/pytest."
+      },
+      {
+        "category": "database",
+        "average_score": 40.0,
+        "question_count": 1,
+        "missing_concepts": [
+          "select",
+          "retrieve"
+        ],
+        "recommendation": "Practice SQL queries, JOINs, normalization, and ACID properties."
+      }
+    ],
+    "strengths": [],
+    "overall_feedback": "Keep practising! Focus on the fundamentals: learn core definitions, memorise key terms, and practice explaining with examples. Consistent practice will lead to improvement.",
+    "improvement_suggestions": [
+      {
+        "area": "software_testing",
+        "action": "Learn testing frameworks and write test cases for a personal project.",
+        "focus_concepts": [
+          "outlier",
+          "anomaly",
+          "detection",
+          "extreme"
+        ],
+        "resources": [
+          "Selenium Documentation",
+          "pytest Docs",
+          "ISTQB Study Guide"
+        ],
+        "priority": "high"
+      },
+      {
+        "area": "database",
+        "action": "Practice SQL queries and learn database design patterns.",
+        "focus_concepts": [
+          "select",
+          "retrieve"
+        ],
+        "resources": [
+          "SQLZoo",
+          "Database Normalization Guide",
+          "Use The Index, Luke"
+        ],
+        "priority": "medium"
+      }
+    ],
+    "completed_at": "2026-05-04T22:54:05.435188"
   }
 }
