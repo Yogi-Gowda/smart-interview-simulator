@@ -333,6 +333,47 @@
   letter-spacing: -0.01em;
 }
 
+.verdict-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--radius-m);
+  margin-bottom: 18px;
+  border: 1px solid var(--border);
+}
+
+.verdict-banner.correct {
+  background: var(--green-soft);
+  border-color: rgba(52, 211, 153, 0.24);
+  color: var(--green);
+}
+
+.verdict-banner.wrong {
+  background: var(--red-soft);
+  border-color: rgba(248, 113, 113, 0.24);
+  color: var(--red);
+}
+
+.verdict-banner svg {
+  flex: 0 0 auto;
+  margin-top: 1px;
+}
+
+.verdict-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.verdict-banner p {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--text-2);
+  margin: 0;
+}
+
 .score-display {
   display: flex;
   gap: 24px;
