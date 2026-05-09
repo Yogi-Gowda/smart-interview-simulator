@@ -10,7 +10,9 @@ import {
   SkipForward,
   Loader,
   AlertCircle,
-  Volume2
+  Volume2,
+  CheckCircle,
+  XCircle
 } from 'lucide-react';
 import * as api from '../services/api';
 import './Interview.css';
@@ -213,6 +215,9 @@ const Interview = () => {
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
+  const verdictStatus = feedback?.answer_status || feedback?.scores?.answer_status;
+  const isAnswerCorrect = feedback?.is_correct || feedback?.scores?.is_correct;
+
   if (isLoading) {
     return (
       <div className="interview-loading">
@@ -326,6 +331,16 @@ const Interview = () => {
           <div className="feedback-section">
             <div className="feedback-card">
               <h3>Answer Feedback</h3>
+
+              {verdictStatus && (
+                <div className={`verdict-banner ${isAnswerCorrect ? 'correct' : 'wrong'}`}>
+                  {isAnswerCorrect ? <CheckCircle size={20} /> : <XCircle size={20} />}
+                  <div>
+                    <span className="verdict-label">{verdictStatus}</span>
+                    <p>{feedback.feedback.technical_accuracy}</p>
+                  </div>
+                </div>
+              )}
               
               <div className="score-display">
                 <div className="main-score">
@@ -368,8 +383,14 @@ const Interview = () => {
                 <div className="feedback-item">
                   <strong>Overall:</strong> {feedback.feedback.overall}
                 </div>
+
+                {(feedback.feedback.missing_concepts || []).length > 0 && (
+                  <div className="feedback-item">
+                    <strong>Missing Concepts:</strong> {feedback.feedback.missing_concepts.join(', ')}
+                  </div>
+                )}
                 
-                {feedback.feedback.strengths.length > 0 && (
+                {(feedback.feedback.strengths || []).length > 0 && (
                   <div className="feedback-item">
                     <strong>Strengths:</strong>
                     <ul>
@@ -380,12 +401,23 @@ const Interview = () => {
                   </div>
                 )}
                 
-                {feedback.feedback.weaknesses.length > 0 && (
+                {(feedback.feedback.weaknesses || []).length > 0 && (
                   <div className="feedback-item">
                     <strong>Areas to Improve:</strong>
                     <ul>
                       {feedback.feedback.weaknesses.map((w, i) => (
                         <li key={i}>{w}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {(feedback.feedback.improvements || []).length > 0 && (
+                  <div className="feedback-item">
+                    <strong>Suggestions:</strong>
+                    <ul>
+                      {feedback.feedback.improvements.map((item, i) => (
+                        <li key={i}>{item}</li>
                       ))}
                     </ul>
                   </div>
