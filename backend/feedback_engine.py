@@ -116,6 +116,32 @@ class FeedbackEngine:
         "white box": ["white-box"],
     }
 
+    ACRONYM_FULL_FORMS = {
+        "acid": ["atomicity consistency isolation durability"],
+        "api": ["application programming interface"],
+        "cap": ["consistency availability partition tolerance"],
+        "cd": ["continuous deployment", "continuous delivery"],
+        "ci": ["continuous integration"],
+        "cors": ["cross origin resource sharing"],
+        "css": ["cascading style sheets"],
+        "dbms": ["database management system"],
+        "dom": ["document object model"],
+        "fifo": ["first in first out"],
+        "html": ["hypertext markup language"],
+        "http": ["hypertext transfer protocol"],
+        "json": ["javascript object notation"],
+        "lifo": ["last in first out"],
+        "mvc": ["model view controller"],
+        "oop": ["object oriented programming", "object orientated programming"],
+        "os": ["operating system"],
+        "pca": ["principal component analysis"],
+        "rest": ["representational state transfer"],
+        "soap": ["simple object access protocol"],
+        "sql": ["structured query language"],
+        "tdd": ["test driven development", "test first development"],
+        "xml": ["extensible markup language"],
+    }
+
     def __init__(self):
         self.feedback_history = []
 
@@ -125,13 +151,20 @@ class FeedbackEngine:
         analysis: Dict,
         expected_keywords: List[str],
         question_category: str,
+        question: str = "",
     ) -> Dict:
         """Calculate sub-scores and a strict correct/wrong verdict."""
 
         expected_keywords = self._dedupe_keywords(expected_keywords or [])
         kw_result = self._keyword_analysis(answer or "", expected_keywords)
+        full_form_info = self._full_form_analysis(answer or "", question or "")
 
-        if analysis.get("low_effort"):
+        if analysis.get("low_effort") and not full_form_info["matched"]:
+            low_effort_message = (
+                "The answer is too short or incomplete for this question."
+                if kw_result["found"]
+                else "No meaningful answer was provided."
+            )
             scores = {
                 "content_score": 0,
                 "grammar_score": analysis.get("grammar_quality", 0),
@@ -149,19 +182,29 @@ class FeedbackEngine:
                 "match_percentage": kw_result["match_pct"],
                 "concept_evidence": kw_result["evidence"],
                 "contradictions": [],
+                "full_form_match": False,
+                "full_form_matches": [],
                 "is_correct": False,
                 "verdict": "wrong",
                 "answer_status": "Wrong",
-                "decision_reasons": ["No meaningful answer was provided."],
-                "verdict_reason": "No meaningful answer was provided.",
+                "decision_reasons": [low_effort_message],
+                "verdict_reason": low_effort_message,
             }
             self.feedback_history.append(scores)
             return scores
 
         technical_score = self._calculate_technical_score(answer, analysis, kw_result)
+        if full_form_info["matched"]:
+            technical_score = max(technical_score, 85)
+
         content_score = self._calculate_content_score(answer, analysis, technical_score)
+        if full_form_info["matched"]:
+            content_score = max(content_score, 45)
+
         grammar_score = int(max(0, min(100, analysis.get("grammar_quality", 70))))
         confidence_score = self._calculate_confidence_score(answer, analysis)
+        if full_form_info["matched"]:
+            confidence_score = max(confidence_score, 45)
 
         verdict_info = self._decide_verdict(
             answer=answer,
@@ -170,6 +213,7 @@ class FeedbackEngine:
             technical_score=technical_score,
             expected_keywords=expected_keywords,
             question_category=question_category,
+            full_form_info=full_form_info,
         )
 
         total_score = round(
@@ -198,6 +242,8 @@ class FeedbackEngine:
             "match_percentage": kw_result["match_pct"],
             "concept_evidence": kw_result["evidence"],
             "contradictions": verdict_info["contradictions"],
+            "full_form_match": full_form_info["matched"],
+            "full_form_matches": full_form_info["matches"],
             "is_correct": verdict_info["is_correct"],
             "verdict": "correct" if verdict_info["is_correct"] else "wrong",
             "answer_status": "Correct" if verdict_info["is_correct"] else "Wrong",
@@ -320,6 +366,7 @@ class FeedbackEngine:
         technical_score: int,
         expected_keywords: List[str],
         question_category: str,
+        full_form_info: Dict,
     ) -> Dict:
         reasons = []
         expected_count = len(expected_keywords)
@@ -327,13 +374,22 @@ class FeedbackEngine:
         required_count = self._required_keyword_count(expected_count)
         contradictions = self._find_contradictions(answer, expected_keywords)
         has_substance = self._answer_has_substance(answer, analysis)
+        full_form_matched = full_form_info.get("matched", False)
+
+        if full_form_matched:
+            full_forms = ", ".join(
+                f"{item['acronym'].upper()}: {item['full_form']}"
+                for item in full_form_info.get("matches", [])
+            )
+            reasons.append(f"Recognized correct full form: {full_forms}.")
 
         if expected_count:
             if matched_count < required_count:
-                reasons.append(
-                    f"Matched {matched_count}/{expected_count} required concepts; "
-                    f"at least {required_count} are needed."
-                )
+                if not full_form_matched:
+                    reasons.append(
+                        f"Matched {matched_count}/{expected_count} required concepts; "
+                        f"at least {required_count} are needed."
+                    )
             else:
                 reasons.append(
                     f"Matched {matched_count}/{expected_count} required concepts."
@@ -341,7 +397,7 @@ class FeedbackEngine:
         elif technical_score < 70:
             reasons.append("The answer did not show enough technical detail.")
 
-        if not has_substance:
+        if not has_substance and not full_form_matched:
             reasons.append("The answer is too short to prove understanding.")
 
         if contradictions:
@@ -353,19 +409,22 @@ class FeedbackEngine:
 
         answer_category = analysis.get("category", "general")
         category_matches = self._category_matches(question_category, answer_category)
-        if not category_matches and matched_count < required_count:
+        if not category_matches and matched_count < required_count and not full_form_matched:
             reasons.append(
                 f"The answer appears off-topic for {question_category or 'this'} question."
             )
 
-        is_correct = (
-            matched_count >= required_count
-            and technical_score >= 70
-            and has_substance
-            and not contradictions
-        ) if expected_count else (
-            technical_score >= 70 and has_substance and not contradictions
-        )
+        if full_form_matched:
+            is_correct = not contradictions
+        else:
+            is_correct = (
+                matched_count >= required_count
+                and technical_score >= 70
+                and has_substance
+                and not contradictions
+            ) if expected_count else (
+                technical_score >= 70 and has_substance and not contradictions
+            )
 
         if is_correct and not reasons:
             reasons.append("Answer meets the required technical concepts.")
@@ -396,6 +455,8 @@ class FeedbackEngine:
         content_score = scores.get("content_score", 0)
         grammar_score = scores.get("grammar_score", 0)
         confidence_score = scores.get("confidence_score", 0)
+        full_form_match = scores.get("full_form_match", False)
+        full_form_matches = scores.get("full_form_matches", [])
 
         feedback = {
             "overall": "",
@@ -421,12 +482,23 @@ class FeedbackEngine:
                 "match_percentage": scores.get("match_percentage", 0),
                 "decision_reasons": scores.get("decision_reasons", []),
                 "concept_evidence": scores.get("concept_evidence", {}),
+                "full_form_matches": full_form_matches,
             },
         }
 
         if scores.get("low_effort"):
-            feedback["overall"] = "Wrong. No meaningful answer was provided."
-            feedback["weaknesses"].append("No answer or an explicit unknown response was detected.")
+            feedback["overall"] = "Wrong. " + scores.get(
+                "verdict_reason",
+                "The answer is too short or incomplete for this question.",
+            )
+            if found_kws:
+                feedback["weaknesses"].append(
+                    "Only a small part of the expected topic was mentioned: "
+                    + ", ".join(found_kws[:4])
+                    + "."
+                )
+            else:
+                feedback["weaknesses"].append("No answer or an explicit unknown response was detected.")
             feedback["improvements"].append(
                 "Attempt the answer by giving a definition, one example, and why the concept matters."
             )
@@ -434,12 +506,25 @@ class FeedbackEngine:
                 feedback["improvements"].append(
                     "Study these required concepts: " + ", ".join(expected_keywords[:6]) + "."
                 )
-            feedback["technical_accuracy"] = "Verdict: Wrong. The answer did not attempt the topic."
+            feedback["technical_accuracy"] = (
+                "Verdict: Wrong. The answer is too short for this question."
+                if found_kws
+                else "Verdict: Wrong. The answer did not attempt the topic."
+            )
             feedback["grammar_suggestions"] = "Grammar cannot be meaningfully evaluated without an answer."
             feedback["next_steps"] = "Review the topic and retry this question."
             return feedback
 
-        if is_correct:
+        if is_correct and full_form_match:
+            full_forms = ", ".join(
+                f"{item['acronym'].upper()} = {item['full_form']}"
+                for item in full_form_matches
+            )
+            feedback["overall"] = (
+                f"Correct. The full form was recognized ({full_forms}). "
+                "The answer is correct, but it is brief."
+            )
+        elif is_correct:
             feedback["overall"] = (
                 "Correct. Your answer covered enough required concepts to be marked correct."
             )
@@ -449,6 +534,15 @@ class FeedbackEngine:
 
         if found_kws:
             feedback["strengths"].append("Relevant concepts mentioned: " + ", ".join(found_kws[:6]) + ".")
+        if full_form_match:
+            feedback["strengths"].append(
+                "Correct full form: "
+                + ", ".join(
+                    f"{item['acronym'].upper()} = {item['full_form']}"
+                    for item in full_form_matches
+                )
+                + "."
+            )
         if is_correct and content_score >= 70:
             feedback["strengths"].append("The answer has good depth and structure.")
         if grammar_score >= 80:
@@ -456,7 +550,11 @@ class FeedbackEngine:
         if confidence_score >= 65:
             feedback["strengths"].append("Delivery is direct and confident.")
 
-        if missing_kws:
+        if missing_kws and full_form_match:
+            feedback["weaknesses"].append(
+                "The answer gives the full form but does not explain the concept in detail."
+            )
+        elif missing_kws:
             feedback["weaknesses"].append("Missing required concepts: " + ", ".join(missing_kws[:6]) + ".")
         if technical_score < 70:
             feedback["weaknesses"].append("Technical coverage is below the correctness threshold.")
@@ -467,7 +565,11 @@ class FeedbackEngine:
         if confidence_score < 40:
             feedback["weaknesses"].append("Answer sounds uncertain or underdeveloped.")
 
-        if missing_kws:
+        if missing_kws and full_form_match:
+            feedback["improvements"].append(
+                "Make the answer stronger by explaining: " + ", ".join(missing_kws[:6]) + "."
+            )
+        elif missing_kws:
             feedback["improvements"].append(
                 "Add these concepts to make the answer correct: " + ", ".join(missing_kws[:6]) + "."
             )
@@ -486,12 +588,18 @@ class FeedbackEngine:
         if not feedback["improvements"]:
             feedback["improvements"].append("Keep this structure: definition, key concepts, and example.")
 
-        feedback["technical_accuracy"] = (
-            f"Verdict: {feedback['answer_status']}. "
-            f"Matched {scores.get('matched_keyword_count', 0)}/"
-            f"{scores.get('expected_keyword_count', 0)} expected concepts "
-            f"({scores.get('match_percentage', 0)}%)."
-        )
+        if full_form_match:
+            feedback["technical_accuracy"] = (
+                f"Verdict: {feedback['answer_status']}. Correct full form recognized; "
+                "add a short explanation to improve completeness."
+            )
+        else:
+            feedback["technical_accuracy"] = (
+                f"Verdict: {feedback['answer_status']}. "
+                f"Matched {scores.get('matched_keyword_count', 0)}/"
+                f"{scores.get('expected_keyword_count', 0)} expected concepts "
+                f"({scores.get('match_percentage', 0)}%)."
+            )
 
         if grammar_score < 70:
             feedback["grammar_suggestions"] = (
@@ -614,6 +722,126 @@ class FeedbackEngine:
                 "priority": "high" if area.get("wrong_count", 0) or area.get("average_score", 100) < 50 else "medium",
             })
         return plan
+
+    def _full_form_analysis(self, answer: str, question: str) -> Dict:
+        """Recognize short acronym/full-form answers before low-effort scoring."""
+        normalized_answer = self._normalize_text(answer)
+        normalized_question = self._normalize_text(question)
+        answer_tokens = set(self._tokenize(normalized_answer))
+        question_tokens = set(self._tokenize(normalized_question))
+
+        candidates = []
+        for acronym, full_forms in self.ACRONYM_FULL_FORMS.items():
+            question_has_acronym = self._acronym_in_tokens(acronym, question_tokens)
+            question_has_full_form = any(
+                self._full_form_phrase_matches(full_form, normalized_question)
+                for full_form in full_forms
+            )
+
+            if not question_has_acronym and not question_has_full_form:
+                continue
+            if not self._question_allows_full_form_answer(normalized_question, acronym):
+                continue
+
+            answer_has_acronym = self._acronym_in_tokens(acronym, answer_tokens)
+            matched_full_form = next(
+                (
+                    full_form
+                    for full_form in full_forms
+                    if self._full_form_phrase_matches(full_form, normalized_answer)
+                ),
+                "",
+            )
+
+            if question_has_acronym and matched_full_form:
+                candidates.append({
+                    "acronym": acronym,
+                    "full_form": matched_full_form,
+                    "match_type": "answer_full_form",
+                })
+            elif question_has_full_form and answer_has_acronym:
+                candidates.append({
+                    "acronym": acronym,
+                    "full_form": full_forms[0],
+                    "match_type": "answer_acronym",
+                })
+
+        required_acronyms = {
+            acronym
+            for acronym in self.ACRONYM_FULL_FORMS
+            if (
+                self._acronym_in_tokens(acronym, question_tokens)
+                or any(
+                    self._full_form_phrase_matches(full_form, normalized_question)
+                    for full_form in self.ACRONYM_FULL_FORMS[acronym]
+                )
+            )
+            and self._question_allows_full_form_answer(normalized_question, acronym)
+        }
+        matched_acronyms = {item["acronym"] for item in candidates}
+
+        # If a question explicitly asks about multiple acronyms, e.g. REST and SOAP
+        # or CI/CD, require the answer to expand all of them before accepting the
+        # short full-form route.
+        matched = bool(candidates) and required_acronyms.issubset(matched_acronyms)
+
+        return {
+            "matched": matched,
+            "matches": candidates if matched else [],
+            "required_acronyms": sorted(required_acronyms),
+        }
+
+    def _question_allows_full_form_answer(self, normalized_question: str, acronym: str) -> bool:
+        """Return True when a full-form-only response is a fair minimum answer."""
+        blocked_phrases = {
+            "api": ["api testing", "rest and soap"],
+            "sql": ["sql injection", "sql and nosql", "nosql"],
+        }
+        if any(phrase in normalized_question for phrase in blocked_phrases.get(acronym, [])):
+            return False
+
+        if "stands for" in normalized_question or "full form" in normalized_question:
+            return True
+
+        if re.search(rf"\bwhat\s+(?:is|are)\s+(?:a\s+|an\s+|the\s+)?{re.escape(acronym)}s?\b", normalized_question):
+            return True
+
+        if re.search(rf"\bexplain\b.*\b{re.escape(acronym)}s?\b", normalized_question):
+            return True
+
+        concept_cues = [
+            "architecture", "pattern", "properties", "theorem", "concept",
+            "principles", "dimensionality", "development", "integration",
+            "deployment",
+        ]
+        if self._acronym_in_tokens(acronym, set(self._tokenize(normalized_question))):
+            return any(cue in normalized_question for cue in concept_cues)
+
+        full_form_in_question = any(
+            self._full_form_phrase_matches(full_form, normalized_question)
+            for full_form in self.ACRONYM_FULL_FORMS.get(acronym, [])
+        )
+        if full_form_in_question:
+            return bool(re.search(r"\b(?:what|explain|define|concept)\b", normalized_question))
+
+        return False
+
+    def _acronym_in_tokens(self, acronym: str, tokens: Set[str]) -> bool:
+        acronym = acronym.lower()
+        return acronym in tokens or f"{acronym}s" in tokens
+
+    def _full_form_phrase_matches(self, full_form: str, normalized_text: str) -> bool:
+        expected = [
+            self._stem(token)
+            for token in self._tokenize(full_form)
+            if token not in self.STOP_WORDS
+        ]
+        actual = [
+            self._stem(token)
+            for token in self._tokenize(normalized_text)
+            if token not in self.STOP_WORDS
+        ]
+        return bool(expected) and all(token in actual for token in expected)
 
     def _required_keyword_count(self, expected_count: int) -> int:
         if expected_count <= 0:
