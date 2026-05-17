@@ -1108,5 +1108,3116 @@
       }
     ],
     "last_updated": "2026-05-06T09:23:43.679352"
+  },
+  "session_1778600155.560779": {
+    "session_id": "session_1778600155.560779",
+    "user_id": "user_1778600128365",
+    "answers": [
+      {
+        "question_id": "q_2",
+        "question": "Explain the MVC architecture pattern.",
+        "question_category": "architecture",
+        "expected_keywords": [
+          "model",
+          "view",
+          "controller",
+          "separation"
+        ],
+        "answer": "model view controller",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 3,
+          "sentence_count": 1,
+          "avg_word_length": 6.333333333333333,
+          "technical_terms": [
+            "model"
+          ],
+          "key_phrases": [
+            "model view",
+            "view controller"
+          ],
+          "clarity_score": 70,
+          "completeness": 55,
+          "category": "data_science",
+          "sentiment": "neutral",
+          "grammar_quality": 40,
+          "quality_prediction": "average",
+          "low_effort": true,
+          "low_effort_reason": "too_short"
+        },
+        "scores": {
+          "content_score": 0,
+          "grammar_score": 40,
+          "technical_score": 0,
+          "confidence_score": 0,
+          "total_score": 0,
+          "grade": "F",
+          "low_effort": true,
+          "low_effort_reason": "too_short",
+          "found_keywords": [
+            "model",
+            "view",
+            "controller"
+          ],
+          "missing_keywords": [
+            "separation"
+          ],
+          "matched_keyword_count": 3,
+          "expected_keyword_count": 4,
+          "required_keyword_count": 3,
+          "match_percentage": 75.0,
+          "concept_evidence": {
+            "model": "model",
+            "view": "views",
+            "controller": "controller"
+          },
+          "contradictions": [],
+          "is_correct": false,
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "decision_reasons": [
+            "No meaningful answer was provided."
+          ],
+          "verdict_reason": "No meaningful answer was provided."
+        },
+        "feedback": {
+          "overall": "Wrong. No meaningful answer was provided.",
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "is_correct": false,
+          "strengths": [],
+          "weaknesses": [
+            "No answer or an explicit unknown response was detected."
+          ],
+          "improvements": [
+            "Attempt the answer by giving a definition, one example, and why the concept matters.",
+            "Study these required concepts: model, view, controller, separation."
+          ],
+          "technical_accuracy": "Verdict: Wrong. The answer did not attempt the topic.",
+          "grammar_suggestions": "Grammar cannot be meaningfully evaluated without an answer.",
+          "next_steps": "Review the topic and retry this question.",
+          "missing_concepts": [
+            "separation"
+          ],
+          "found_concepts": [
+            "model",
+            "view",
+            "controller"
+          ],
+          "accuracy_report": {
+            "question": "Explain the MVC architecture pattern.",
+            "required_concepts": [
+              "model",
+              "view",
+              "controller",
+              "separation"
+            ],
+            "matched_concepts": [
+              "model",
+              "view",
+              "controller"
+            ],
+            "missing_concepts": [
+              "separation"
+            ],
+            "matched_count": 3,
+            "required_to_pass": 3,
+            "expected_count": 4,
+            "match_percentage": 75.0,
+            "decision_reasons": [
+              "No meaningful answer was provided."
+            ],
+            "concept_evidence": {
+              "model": "model",
+              "view": "views",
+              "controller": "controller"
+            }
+          }
+        },
+        "verdict": "wrong",
+        "is_correct": false,
+        "timestamp": "2026-05-12T21:06:09.619089"
+      }
+    ],
+    "last_updated": "2026-05-12T21:06:09.650901"
+  },
+  "session_1778606439.95262": {
+    "session_id": "session_1778606439.95262",
+    "user_id": "user_1778606428398",
+    "answers": [
+      {
+        "question_id": "q_2",
+        "question": "Explain ACID properties in databases.",
+        "question_category": "database",
+        "expected_keywords": [
+          "atomicity",
+          "consistency",
+          "isolation",
+          "durability"
+        ],
+        "answer": "atomicity consistency isolation deletion",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 4,
+          "sentence_count": 1,
+          "avg_word_length": 9.25,
+          "technical_terms": [],
+          "key_phrases": [
+            "atomicity consistency",
+            "consistency isolation",
+            "isolation deletion"
+          ],
+          "clarity_score": 70,
+          "completeness": 50,
+          "category": "database",
+          "sentiment": "neutral",
+          "grammar_quality": 40,
+          "quality_prediction": "good",
+          "low_effort": true,
+          "low_effort_reason": "too_short"
+        },
+        "scores": {
+          "content_score": 0,
+          "grammar_score": 40,
+          "technical_score": 0,
+          "confidence_score": 0,
+          "total_score": 0,
+          "grade": "F",
+          "low_effort": true,
+          "low_effort_reason": "too_short",
+          "found_keywords": [
+            "atomicity",
+            "consistency",
+            "isolation"
+          ],
+          "missing_keywords": [
+            "durability"
+          ],
+          "matched_keyword_count": 3,
+          "expected_keyword_count": 4,
+          "required_keyword_count": 3,
+          "match_percentage": 75.0,
+          "concept_evidence": {
+            "atomicity": "atomicity",
+            "consistency": "consistency",
+            "isolation": "isol"
+          },
+          "contradictions": [],
+          "is_correct": false,
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "decision_reasons": [
+            "No meaningful answer was provided."
+          ],
+          "verdict_reason": "No meaningful answer was provided."
+        },
+        "feedback": {
+          "overall": "Wrong. No meaningful answer was provided.",
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "is_correct": false,
+          "strengths": [],
+          "weaknesses": [
+            "No answer or an explicit unknown response was detected."
+          ],
+          "improvements": [
+            "Attempt the answer by giving a definition, one example, and why the concept matters.",
+            "Study these required concepts: atomicity, consistency, isolation, durability."
+          ],
+          "technical_accuracy": "Verdict: Wrong. The answer did not attempt the topic.",
+          "grammar_suggestions": "Grammar cannot be meaningfully evaluated without an answer.",
+          "next_steps": "Review the topic and retry this question.",
+          "missing_concepts": [
+            "durability"
+          ],
+          "found_concepts": [
+            "atomicity",
+            "consistency",
+            "isolation"
+          ],
+          "accuracy_report": {
+            "question": "Explain ACID properties in databases.",
+            "required_concepts": [
+              "atomicity",
+              "consistency",
+              "isolation",
+              "durability"
+            ],
+            "matched_concepts": [
+              "atomicity",
+              "consistency",
+              "isolation"
+            ],
+            "missing_concepts": [
+              "durability"
+            ],
+            "matched_count": 3,
+            "required_to_pass": 3,
+            "expected_count": 4,
+            "match_percentage": 75.0,
+            "decision_reasons": [
+              "No meaningful answer was provided."
+            ],
+            "concept_evidence": {
+              "atomicity": "atomicity",
+              "consistency": "consistency",
+              "isolation": "isol"
+            }
+          }
+        },
+        "verdict": "wrong",
+        "is_correct": false,
+        "timestamp": "2026-05-12T22:51:03.868106"
+      },
+      {
+        "question_id": "q_3",
+        "question": "Explain the MVC architecture pattern.",
+        "question_category": "architecture",
+        "expected_keywords": [
+          "model",
+          "view",
+          "controller",
+          "separation"
+        ],
+        "answer": "model view controller",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 3,
+          "sentence_count": 1,
+          "avg_word_length": 6.333333333333333,
+          "technical_terms": [
+            "model"
+          ],
+          "key_phrases": [
+            "model view",
+            "view controller"
+          ],
+          "clarity_score": 70,
+          "completeness": 55,
+          "category": "data_science",
+          "sentiment": "neutral",
+          "grammar_quality": 40,
+          "quality_prediction": "average",
+          "low_effort": true,
+          "low_effort_reason": "too_short"
+        },
+        "scores": {
+          "content_score": 0,
+          "grammar_score": 40,
+          "technical_score": 0,
+          "confidence_score": 0,
+          "total_score": 0,
+          "grade": "F",
+          "low_effort": true,
+          "low_effort_reason": "too_short",
+          "found_keywords": [
+            "model",
+            "view",
+            "controller"
+          ],
+          "missing_keywords": [
+            "separation"
+          ],
+          "matched_keyword_count": 3,
+          "expected_keyword_count": 4,
+          "required_keyword_count": 3,
+          "match_percentage": 75.0,
+          "concept_evidence": {
+            "model": "model",
+            "view": "views",
+            "controller": "controller"
+          },
+          "contradictions": [],
+          "is_correct": false,
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "decision_reasons": [
+            "No meaningful answer was provided."
+          ],
+          "verdict_reason": "No meaningful answer was provided."
+        },
+        "feedback": {
+          "overall": "Wrong. No meaningful answer was provided.",
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "is_correct": false,
+          "strengths": [],
+          "weaknesses": [
+            "No answer or an explicit unknown response was detected."
+          ],
+          "improvements": [
+            "Attempt the answer by giving a definition, one example, and why the concept matters.",
+            "Study these required concepts: model, view, controller, separation."
+          ],
+          "technical_accuracy": "Verdict: Wrong. The answer did not attempt the topic.",
+          "grammar_suggestions": "Grammar cannot be meaningfully evaluated without an answer.",
+          "next_steps": "Review the topic and retry this question.",
+          "missing_concepts": [
+            "separation"
+          ],
+          "found_concepts": [
+            "model",
+            "view",
+            "controller"
+          ],
+          "accuracy_report": {
+            "question": "Explain the MVC architecture pattern.",
+            "required_concepts": [
+              "model",
+              "view",
+              "controller",
+              "separation"
+            ],
+            "matched_concepts": [
+              "model",
+              "view",
+              "controller"
+            ],
+            "missing_concepts": [
+              "separation"
+            ],
+            "matched_count": 3,
+            "required_to_pass": 3,
+            "expected_count": 4,
+            "match_percentage": 75.0,
+            "decision_reasons": [
+              "No meaningful answer was provided."
+            ],
+            "concept_evidence": {
+              "model": "model",
+              "view": "views",
+              "controller": "controller"
+            }
+          }
+        },
+        "verdict": "wrong",
+        "is_correct": false,
+        "timestamp": "2026-05-12T22:51:21.603006"
+      },
+      {
+        "question_id": "q_4",
+        "question": "Explain the concept of authentication vs authorization.",
+        "question_category": "security",
+        "expected_keywords": [
+          "authentication",
+          "authorization",
+          "identity",
+          "permission"
+        ],
+        "answer": "i dont know",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 3,
+          "sentence_count": 1,
+          "avg_word_length": 3.0,
+          "technical_terms": [],
+          "key_phrases": [
+            "i dont",
+            "dont know"
+          ],
+          "clarity_score": 70,
+          "completeness": 50,
+          "category": "general",
+          "sentiment": "positive",
+          "grammar_quality": 40,
+          "quality_prediction": "poor",
+          "low_effort": true,
+          "low_effort_reason": "explicit_unknown"
+        },
+        "scores": {
+          "content_score": 0,
+          "grammar_score": 40,
+          "technical_score": 0,
+          "confidence_score": 0,
+          "total_score": 0,
+          "grade": "F",
+          "low_effort": true,
+          "low_effort_reason": "explicit_unknown",
+          "found_keywords": [],
+          "missing_keywords": [
+            "authentication",
+            "authorization",
+            "identity",
+            "permission"
+          ],
+          "matched_keyword_count": 0,
+          "expected_keyword_count": 4,
+          "required_keyword_count": 3,
+          "match_percentage": 0.0,
+          "concept_evidence": {},
+          "contradictions": [],
+          "is_correct": false,
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "decision_reasons": [
+            "No meaningful answer was provided."
+          ],
+          "verdict_reason": "No meaningful answer was provided."
+        },
+        "feedback": {
+          "overall": "Wrong. No meaningful answer was provided.",
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "is_correct": false,
+          "strengths": [],
+          "weaknesses": [
+            "No answer or an explicit unknown response was detected."
+          ],
+          "improvements": [
+            "Attempt the answer by giving a definition, one example, and why the concept matters.",
+            "Study these required concepts: authentication, authorization, identity, permission."
+          ],
+          "technical_accuracy": "Verdict: Wrong. The answer did not attempt the topic.",
+          "grammar_suggestions": "Grammar cannot be meaningfully evaluated without an answer.",
+          "next_steps": "Review the topic and retry this question.",
+          "missing_concepts": [
+            "authentication",
+            "authorization",
+            "identity",
+            "permission"
+          ],
+          "found_concepts": [],
+          "accuracy_report": {
+            "question": "Explain the concept of authentication vs authorization.",
+            "required_concepts": [
+              "authentication",
+              "authorization",
+              "identity",
+              "permission"
+            ],
+            "matched_concepts": [],
+            "missing_concepts": [
+              "authentication",
+              "authorization",
+              "identity",
+              "permission"
+            ],
+            "matched_count": 0,
+            "required_to_pass": 3,
+            "expected_count": 4,
+            "match_percentage": 0.0,
+            "decision_reasons": [
+              "No meaningful answer was provided."
+            ],
+            "concept_evidence": {}
+          }
+        },
+        "verdict": "wrong",
+        "is_correct": false,
+        "timestamp": "2026-05-12T22:51:45.460001"
+      },
+      {
+        "question_id": "q_5",
+        "question": "What is the difference between stack and heap memory?",
+        "question_category": "programming",
+        "expected_keywords": [
+          "stack",
+          "heap",
+          "memory",
+          "allocation",
+          "performance"
+        ],
+        "answer": "nveoiweijije",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 1,
+          "sentence_count": 1,
+          "avg_word_length": 12.0,
+          "technical_terms": [],
+          "key_phrases": [],
+          "clarity_score": 70,
+          "completeness": 50,
+          "category": "algorithms",
+          "sentiment": "neutral",
+          "grammar_quality": 40,
+          "quality_prediction": "poor",
+          "low_effort": true,
+          "low_effort_reason": "too_short"
+        },
+        "scores": {
+          "content_score": 0,
+          "grammar_score": 40,
+          "technical_score": 0,
+          "confidence_score": 0,
+          "total_score": 0,
+          "grade": "F",
+          "low_effort": true,
+          "low_effort_reason": "too_short",
+          "found_keywords": [],
+          "missing_keywords": [
+            "stack",
+            "heap",
+            "memory",
+            "allocation",
+            "performance"
+          ],
+          "matched_keyword_count": 0,
+          "expected_keyword_count": 5,
+          "required_keyword_count": 4,
+          "match_percentage": 0.0,
+          "concept_evidence": {},
+          "contradictions": [],
+          "is_correct": false,
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "decision_reasons": [
+            "No meaningful answer was provided."
+          ],
+          "verdict_reason": "No meaningful answer was provided."
+        },
+        "feedback": {
+          "overall": "Wrong. No meaningful answer was provided.",
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "is_correct": false,
+          "strengths": [],
+          "weaknesses": [
+            "No answer or an explicit unknown response was detected."
+          ],
+          "improvements": [
+            "Attempt the answer by giving a definition, one example, and why the concept matters.",
+            "Study these required concepts: stack, heap, memory, allocation, performance."
+          ],
+          "technical_accuracy": "Verdict: Wrong. The answer did not attempt the topic.",
+          "grammar_suggestions": "Grammar cannot be meaningfully evaluated without an answer.",
+          "next_steps": "Review the topic and retry this question.",
+          "missing_concepts": [
+            "stack",
+            "heap",
+            "memory",
+            "allocation",
+            "performance"
+          ],
+          "found_concepts": [],
+          "accuracy_report": {
+            "question": "What is the difference between stack and heap memory?",
+            "required_concepts": [
+              "stack",
+              "heap",
+              "memory",
+              "allocation",
+              "performance"
+            ],
+            "matched_concepts": [],
+            "missing_concepts": [
+              "stack",
+              "heap",
+              "memory",
+              "allocation",
+              "performance"
+            ],
+            "matched_count": 0,
+            "required_to_pass": 4,
+            "expected_count": 5,
+            "match_percentage": 0.0,
+            "decision_reasons": [
+              "No meaningful answer was provided."
+            ],
+            "concept_evidence": {}
+          }
+        },
+        "verdict": "wrong",
+        "is_correct": false,
+        "timestamp": "2026-05-12T22:52:04.491331"
+      },
+      {
+        "question_id": "q_6",
+        "question": "What is the purpose of indexing in databases?",
+        "question_category": "database",
+        "expected_keywords": [
+          "index",
+          "performance",
+          "search",
+          "faster"
+        ],
+        "answer": "ougtredfucvkjhgfghjk",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 1,
+          "sentence_count": 1,
+          "avg_word_length": 20.0,
+          "technical_terms": [],
+          "key_phrases": [],
+          "clarity_score": 70,
+          "completeness": 50,
+          "category": "algorithms",
+          "sentiment": "neutral",
+          "grammar_quality": 40,
+          "quality_prediction": "poor",
+          "low_effort": true,
+          "low_effort_reason": "too_short"
+        },
+        "scores": {
+          "content_score": 0,
+          "grammar_score": 40,
+          "technical_score": 0,
+          "confidence_score": 0,
+          "total_score": 0,
+          "grade": "F",
+          "low_effort": true,
+          "low_effort_reason": "too_short",
+          "found_keywords": [],
+          "missing_keywords": [
+            "index",
+            "performance",
+            "search",
+            "faster"
+          ],
+          "matched_keyword_count": 0,
+          "expected_keyword_count": 4,
+          "required_keyword_count": 3,
+          "match_percentage": 0.0,
+          "concept_evidence": {},
+          "contradictions": [],
+          "is_correct": false,
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "decision_reasons": [
+            "No meaningful answer was provided."
+          ],
+          "verdict_reason": "No meaningful answer was provided."
+        },
+        "feedback": {
+          "overall": "Wrong. No meaningful answer was provided.",
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "is_correct": false,
+          "strengths": [],
+          "weaknesses": [
+            "No answer or an explicit unknown response was detected."
+          ],
+          "improvements": [
+            "Attempt the answer by giving a definition, one example, and why the concept matters.",
+            "Study these required concepts: index, performance, search, faster."
+          ],
+          "technical_accuracy": "Verdict: Wrong. The answer did not attempt the topic.",
+          "grammar_suggestions": "Grammar cannot be meaningfully evaluated without an answer.",
+          "next_steps": "Review the topic and retry this question.",
+          "missing_concepts": [
+            "index",
+            "performance",
+            "search",
+            "faster"
+          ],
+          "found_concepts": [],
+          "accuracy_report": {
+            "question": "What is the purpose of indexing in databases?",
+            "required_concepts": [
+              "index",
+              "performance",
+              "search",
+              "faster"
+            ],
+            "matched_concepts": [],
+            "missing_concepts": [
+              "index",
+              "performance",
+              "search",
+              "faster"
+            ],
+            "matched_count": 0,
+            "required_to_pass": 3,
+            "expected_count": 4,
+            "match_percentage": 0.0,
+            "decision_reasons": [
+              "No meaningful answer was provided."
+            ],
+            "concept_evidence": {}
+          }
+        },
+        "verdict": "wrong",
+        "is_correct": false,
+        "timestamp": "2026-05-12T22:52:19.054530"
+      },
+      {
+        "question_id": "q_7",
+        "question": "Explain the difference between REST and SOAP APIs.",
+        "question_category": "web",
+        "expected_keywords": [
+          "rest",
+          "soap",
+          "xml",
+          "json",
+          "http",
+          "protocol"
+        ],
+        "answer": "restfull application programming interface",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 4,
+          "sentence_count": 1,
+          "avg_word_length": 9.75,
+          "technical_terms": [
+            "interface"
+          ],
+          "key_phrases": [
+            "restfull application",
+            "application programming",
+            "programming interface"
+          ],
+          "clarity_score": 70,
+          "completeness": 55,
+          "category": "oop",
+          "sentiment": "neutral",
+          "grammar_quality": 40,
+          "quality_prediction": "poor",
+          "low_effort": false,
+          "low_effort_reason": ""
+        },
+        "scores": {
+          "content_score": 10,
+          "grammar_score": 40,
+          "technical_score": 0,
+          "confidence_score": 40,
+          "total_score": 8,
+          "grade": "F",
+          "low_effort": false,
+          "found_keywords": [],
+          "missing_keywords": [
+            "rest",
+            "soap",
+            "xml",
+            "json",
+            "http",
+            "protocol"
+          ],
+          "matched_keyword_count": 0,
+          "expected_keyword_count": 6,
+          "required_keyword_count": 5,
+          "match_percentage": 0.0,
+          "concept_evidence": {},
+          "contradictions": [],
+          "is_correct": false,
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "decision_reasons": [
+            "Matched 0/6 required concepts; at least 5 are needed.",
+            "The answer is too short to prove understanding.",
+            "The answer appears off-topic for web question."
+          ],
+          "verdict_reason": "Matched 0/6 required concepts; at least 5 are needed. The answer is too short to prove understanding. The answer appears off-topic for web question."
+        },
+        "feedback": {
+          "overall": "Wrong. Matched 0/6 required concepts; at least 5 are needed. The answer is too short to prove understanding. The answer appears off-topic for web question.",
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "is_correct": false,
+          "strengths": [],
+          "weaknesses": [
+            "Missing required concepts: rest, soap, xml, json, http, protocol.",
+            "Technical coverage is below the correctness threshold.",
+            "Answer is too brief or lacks explanation.",
+            "Grammar and sentence structure need improvement."
+          ],
+          "improvements": [
+            "Add these concepts to make the answer correct: rest, soap, xml, json, http, protocol.",
+            "Expand the response with a definition, example, and practical use.",
+            "Use at least two clear sentences so the evaluator can verify your reasoning.",
+            "Use direct statements and avoid phrases like 'maybe' or 'I think'."
+          ],
+          "technical_accuracy": "Verdict: Wrong. Matched 0/6 expected concepts (0.0%).",
+          "grammar_suggestions": "Check punctuation, avoid run-on sentences, and capitalize sentence starts.",
+          "next_steps": "Review the missing concepts and retry a similar question.",
+          "missing_concepts": [
+            "rest",
+            "soap",
+            "xml",
+            "json",
+            "http",
+            "protocol"
+          ],
+          "found_concepts": [],
+          "accuracy_report": {
+            "question": "Explain the difference between REST and SOAP APIs.",
+            "required_concepts": [
+              "rest",
+              "soap",
+              "xml",
+              "json",
+              "http",
+              "protocol"
+            ],
+            "matched_concepts": [],
+            "missing_concepts": [
+              "rest",
+              "soap",
+              "xml",
+              "json",
+              "http",
+              "protocol"
+            ],
+            "matched_count": 0,
+            "required_to_pass": 5,
+            "expected_count": 6,
+            "match_percentage": 0.0,
+            "decision_reasons": [
+              "Matched 0/6 required concepts; at least 5 are needed.",
+              "The answer is too short to prove understanding.",
+              "The answer appears off-topic for web question."
+            ],
+            "concept_evidence": {}
+          }
+        },
+        "verdict": "wrong",
+        "is_correct": false,
+        "timestamp": "2026-05-12T22:52:45.056084"
+      },
+      {
+        "question_id": "q_8",
+        "question": "Explain the concept of recursion with an example.",
+        "question_category": "programming",
+        "expected_keywords": [
+          "function",
+          "base case",
+          "stack",
+          "self-call"
+        ],
+        "answer": "function calling the same function",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 5,
+          "sentence_count": 1,
+          "avg_word_length": 6.0,
+          "technical_terms": [
+            "function"
+          ],
+          "key_phrases": [
+            "function calling",
+            "calling the",
+            "the same",
+            "same function"
+          ],
+          "clarity_score": 70,
+          "completeness": 55,
+          "category": "programming",
+          "sentiment": "neutral",
+          "grammar_quality": 40,
+          "quality_prediction": "average",
+          "low_effort": false,
+          "low_effort_reason": ""
+        },
+        "scores": {
+          "content_score": 35,
+          "grammar_score": 40,
+          "technical_score": 25,
+          "confidence_score": 40,
+          "total_score": 29,
+          "grade": "F",
+          "low_effort": false,
+          "found_keywords": [
+            "function"
+          ],
+          "missing_keywords": [
+            "base case",
+            "stack",
+            "self-call"
+          ],
+          "matched_keyword_count": 1,
+          "expected_keyword_count": 4,
+          "required_keyword_count": 3,
+          "match_percentage": 25.0,
+          "concept_evidence": {
+            "function": "functions"
+          },
+          "contradictions": [],
+          "is_correct": false,
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "decision_reasons": [
+            "Matched 1/4 required concepts; at least 3 are needed.",
+            "The answer is too short to prove understanding."
+          ],
+          "verdict_reason": "Matched 1/4 required concepts; at least 3 are needed. The answer is too short to prove understanding."
+        },
+        "feedback": {
+          "overall": "Wrong. Matched 1/4 required concepts; at least 3 are needed. The answer is too short to prove understanding.",
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "is_correct": false,
+          "strengths": [
+            "Relevant concepts mentioned: function."
+          ],
+          "weaknesses": [
+            "Missing required concepts: base case, stack, self-call.",
+            "Technical coverage is below the correctness threshold.",
+            "Answer is too brief or lacks explanation.",
+            "Grammar and sentence structure need improvement."
+          ],
+          "improvements": [
+            "Add these concepts to make the answer correct: base case, stack, self-call.",
+            "Expand the response with a definition, example, and practical use.",
+            "Use at least two clear sentences so the evaluator can verify your reasoning.",
+            "Use direct statements and avoid phrases like 'maybe' or 'I think'."
+          ],
+          "technical_accuracy": "Verdict: Wrong. Matched 1/4 expected concepts (25.0%).",
+          "grammar_suggestions": "Check punctuation, avoid run-on sentences, and capitalize sentence starts.",
+          "next_steps": "Review the missing concepts and retry a similar question.",
+          "missing_concepts": [
+            "base case",
+            "stack",
+            "self-call"
+          ],
+          "found_concepts": [
+            "function"
+          ],
+          "accuracy_report": {
+            "question": "Explain the concept of recursion with an example.",
+            "required_concepts": [
+              "function",
+              "base case",
+              "stack",
+              "self-call"
+            ],
+            "matched_concepts": [
+              "function"
+            ],
+            "missing_concepts": [
+              "base case",
+              "stack",
+              "self-call"
+            ],
+            "matched_count": 1,
+            "required_to_pass": 3,
+            "expected_count": 4,
+            "match_percentage": 25.0,
+            "decision_reasons": [
+              "Matched 1/4 required concepts; at least 3 are needed.",
+              "The answer is too short to prove understanding."
+            ],
+            "concept_evidence": {
+              "function": "functions"
+            }
+          }
+        },
+        "verdict": "wrong",
+        "is_correct": false,
+        "timestamp": "2026-05-12T22:53:11.429580"
+      },
+      {
+        "question_id": "q_9",
+        "question": "What is SQL injection and how can you prevent it?",
+        "question_category": "security",
+        "expected_keywords": [
+          "injection",
+          "parameterized",
+          "validation",
+          "sanitization"
+        ],
+        "answer": "nnreii",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 1,
+          "sentence_count": 1,
+          "avg_word_length": 6.0,
+          "technical_terms": [],
+          "key_phrases": [],
+          "clarity_score": 70,
+          "completeness": 50,
+          "category": "algorithms",
+          "sentiment": "neutral",
+          "grammar_quality": 40,
+          "quality_prediction": "poor",
+          "low_effort": true,
+          "low_effort_reason": "too_short"
+        },
+        "scores": {
+          "content_score": 0,
+          "grammar_score": 40,
+          "technical_score": 0,
+          "confidence_score": 0,
+          "total_score": 0,
+          "grade": "F",
+          "low_effort": true,
+          "low_effort_reason": "too_short",
+          "found_keywords": [],
+          "missing_keywords": [
+            "injection",
+            "parameterized",
+            "validation",
+            "sanitization"
+          ],
+          "matched_keyword_count": 0,
+          "expected_keyword_count": 4,
+          "required_keyword_count": 3,
+          "match_percentage": 0.0,
+          "concept_evidence": {},
+          "contradictions": [],
+          "is_correct": false,
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "decision_reasons": [
+            "No meaningful answer was provided."
+          ],
+          "verdict_reason": "No meaningful answer was provided."
+        },
+        "feedback": {
+          "overall": "Wrong. No meaningful answer was provided.",
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "is_correct": false,
+          "strengths": [],
+          "weaknesses": [
+            "No answer or an explicit unknown response was detected."
+          ],
+          "improvements": [
+            "Attempt the answer by giving a definition, one example, and why the concept matters.",
+            "Study these required concepts: injection, parameterized, validation, sanitization."
+          ],
+          "technical_accuracy": "Verdict: Wrong. The answer did not attempt the topic.",
+          "grammar_suggestions": "Grammar cannot be meaningfully evaluated without an answer.",
+          "next_steps": "Review the topic and retry this question.",
+          "missing_concepts": [
+            "injection",
+            "parameterized",
+            "validation",
+            "sanitization"
+          ],
+          "found_concepts": [],
+          "accuracy_report": {
+            "question": "What is SQL injection and how can you prevent it?",
+            "required_concepts": [
+              "injection",
+              "parameterized",
+              "validation",
+              "sanitization"
+            ],
+            "matched_concepts": [],
+            "missing_concepts": [
+              "injection",
+              "parameterized",
+              "validation",
+              "sanitization"
+            ],
+            "matched_count": 0,
+            "required_to_pass": 3,
+            "expected_count": 4,
+            "match_percentage": 0.0,
+            "decision_reasons": [
+              "No meaningful answer was provided."
+            ],
+            "concept_evidence": {}
+          }
+        },
+        "verdict": "wrong",
+        "is_correct": false,
+        "timestamp": "2026-05-12T22:53:29.513528"
+      },
+      {
+        "question_id": "q_10",
+        "question": "What is the difference between inner join and left join?",
+        "question_category": "database",
+        "expected_keywords": [
+          "join",
+          "inner",
+          "left",
+          "matching",
+          "null"
+        ],
+        "answer": "inner is inner and left is left\n",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 7,
+          "sentence_count": 1,
+          "avg_word_length": 3.5714285714285716,
+          "technical_terms": [],
+          "key_phrases": [
+            "inner is",
+            "is inner",
+            "inner and",
+            "and left",
+            "left is",
+            "is left"
+          ],
+          "clarity_score": 70,
+          "completeness": 50,
+          "category": "database",
+          "sentiment": "neutral",
+          "grammar_quality": 40,
+          "quality_prediction": "good",
+          "low_effort": false,
+          "low_effort_reason": ""
+        },
+        "scores": {
+          "content_score": 55,
+          "grammar_score": 40,
+          "technical_score": 40,
+          "confidence_score": 40,
+          "total_score": 43,
+          "grade": "D",
+          "low_effort": false,
+          "found_keywords": [
+            "inner",
+            "left"
+          ],
+          "missing_keywords": [
+            "join",
+            "matching",
+            "null"
+          ],
+          "matched_keyword_count": 2,
+          "expected_keyword_count": 5,
+          "required_keyword_count": 4,
+          "match_percentage": 40.0,
+          "concept_evidence": {
+            "inner": "inner",
+            "left": "lefts"
+          },
+          "contradictions": [],
+          "is_correct": false,
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "decision_reasons": [
+            "Matched 2/5 required concepts; at least 4 are needed.",
+            "The answer is too short to prove understanding."
+          ],
+          "verdict_reason": "Matched 2/5 required concepts; at least 4 are needed. The answer is too short to prove understanding."
+        },
+        "feedback": {
+          "overall": "Wrong. Matched 2/5 required concepts; at least 4 are needed. The answer is too short to prove understanding.",
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "is_correct": false,
+          "strengths": [
+            "Relevant concepts mentioned: inner, left."
+          ],
+          "weaknesses": [
+            "Missing required concepts: join, matching, null.",
+            "Technical coverage is below the correctness threshold.",
+            "Grammar and sentence structure need improvement."
+          ],
+          "improvements": [
+            "Add these concepts to make the answer correct: join, matching, null.",
+            "Expand the response with a definition, example, and practical use.",
+            "Use at least two clear sentences so the evaluator can verify your reasoning.",
+            "Use direct statements and avoid phrases like 'maybe' or 'I think'."
+          ],
+          "technical_accuracy": "Verdict: Wrong. Matched 2/5 expected concepts (40.0%).",
+          "grammar_suggestions": "Check punctuation, avoid run-on sentences, and capitalize sentence starts.",
+          "next_steps": "Review the missing concepts and retry a similar question.",
+          "missing_concepts": [
+            "join",
+            "matching",
+            "null"
+          ],
+          "found_concepts": [
+            "inner",
+            "left"
+          ],
+          "accuracy_report": {
+            "question": "What is the difference between inner join and left join?",
+            "required_concepts": [
+              "join",
+              "inner",
+              "left",
+              "matching",
+              "null"
+            ],
+            "matched_concepts": [
+              "inner",
+              "left"
+            ],
+            "missing_concepts": [
+              "join",
+              "matching",
+              "null"
+            ],
+            "matched_count": 2,
+            "required_to_pass": 4,
+            "expected_count": 5,
+            "match_percentage": 40.0,
+            "decision_reasons": [
+              "Matched 2/5 required concepts; at least 4 are needed.",
+              "The answer is too short to prove understanding."
+            ],
+            "concept_evidence": {
+              "inner": "inner",
+              "left": "lefts"
+            }
+          }
+        },
+        "verdict": "wrong",
+        "is_correct": false,
+        "timestamp": "2026-05-12T22:53:47.079881"
+      },
+      {
+        "question_id": "q_11",
+        "question": "Tell me about yourself.",
+        "question_category": "general",
+        "expected_keywords": [
+          "background",
+          "skills",
+          "experience"
+        ],
+        "answer": "i am good man, who is interested in bringing up the organization upwards, i like playing cricket and chatting with girlfriend Prajnavi",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 22,
+          "sentence_count": 1,
+          "avg_word_length": 5.136363636363637,
+          "technical_terms": [],
+          "key_phrases": [
+            "i am",
+            "am good",
+            "good man",
+            "man who",
+            "who is",
+            "is interested",
+            "interested in",
+            "in bringing",
+            "bringing up",
+            "up the"
+          ],
+          "clarity_score": 100,
+          "completeness": 50,
+          "category": "web_development",
+          "sentiment": "positive",
+          "grammar_quality": 40,
+          "quality_prediction": "good",
+          "low_effort": false,
+          "low_effort_reason": ""
+        },
+        "scores": {
+          "content_score": 35,
+          "grammar_score": 40,
+          "technical_score": 0,
+          "confidence_score": 40,
+          "total_score": 13,
+          "grade": "F",
+          "low_effort": false,
+          "found_keywords": [],
+          "missing_keywords": [
+            "background",
+            "skills",
+            "experience"
+          ],
+          "matched_keyword_count": 0,
+          "expected_keyword_count": 3,
+          "required_keyword_count": 3,
+          "match_percentage": 0.0,
+          "concept_evidence": {},
+          "contradictions": [],
+          "is_correct": false,
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "decision_reasons": [
+            "Matched 0/3 required concepts; at least 3 are needed."
+          ],
+          "verdict_reason": "Matched 0/3 required concepts; at least 3 are needed."
+        },
+        "feedback": {
+          "overall": "Wrong. Matched 0/3 required concepts; at least 3 are needed.",
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "is_correct": false,
+          "strengths": [],
+          "weaknesses": [
+            "Missing required concepts: background, skills, experience.",
+            "Technical coverage is below the correctness threshold.",
+            "Answer is too brief or lacks explanation.",
+            "Grammar and sentence structure need improvement."
+          ],
+          "improvements": [
+            "Add these concepts to make the answer correct: background, skills, experience.",
+            "Expand the response with a definition, example, and practical use.",
+            "Use at least two clear sentences so the evaluator can verify your reasoning.",
+            "Use direct statements and avoid phrases like 'maybe' or 'I think'."
+          ],
+          "technical_accuracy": "Verdict: Wrong. Matched 0/3 expected concepts (0.0%).",
+          "grammar_suggestions": "Check punctuation, avoid run-on sentences, and capitalize sentence starts.",
+          "next_steps": "Review the missing concepts and retry a similar question.",
+          "missing_concepts": [
+            "background",
+            "skills",
+            "experience"
+          ],
+          "found_concepts": [],
+          "accuracy_report": {
+            "question": "Tell me about yourself.",
+            "required_concepts": [
+              "background",
+              "skills",
+              "experience"
+            ],
+            "matched_concepts": [],
+            "missing_concepts": [
+              "background",
+              "skills",
+              "experience"
+            ],
+            "matched_count": 0,
+            "required_to_pass": 3,
+            "expected_count": 3,
+            "match_percentage": 0.0,
+            "decision_reasons": [
+              "Matched 0/3 required concepts; at least 3 are needed."
+            ],
+            "concept_evidence": {}
+          }
+        },
+        "verdict": "wrong",
+        "is_correct": false,
+        "timestamp": "2026-05-12T22:54:53.953671"
+      }
+    ],
+    "last_updated": "2026-05-12T22:54:54.113610"
+  },
+  "session_1778776904.393851": {
+    "session_id": "session_1778776904.393851",
+    "user_id": "user_1778776884853",
+    "answers": [
+      {
+        "question_id": "q_2",
+        "question": "What is HTML?",
+        "question_category": "web",
+        "expected_keywords": [
+          "markup",
+          "tags",
+          "structure",
+          "webpage"
+        ],
+        "answer": "hyper text markup language",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 4,
+          "sentence_count": 1,
+          "avg_word_length": 5.75,
+          "technical_terms": [],
+          "key_phrases": [
+            "hyper text",
+            "text markup",
+            "markup language"
+          ],
+          "clarity_score": 70,
+          "completeness": 50,
+          "category": "database",
+          "sentiment": "neutral",
+          "grammar_quality": 40,
+          "quality_prediction": "average",
+          "low_effort": true,
+          "low_effort_reason": "too_short"
+        },
+        "scores": {
+          "content_score": 0,
+          "grammar_score": 40,
+          "technical_score": 0,
+          "confidence_score": 0,
+          "total_score": 0,
+          "grade": "F",
+          "low_effort": true,
+          "low_effort_reason": "too_short",
+          "found_keywords": [
+            "markup"
+          ],
+          "missing_keywords": [
+            "tags",
+            "structure",
+            "webpage"
+          ],
+          "matched_keyword_count": 1,
+          "expected_keyword_count": 4,
+          "required_keyword_count": 3,
+          "match_percentage": 25.0,
+          "concept_evidence": {
+            "markup": "markup"
+          },
+          "contradictions": [],
+          "full_form_match": false,
+          "full_form_matches": [],
+          "is_correct": false,
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "decision_reasons": [
+            "The answer is too short or incomplete for this question."
+          ],
+          "verdict_reason": "The answer is too short or incomplete for this question."
+        },
+        "feedback": {
+          "overall": "Wrong. The answer is too short or incomplete for this question.",
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "is_correct": false,
+          "strengths": [],
+          "weaknesses": [
+            "Only a small part of the expected topic was mentioned: markup."
+          ],
+          "improvements": [
+            "Attempt the answer by giving a definition, one example, and why the concept matters.",
+            "Study these required concepts: markup, tags, structure, webpage."
+          ],
+          "technical_accuracy": "Verdict: Wrong. The answer is too short for this question.",
+          "grammar_suggestions": "Grammar cannot be meaningfully evaluated without an answer.",
+          "next_steps": "Review the topic and retry this question.",
+          "missing_concepts": [
+            "tags",
+            "structure",
+            "webpage"
+          ],
+          "found_concepts": [
+            "markup"
+          ],
+          "accuracy_report": {
+            "question": "What is HTML?",
+            "required_concepts": [
+              "markup",
+              "tags",
+              "structure",
+              "webpage"
+            ],
+            "matched_concepts": [
+              "markup"
+            ],
+            "missing_concepts": [
+              "tags",
+              "structure",
+              "webpage"
+            ],
+            "matched_count": 1,
+            "required_to_pass": 3,
+            "expected_count": 4,
+            "match_percentage": 25.0,
+            "decision_reasons": [
+              "The answer is too short or incomplete for this question."
+            ],
+            "concept_evidence": {
+              "markup": "markup"
+            },
+            "full_form_matches": []
+          }
+        },
+        "verdict": "wrong",
+        "is_correct": false,
+        "timestamp": "2026-05-14T22:11:56.843461"
+      }
+    ],
+    "last_updated": "2026-05-14T22:11:56.845888"
+  },
+  "session_1778778106.992479": {
+    "session_id": "session_1778778106.992479",
+    "user_id": "user_1778778099749",
+    "answers": [
+      {
+        "question_id": "q_2",
+        "question": "What is an array?",
+        "question_category": "data_structures",
+        "expected_keywords": [
+          "collection",
+          "index",
+          "elements",
+          "sequential"
+        ],
+        "answer": "Array is collection of homogeneous elements",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 6,
+          "sentence_count": 1,
+          "avg_word_length": 6.333333333333333,
+          "technical_terms": [
+            "array"
+          ],
+          "key_phrases": [
+            "array is",
+            "is collection",
+            "collection of",
+            "of homogeneous",
+            "homogeneous elements"
+          ],
+          "clarity_score": 70,
+          "completeness": 55,
+          "category": "algorithms",
+          "sentiment": "neutral",
+          "grammar_quality": 45,
+          "quality_prediction": "good",
+          "low_effort": false,
+          "low_effort_reason": ""
+        },
+        "scores": {
+          "content_score": 55,
+          "grammar_score": 45,
+          "technical_score": 50,
+          "confidence_score": 40,
+          "total_score": 49,
+          "grade": "D",
+          "low_effort": false,
+          "found_keywords": [
+            "collection",
+            "elements"
+          ],
+          "missing_keywords": [
+            "index",
+            "sequential"
+          ],
+          "matched_keyword_count": 2,
+          "expected_keyword_count": 4,
+          "required_keyword_count": 3,
+          "match_percentage": 50.0,
+          "concept_evidence": {
+            "collection": "collections",
+            "elements": "ele"
+          },
+          "contradictions": [],
+          "full_form_match": false,
+          "full_form_matches": [],
+          "is_correct": false,
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "decision_reasons": [
+            "Matched 2/4 required concepts; at least 3 are needed.",
+            "The answer is too short to prove understanding.",
+            "The answer appears off-topic for data_structures question."
+          ],
+          "verdict_reason": "Matched 2/4 required concepts; at least 3 are needed. The answer is too short to prove understanding. The answer appears off-topic for data_structures question."
+        },
+        "feedback": {
+          "overall": "Wrong. Matched 2/4 required concepts; at least 3 are needed. The answer is too short to prove understanding. The answer appears off-topic for data_structures question.",
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "is_correct": false,
+          "strengths": [
+            "Relevant concepts mentioned: collection, elements."
+          ],
+          "weaknesses": [
+            "Missing required concepts: index, sequential.",
+            "Technical coverage is below the correctness threshold.",
+            "Grammar and sentence structure need improvement."
+          ],
+          "improvements": [
+            "Add these concepts to make the answer correct: index, sequential.",
+            "Expand the response with a definition, example, and practical use.",
+            "Use at least two clear sentences so the evaluator can verify your reasoning.",
+            "Use direct statements and avoid phrases like 'maybe' or 'I think'."
+          ],
+          "technical_accuracy": "Verdict: Wrong. Matched 2/4 expected concepts (50.0%).",
+          "grammar_suggestions": "Check punctuation, avoid run-on sentences, and capitalize sentence starts.",
+          "next_steps": "Review the missing concepts and retry a similar question.",
+          "missing_concepts": [
+            "index",
+            "sequential"
+          ],
+          "found_concepts": [
+            "collection",
+            "elements"
+          ],
+          "accuracy_report": {
+            "question": "What is an array?",
+            "required_concepts": [
+              "collection",
+              "index",
+              "elements",
+              "sequential"
+            ],
+            "matched_concepts": [
+              "collection",
+              "elements"
+            ],
+            "missing_concepts": [
+              "index",
+              "sequential"
+            ],
+            "matched_count": 2,
+            "required_to_pass": 3,
+            "expected_count": 4,
+            "match_percentage": 50.0,
+            "decision_reasons": [
+              "Matched 2/4 required concepts; at least 3 are needed.",
+              "The answer is too short to prove understanding.",
+              "The answer appears off-topic for data_structures question."
+            ],
+            "concept_evidence": {
+              "collection": "collections",
+              "elements": "ele"
+            },
+            "full_form_matches": []
+          }
+        },
+        "verdict": "wrong",
+        "is_correct": false,
+        "timestamp": "2026-05-14T22:32:09.195796"
+      }
+    ],
+    "last_updated": "2026-05-14T22:32:09.197930"
+  },
+  "session_1778778889.921069": {
+    "session_id": "session_1778778889.921069",
+    "user_id": "user_1778778877464",
+    "answers": [
+      {
+        "question_id": "q_2",
+        "question": "What is Object-Oriented Programming?",
+        "question_category": "oop",
+        "expected_keywords": [
+          "class",
+          "object",
+          "inheritance",
+          "encapsulation",
+          "abstraction"
+        ],
+        "answer": "The programming which supports the concept of Inhertance, Encapsulation, Abstraction",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 10,
+          "sentence_count": 1,
+          "avg_word_length": 7.5,
+          "technical_terms": [
+            "encapsulation",
+            "abstraction"
+          ],
+          "key_phrases": [
+            "the programming",
+            "programming which",
+            "which supports",
+            "supports the",
+            "the concept",
+            "concept of",
+            "of inhertance",
+            "inhertance encapsulation",
+            "encapsulation abstraction"
+          ],
+          "clarity_score": 85,
+          "completeness": 60,
+          "category": "oop",
+          "sentiment": "neutral",
+          "grammar_quality": 45,
+          "quality_prediction": "poor",
+          "low_effort": false,
+          "low_effort_reason": ""
+        },
+        "scores": {
+          "content_score": 10,
+          "grammar_score": 45,
+          "technical_score": 30,
+          "confidence_score": 40,
+          "total_score": 28,
+          "grade": "F",
+          "low_effort": false,
+          "found_keywords": [
+            "encapsulation",
+            "abstraction"
+          ],
+          "missing_keywords": [
+            "class",
+            "object",
+            "inheritance"
+          ],
+          "matched_keyword_count": 2,
+          "expected_keyword_count": 5,
+          "required_keyword_count": 4,
+          "match_percentage": 40.0,
+          "concept_evidence": {
+            "encapsulation": "encapsulation",
+            "abstraction": "abstractions"
+          },
+          "contradictions": [],
+          "full_form_match": false,
+          "full_form_matches": [],
+          "is_correct": false,
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "decision_reasons": [
+            "Matched 2/5 required concepts; at least 4 are needed."
+          ],
+          "verdict_reason": "Matched 2/5 required concepts; at least 4 are needed."
+        },
+        "feedback": {
+          "overall": "Wrong. Matched 2/5 required concepts; at least 4 are needed.",
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "is_correct": false,
+          "strengths": [
+            "Relevant concepts mentioned: encapsulation, abstraction."
+          ],
+          "weaknesses": [
+            "Missing required concepts: class, object, inheritance.",
+            "Technical coverage is below the correctness threshold.",
+            "Answer is too brief or lacks explanation.",
+            "Grammar and sentence structure need improvement."
+          ],
+          "improvements": [
+            "Add these concepts to make the answer correct: class, object, inheritance.",
+            "Expand the response with a definition, example, and practical use.",
+            "Use at least two clear sentences so the evaluator can verify your reasoning.",
+            "Use direct statements and avoid phrases like 'maybe' or 'I think'."
+          ],
+          "technical_accuracy": "Verdict: Wrong. Matched 2/5 expected concepts (40.0%).",
+          "grammar_suggestions": "Check punctuation, avoid run-on sentences, and capitalize sentence starts.",
+          "next_steps": "Review the missing concepts and retry a similar question.",
+          "missing_concepts": [
+            "class",
+            "object",
+            "inheritance"
+          ],
+          "found_concepts": [
+            "encapsulation",
+            "abstraction"
+          ],
+          "accuracy_report": {
+            "question": "What is Object-Oriented Programming?",
+            "required_concepts": [
+              "class",
+              "object",
+              "inheritance",
+              "encapsulation",
+              "abstraction"
+            ],
+            "matched_concepts": [
+              "encapsulation",
+              "abstraction"
+            ],
+            "missing_concepts": [
+              "class",
+              "object",
+              "inheritance"
+            ],
+            "matched_count": 2,
+            "required_to_pass": 4,
+            "expected_count": 5,
+            "match_percentage": 40.0,
+            "decision_reasons": [
+              "Matched 2/5 required concepts; at least 4 are needed."
+            ],
+            "concept_evidence": {
+              "encapsulation": "encapsulation",
+              "abstraction": "abstractions"
+            },
+            "full_form_matches": []
+          }
+        },
+        "verdict": "wrong",
+        "is_correct": false,
+        "timestamp": "2026-05-14T22:45:47.571403"
+      },
+      {
+        "question_id": "q_3",
+        "question": "What is an API?",
+        "question_category": "web",
+        "expected_keywords": [
+          "interface",
+          "request",
+          "response",
+          "communication"
+        ],
+        "answer": "Application Programming interface, using this we have fetch the other data or using this we can use their things",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 19,
+          "sentence_count": 1,
+          "avg_word_length": 4.947368421052632,
+          "technical_terms": [
+            "interface"
+          ],
+          "key_phrases": [
+            "application programming",
+            "programming interface",
+            "interface using",
+            "using this",
+            "this we",
+            "we have",
+            "have fetch",
+            "fetch the",
+            "the other",
+            "other data"
+          ],
+          "clarity_score": 85,
+          "completeness": 55,
+          "category": "web_development",
+          "sentiment": "neutral",
+          "grammar_quality": 45,
+          "quality_prediction": "average",
+          "low_effort": false,
+          "low_effort_reason": ""
+        },
+        "scores": {
+          "content_score": 45,
+          "grammar_score": 45,
+          "technical_score": 85,
+          "confidence_score": 45,
+          "total_score": 71,
+          "grade": "B+",
+          "low_effort": false,
+          "found_keywords": [
+            "interface"
+          ],
+          "missing_keywords": [
+            "request",
+            "response",
+            "communication"
+          ],
+          "matched_keyword_count": 1,
+          "expected_keyword_count": 4,
+          "required_keyword_count": 3,
+          "match_percentage": 25.0,
+          "concept_evidence": {
+            "interface": "interface"
+          },
+          "contradictions": [],
+          "full_form_match": true,
+          "full_form_matches": [
+            {
+              "acronym": "api",
+              "full_form": "application programming interface",
+              "match_type": "answer_full_form"
+            }
+          ],
+          "is_correct": true,
+          "verdict": "correct",
+          "answer_status": "Correct",
+          "decision_reasons": [
+            "Recognized correct full form: API: application programming interface."
+          ],
+          "verdict_reason": "Recognized correct full form: API: application programming interface."
+        },
+        "feedback": {
+          "overall": "Correct. The full form was recognized (API = application programming interface). The answer is correct, but it is brief.",
+          "verdict": "correct",
+          "answer_status": "Correct",
+          "is_correct": true,
+          "strengths": [
+            "Relevant concepts mentioned: interface.",
+            "Correct full form: API = application programming interface."
+          ],
+          "weaknesses": [
+            "The answer gives the full form but does not explain the concept in detail.",
+            "Grammar and sentence structure need improvement."
+          ],
+          "improvements": [
+            "Make the answer stronger by explaining: request, response, communication.",
+            "Expand the response with a definition, example, and practical use.",
+            "Use at least two clear sentences so the evaluator can verify your reasoning.",
+            "Use direct statements and avoid phrases like 'maybe' or 'I think'."
+          ],
+          "technical_accuracy": "Verdict: Correct. Correct full form recognized; add a short explanation to improve completeness.",
+          "grammar_suggestions": "Check punctuation, avoid run-on sentences, and capitalize sentence starts.",
+          "next_steps": "Move to the next question.",
+          "missing_concepts": [
+            "request",
+            "response",
+            "communication"
+          ],
+          "found_concepts": [
+            "interface"
+          ],
+          "accuracy_report": {
+            "question": "What is an API?",
+            "required_concepts": [
+              "interface",
+              "request",
+              "response",
+              "communication"
+            ],
+            "matched_concepts": [
+              "interface"
+            ],
+            "missing_concepts": [
+              "request",
+              "response",
+              "communication"
+            ],
+            "matched_count": 1,
+            "required_to_pass": 3,
+            "expected_count": 4,
+            "match_percentage": 25.0,
+            "decision_reasons": [
+              "Recognized correct full form: API: application programming interface."
+            ],
+            "concept_evidence": {
+              "interface": "interface"
+            },
+            "full_form_matches": [
+              {
+                "acronym": "api",
+                "full_form": "application programming interface",
+                "match_type": "answer_full_form"
+              }
+            ]
+          }
+        },
+        "verdict": "correct",
+        "is_correct": true,
+        "timestamp": "2026-05-14T22:47:05.988492"
+      },
+      {
+        "question_id": "q_4",
+        "question": "What is a loop in programming?",
+        "question_category": "programming",
+        "expected_keywords": [
+          "iteration",
+          "repeat",
+          "for",
+          "while"
+        ],
+        "answer": "Loop in programming refers to how many times the operation is executed and how much time it is executed",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 19,
+          "sentence_count": 1,
+          "avg_word_length": 4.473684210526316,
+          "technical_terms": [
+            "loop"
+          ],
+          "key_phrases": [
+            "loop in",
+            "in programming",
+            "programming refers",
+            "refers to",
+            "to how",
+            "how many",
+            "many times",
+            "times the",
+            "the operation",
+            "operation is"
+          ],
+          "clarity_score": 85,
+          "completeness": 55,
+          "category": "programming",
+          "sentiment": "neutral",
+          "grammar_quality": 45,
+          "quality_prediction": "poor",
+          "low_effort": false,
+          "low_effort_reason": ""
+        },
+        "scores": {
+          "content_score": 15,
+          "grammar_score": 45,
+          "technical_score": 0,
+          "confidence_score": 40,
+          "total_score": 10,
+          "grade": "F",
+          "low_effort": false,
+          "found_keywords": [],
+          "missing_keywords": [
+            "iteration",
+            "repeat",
+            "for",
+            "while"
+          ],
+          "matched_keyword_count": 0,
+          "expected_keyword_count": 4,
+          "required_keyword_count": 3,
+          "match_percentage": 0.0,
+          "concept_evidence": {},
+          "contradictions": [],
+          "full_form_match": false,
+          "full_form_matches": [],
+          "is_correct": false,
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "decision_reasons": [
+            "Matched 0/4 required concepts; at least 3 are needed."
+          ],
+          "verdict_reason": "Matched 0/4 required concepts; at least 3 are needed."
+        },
+        "feedback": {
+          "overall": "Wrong. Matched 0/4 required concepts; at least 3 are needed.",
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "is_correct": false,
+          "strengths": [],
+          "weaknesses": [
+            "Missing required concepts: iteration, repeat, for, while.",
+            "Technical coverage is below the correctness threshold.",
+            "Answer is too brief or lacks explanation.",
+            "Grammar and sentence structure need improvement."
+          ],
+          "improvements": [
+            "Add these concepts to make the answer correct: iteration, repeat, for, while.",
+            "Expand the response with a definition, example, and practical use.",
+            "Use at least two clear sentences so the evaluator can verify your reasoning.",
+            "Use direct statements and avoid phrases like 'maybe' or 'I think'."
+          ],
+          "technical_accuracy": "Verdict: Wrong. Matched 0/4 expected concepts (0.0%).",
+          "grammar_suggestions": "Check punctuation, avoid run-on sentences, and capitalize sentence starts.",
+          "next_steps": "Review the missing concepts and retry a similar question.",
+          "missing_concepts": [
+            "iteration",
+            "repeat",
+            "for",
+            "while"
+          ],
+          "found_concepts": [],
+          "accuracy_report": {
+            "question": "What is a loop in programming?",
+            "required_concepts": [
+              "iteration",
+              "repeat",
+              "for",
+              "while"
+            ],
+            "matched_concepts": [],
+            "missing_concepts": [
+              "iteration",
+              "repeat",
+              "for",
+              "while"
+            ],
+            "matched_count": 0,
+            "required_to_pass": 3,
+            "expected_count": 4,
+            "match_percentage": 0.0,
+            "decision_reasons": [
+              "Matched 0/4 required concepts; at least 3 are needed."
+            ],
+            "concept_evidence": {},
+            "full_form_matches": []
+          }
+        },
+        "verdict": "wrong",
+        "is_correct": false,
+        "timestamp": "2026-05-14T22:48:32.652397"
+      }
+    ],
+    "last_updated": "2026-05-14T22:48:32.782875"
+  },
+  "session_1778780095.596254": {
+    "session_id": "session_1778780095.596254",
+    "user_id": "user_1778780024033",
+    "answers": [
+      {
+        "question_id": "q_2",
+        "question": "What is an array?",
+        "question_category": "data_structures",
+        "expected_keywords": [
+          "collection",
+          "index",
+          "elements",
+          "sequential"
+        ],
+        "answer": "Array is a collection of homogeneous elements",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 7,
+          "sentence_count": 1,
+          "avg_word_length": 5.571428571428571,
+          "technical_terms": [
+            "array"
+          ],
+          "key_phrases": [
+            "array is",
+            "is a",
+            "a collection",
+            "collection of",
+            "of homogeneous",
+            "homogeneous elements"
+          ],
+          "clarity_score": 70,
+          "completeness": 55,
+          "category": "algorithms",
+          "sentiment": "neutral",
+          "grammar_quality": 45,
+          "quality_prediction": "good",
+          "low_effort": false,
+          "low_effort_reason": ""
+        },
+        "scores": {
+          "content_score": 55,
+          "grammar_score": 45,
+          "technical_score": 50,
+          "confidence_score": 40,
+          "total_score": 49,
+          "grade": "D",
+          "low_effort": false,
+          "found_keywords": [
+            "collection",
+            "elements"
+          ],
+          "missing_keywords": [
+            "index",
+            "sequential"
+          ],
+          "matched_keyword_count": 2,
+          "expected_keyword_count": 4,
+          "required_keyword_count": 3,
+          "match_percentage": 50.0,
+          "concept_evidence": {
+            "collection": "collections",
+            "elements": "ele"
+          },
+          "contradictions": [],
+          "full_form_match": false,
+          "full_form_matches": [],
+          "is_correct": false,
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "decision_reasons": [
+            "Matched 2/4 required concepts; at least 3 are needed.",
+            "The answer is too short to prove understanding.",
+            "The answer appears off-topic for data_structures question."
+          ],
+          "verdict_reason": "Matched 2/4 required concepts; at least 3 are needed. The answer is too short to prove understanding. The answer appears off-topic for data_structures question."
+        },
+        "feedback": {
+          "overall": "Wrong. Matched 2/4 required concepts; at least 3 are needed. The answer is too short to prove understanding. The answer appears off-topic for data_structures question.",
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "is_correct": false,
+          "strengths": [
+            "Relevant concepts mentioned: collection, elements."
+          ],
+          "weaknesses": [
+            "Missing required concepts: index, sequential.",
+            "Technical coverage is below the correctness threshold.",
+            "Grammar and sentence structure need improvement."
+          ],
+          "improvements": [
+            "Add these concepts to make the answer correct: index, sequential.",
+            "Expand the response with a definition, example, and practical use.",
+            "Use at least two clear sentences so the evaluator can verify your reasoning.",
+            "Use direct statements and avoid phrases like 'maybe' or 'I think'."
+          ],
+          "technical_accuracy": "Verdict: Wrong. Matched 2/4 expected concepts (50.0%).",
+          "grammar_suggestions": "Check punctuation, avoid run-on sentences, and capitalize sentence starts.",
+          "next_steps": "Review the missing concepts and retry a similar question.",
+          "missing_concepts": [
+            "index",
+            "sequential"
+          ],
+          "found_concepts": [
+            "collection",
+            "elements"
+          ],
+          "accuracy_report": {
+            "question": "What is an array?",
+            "required_concepts": [
+              "collection",
+              "index",
+              "elements",
+              "sequential"
+            ],
+            "matched_concepts": [
+              "collection",
+              "elements"
+            ],
+            "missing_concepts": [
+              "index",
+              "sequential"
+            ],
+            "matched_count": 2,
+            "required_to_pass": 3,
+            "expected_count": 4,
+            "match_percentage": 50.0,
+            "decision_reasons": [
+              "Matched 2/4 required concepts; at least 3 are needed.",
+              "The answer is too short to prove understanding.",
+              "The answer appears off-topic for data_structures question."
+            ],
+            "concept_evidence": {
+              "collection": "collections",
+              "elements": "ele"
+            },
+            "full_form_matches": []
+          }
+        },
+        "verdict": "wrong",
+        "is_correct": false,
+        "timestamp": "2026-05-14T23:05:16.968657"
+      }
+    ],
+    "last_updated": "2026-05-14T23:05:16.971256"
+  },
+  "session_1778780889.277536": {
+    "session_id": "session_1778780889.277536",
+    "user_id": "user_1778780880293",
+    "answers": [
+      {
+        "question_id": "q_2",
+        "question": "What is the difference between GET and POST methods?",
+        "question_category": "web",
+        "expected_keywords": [
+          "request",
+          "data",
+          "security",
+          "idempotent"
+        ],
+        "answer": "Get method is used to fetch the data, and Post method is used to give input data",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 17,
+          "sentence_count": 1,
+          "avg_word_length": 3.764705882352941,
+          "technical_terms": [
+            "method"
+          ],
+          "key_phrases": [
+            "get method",
+            "method is",
+            "is used",
+            "used to",
+            "to fetch",
+            "fetch the",
+            "the data",
+            "data and",
+            "and post",
+            "post method"
+          ],
+          "clarity_score": 85,
+          "completeness": 55,
+          "category": "oop",
+          "sentiment": "neutral",
+          "grammar_quality": 45,
+          "quality_prediction": "average",
+          "low_effort": false,
+          "low_effort_reason": "",
+          "ai_evaluation": {
+            "used": false,
+            "source": "rule_based",
+            "reason": "AI API HTTP 404: {\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.\",\n    \"status\": \"NOT_FOUND\"\n  }\n}\n"
+          }
+        },
+        "scores": {
+          "content_score": 35,
+          "grammar_score": 45,
+          "technical_score": 25,
+          "confidence_score": 40,
+          "total_score": 30,
+          "grade": "F",
+          "low_effort": false,
+          "found_keywords": [
+            "data"
+          ],
+          "missing_keywords": [
+            "request",
+            "security",
+            "idempotent"
+          ],
+          "matched_keyword_count": 1,
+          "expected_keyword_count": 4,
+          "required_keyword_count": 3,
+          "match_percentage": 25.0,
+          "concept_evidence": {
+            "data": "data"
+          },
+          "contradictions": [],
+          "full_form_match": false,
+          "full_form_matches": [],
+          "is_correct": false,
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "decision_reasons": [
+            "Matched 1/4 required concepts; at least 3 are needed.",
+            "The answer appears off-topic for web question."
+          ],
+          "verdict_reason": "Matched 1/4 required concepts; at least 3 are needed. The answer appears off-topic for web question.",
+          "evaluation_source": "rule_based"
+        },
+        "feedback": {
+          "overall": "Wrong. Matched 1/4 required concepts; at least 3 are needed. The answer appears off-topic for web question.",
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "is_correct": false,
+          "strengths": [
+            "Relevant concepts mentioned: data."
+          ],
+          "weaknesses": [
+            "Missing required concepts: request, security, idempotent.",
+            "Technical coverage is below the correctness threshold.",
+            "Answer is too brief or lacks explanation.",
+            "Grammar and sentence structure need improvement."
+          ],
+          "improvements": [
+            "Add these concepts to make the answer correct: request, security, idempotent.",
+            "Expand the response with a definition, example, and practical use.",
+            "Use at least two clear sentences so the evaluator can verify your reasoning.",
+            "Use direct statements and avoid phrases like 'maybe' or 'I think'."
+          ],
+          "technical_accuracy": "Verdict: Wrong. Matched 1/4 expected concepts (25.0%).",
+          "grammar_suggestions": "Check punctuation, avoid run-on sentences, and capitalize sentence starts.",
+          "next_steps": "Review the missing concepts and retry a similar question.",
+          "missing_concepts": [
+            "request",
+            "security",
+            "idempotent"
+          ],
+          "found_concepts": [
+            "data"
+          ],
+          "accuracy_report": {
+            "question": "What is the difference between GET and POST methods?",
+            "required_concepts": [
+              "request",
+              "data",
+              "security",
+              "idempotent"
+            ],
+            "matched_concepts": [
+              "data"
+            ],
+            "missing_concepts": [
+              "request",
+              "security",
+              "idempotent"
+            ],
+            "matched_count": 1,
+            "required_to_pass": 3,
+            "expected_count": 4,
+            "match_percentage": 25.0,
+            "decision_reasons": [
+              "Matched 1/4 required concepts; at least 3 are needed.",
+              "The answer appears off-topic for web question."
+            ],
+            "concept_evidence": {
+              "data": "data"
+            },
+            "full_form_matches": []
+          }
+        },
+        "verdict": "wrong",
+        "is_correct": false,
+        "evaluation_source": "rule_based",
+        "timestamp": "2026-05-14T23:18:54.328909"
+      }
+    ],
+    "last_updated": "2026-05-14T23:18:54.414255"
+  },
+  "session_1778781435.645391": {
+    "session_id": "session_1778781435.645391",
+    "user_id": "user_1778781385370",
+    "answers": [
+      {
+        "question_id": "q_2",
+        "question": "What is an API?",
+        "question_category": "web",
+        "expected_keywords": [
+          "interface",
+          "request",
+          "response",
+          "communication"
+        ],
+        "answer": "Application programming interface",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 3,
+          "sentence_count": 1,
+          "avg_word_length": 10.333333333333334,
+          "technical_terms": [
+            "interface"
+          ],
+          "key_phrases": [
+            "application programming",
+            "programming interface"
+          ],
+          "clarity_score": 70,
+          "completeness": 55,
+          "category": "web_development",
+          "sentiment": "neutral",
+          "grammar_quality": 45,
+          "quality_prediction": "average",
+          "low_effort": true,
+          "low_effort_reason": "too_short",
+          "ai_evaluation": {
+            "used": false,
+            "source": "rule_based",
+            "reason": "AI API HTTP 404: {\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.\",\n    \"status\": \"NOT_FOUND\"\n  }\n}\n"
+          }
+        },
+        "scores": {
+          "content_score": 45,
+          "grammar_score": 45,
+          "technical_score": 85,
+          "confidence_score": 45,
+          "total_score": 71,
+          "grade": "B+",
+          "low_effort": false,
+          "found_keywords": [
+            "interface"
+          ],
+          "missing_keywords": [
+            "request",
+            "response",
+            "communication"
+          ],
+          "matched_keyword_count": 1,
+          "expected_keyword_count": 4,
+          "required_keyword_count": 3,
+          "match_percentage": 25.0,
+          "concept_evidence": {
+            "interface": "interface"
+          },
+          "contradictions": [],
+          "full_form_match": true,
+          "full_form_matches": [
+            {
+              "acronym": "api",
+              "full_form": "application programming interface",
+              "match_type": "answer_full_form"
+            }
+          ],
+          "is_correct": true,
+          "verdict": "correct",
+          "answer_status": "Correct",
+          "decision_reasons": [
+            "Recognized correct full form: API: application programming interface."
+          ],
+          "verdict_reason": "Recognized correct full form: API: application programming interface.",
+          "evaluation_source": "rule_based"
+        },
+        "feedback": {
+          "overall": "Correct. The full form was recognized (API = application programming interface). The answer is correct, but it is brief.",
+          "verdict": "correct",
+          "answer_status": "Correct",
+          "is_correct": true,
+          "strengths": [
+            "Relevant concepts mentioned: interface.",
+            "Correct full form: API = application programming interface."
+          ],
+          "weaknesses": [
+            "The answer gives the full form but does not explain the concept in detail.",
+            "Grammar and sentence structure need improvement."
+          ],
+          "improvements": [
+            "Make the answer stronger by explaining: request, response, communication.",
+            "Expand the response with a definition, example, and practical use.",
+            "Use at least two clear sentences so the evaluator can verify your reasoning.",
+            "Use direct statements and avoid phrases like 'maybe' or 'I think'."
+          ],
+          "technical_accuracy": "Verdict: Correct. Correct full form recognized; add a short explanation to improve completeness.",
+          "grammar_suggestions": "Check punctuation, avoid run-on sentences, and capitalize sentence starts.",
+          "next_steps": "Move to the next question.",
+          "missing_concepts": [
+            "request",
+            "response",
+            "communication"
+          ],
+          "found_concepts": [
+            "interface"
+          ],
+          "accuracy_report": {
+            "question": "What is an API?",
+            "required_concepts": [
+              "interface",
+              "request",
+              "response",
+              "communication"
+            ],
+            "matched_concepts": [
+              "interface"
+            ],
+            "missing_concepts": [
+              "request",
+              "response",
+              "communication"
+            ],
+            "matched_count": 1,
+            "required_to_pass": 3,
+            "expected_count": 4,
+            "match_percentage": 25.0,
+            "decision_reasons": [
+              "Recognized correct full form: API: application programming interface."
+            ],
+            "concept_evidence": {
+              "interface": "interface"
+            },
+            "full_form_matches": [
+              {
+                "acronym": "api",
+                "full_form": "application programming interface",
+                "match_type": "answer_full_form"
+              }
+            ]
+          }
+        },
+        "verdict": "correct",
+        "is_correct": true,
+        "evaluation_source": "rule_based",
+        "timestamp": "2026-05-14T23:27:30.237168"
+      }
+    ],
+    "last_updated": "2026-05-14T23:27:30.262135"
+  },
+  "session_1778782345.181038": {
+    "session_id": "session_1778782345.181038",
+    "user_id": "user_1778782338192",
+    "answers": [
+      {
+        "question_id": "q_2",
+        "question": "What is an API?",
+        "question_category": "web",
+        "expected_keywords": [
+          "interface",
+          "request",
+          "response",
+          "communication"
+        ],
+        "answer": "Application Programming interface",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 3,
+          "sentence_count": 1,
+          "avg_word_length": 10.333333333333334,
+          "technical_terms": [
+            "interface"
+          ],
+          "key_phrases": [
+            "application programming",
+            "programming interface"
+          ],
+          "clarity_score": 70,
+          "completeness": 55,
+          "category": "web_development",
+          "sentiment": "neutral",
+          "grammar_quality": 45,
+          "quality_prediction": "average",
+          "low_effort": true,
+          "low_effort_reason": "too_short",
+          "ai_evaluation": {
+            "used": true,
+            "model": "gemini-2.5-flash",
+            "source": "ai"
+          }
+        },
+        "scores": {
+          "content_score": 60,
+          "grammar_score": 75,
+          "technical_score": 60,
+          "confidence_score": 70,
+          "total_score": 60,
+          "grade": "B",
+          "low_effort": false,
+          "found_keywords": [
+            "Application Programming Interface"
+          ],
+          "missing_keywords": [
+            "request",
+            "response",
+            "communication",
+            "contract",
+            "interaction"
+          ],
+          "matched_keyword_count": 1,
+          "expected_keyword_count": 4,
+          "required_keyword_count": 0,
+          "match_percentage": 25.0,
+          "concept_evidence": {},
+          "contradictions": [],
+          "full_form_match": true,
+          "full_form_matches": [],
+          "is_correct": true,
+          "verdict": "correct",
+          "answer_status": "Correct",
+          "decision_reasons": [
+            "The answer provides the correct full form of API.",
+            "The answer lacks any functional explanation or definition of what an API actually 'is' beyond its acronym, which is expected for a 'What is X?' question.",
+            "The prompt states that for 'What is X?' questions, a correct full form alone can be marked correct but brief."
+          ],
+          "verdict_reason": "The answer provides the correct full form of API. The answer lacks any functional explanation or definition of what an API actually 'is' beyond its acronym, which is expected for a 'What is X?' question. The prompt states that for 'What is X?' questions, a correct full form alone can be marked correct but brief.",
+          "evaluation_source": "ai",
+          "ai_model": "gemini-2.5-flash"
+        },
+        "feedback": {
+          "overall": "Correct. The answer correctly provides the full form of API. However, it does not explain what an API is or how it functions, which is crucial for a complete understanding.",
+          "verdict": "correct",
+          "answer_status": "Correct",
+          "is_correct": true,
+          "strengths": [
+            "Correctly identified the full form of API."
+          ],
+          "weaknesses": [
+            "Lacks a functional definition or explanation of what an API does.",
+            "Does not cover key concepts like communication, requests, or responses."
+          ],
+          "improvements": [
+            "Elaborate on the definition of an API, explaining its purpose as a set of rules and protocols for building and interacting with software applications.",
+            "Mention that APIs allow different software components to communicate and exchange data, often involving requests and responses."
+          ],
+          "technical_accuracy": "High (the full form is accurate).",
+          "grammar_suggestions": "Grammar was not the main focus of this evaluation.",
+          "next_steps": "Provide a concise explanation of an API's role in software communication.",
+          "missing_concepts": [
+            "request",
+            "response",
+            "communication",
+            "contract",
+            "interaction"
+          ],
+          "found_concepts": [
+            "Application Programming Interface"
+          ],
+          "accuracy_report": {
+            "question": "What is an API?",
+            "required_concepts": [
+              "interface",
+              "request",
+              "response",
+              "communication"
+            ],
+            "matched_concepts": [
+              "Application Programming Interface"
+            ],
+            "missing_concepts": [
+              "request",
+              "response",
+              "communication",
+              "contract",
+              "interaction"
+            ],
+            "matched_count": 1,
+            "required_to_pass": 0,
+            "expected_count": 4,
+            "match_percentage": 25.0,
+            "decision_reasons": [
+              "The answer provides the correct full form of API.",
+              "The answer lacks any functional explanation or definition of what an API actually 'is' beyond its acronym, which is expected for a 'What is X?' question.",
+              "The prompt states that for 'What is X?' questions, a correct full form alone can be marked correct but brief."
+            ],
+            "concept_evidence": {},
+            "evaluation_source": "ai",
+            "ai_model": "gemini-2.5-flash"
+          }
+        },
+        "verdict": "correct",
+        "is_correct": true,
+        "evaluation_source": "ai",
+        "timestamp": "2026-05-14T23:42:44.632840"
+      }
+    ],
+    "last_updated": "2026-05-14T23:42:44.690582"
+  },
+  "session_1778782398.791689": {
+    "session_id": "session_1778782398.791689",
+    "user_id": "user_1778782389446",
+    "answers": [
+      {
+        "question_id": "q_2",
+        "question": "What is a function?",
+        "question_category": "programming",
+        "expected_keywords": [
+          "block",
+          "reusable",
+          "call",
+          "parameter",
+          "return"
+        ],
+        "answer": "The function is the set of algorithm which perform specific task and can be reused.",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 15,
+          "sentence_count": 1,
+          "avg_word_length": 4.6,
+          "technical_terms": [
+            "algorithm",
+            "function"
+          ],
+          "key_phrases": [
+            "the function",
+            "function is",
+            "is the",
+            "the set",
+            "set of",
+            "of algorithm",
+            "algorithm which",
+            "which perform",
+            "perform specific",
+            "specific task"
+          ],
+          "clarity_score": 85,
+          "completeness": 60,
+          "category": "programming",
+          "sentiment": "neutral",
+          "grammar_quality": 80,
+          "quality_prediction": "good",
+          "low_effort": false,
+          "low_effort_reason": "",
+          "ai_evaluation": {
+            "used": true,
+            "model": "gemini-2.5-flash",
+            "source": "ai"
+          }
+        },
+        "scores": {
+          "content_score": 40,
+          "grammar_score": 75,
+          "technical_score": 40,
+          "confidence_score": 70,
+          "total_score": 40,
+          "grade": "D",
+          "low_effort": false,
+          "found_keywords": [
+            "reusable",
+            "specific task"
+          ],
+          "missing_keywords": [
+            "block of code",
+            "parameters",
+            "return value",
+            "callable"
+          ],
+          "matched_keyword_count": 2,
+          "expected_keyword_count": 5,
+          "required_keyword_count": 0,
+          "match_percentage": 40.0,
+          "concept_evidence": {},
+          "contradictions": [],
+          "full_form_match": false,
+          "full_form_matches": [],
+          "is_correct": false,
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "decision_reasons": [
+            "Answer correctly identified reusability and purpose.",
+            "Core definition ('set of algorithm') was imprecise.",
+            "Crucial concepts like parameters, return values, and being a 'block of code' were omitted.",
+            "Grammatical errors were present."
+          ],
+          "verdict_reason": "Answer correctly identified reusability and purpose. Core definition ('set of algorithm') was imprecise. Crucial concepts like parameters, return values, and being a 'block of code' were omitted. Grammatical errors were present.",
+          "evaluation_source": "ai",
+          "ai_model": "gemini-2.5-flash"
+        },
+        "feedback": {
+          "overall": "Wrong. The answer correctly identifies that a function performs a specific task and can be reused. However, the definition of a function as a 'set of algorithm' is imprecise. A function is more accurately described as a block of code. Key aspects like taking parameters, returning values, and being callable were not mentioned.",
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "is_correct": false,
+          "strengths": [
+            "Identifies reusability as a key characteristic.",
+            "Recognizes that functions perform specific tasks."
+          ],
+          "weaknesses": [
+            "Imprecise definition of a function ('set of algorithm' instead of 'block of code').",
+            "Missing fundamental concepts such as parameters, return values, and the mechanism of calling/invoking a function."
+          ],
+          "improvements": [
+            "Define a function as a 'block of code' or 'subroutine'.",
+            "Explain that functions can accept 'parameters' (inputs) and often 'return' a value (output).",
+            "Mention that functions are 'callable' or 'invoked' to execute their code."
+          ],
+          "technical_accuracy": "Partially accurate, but the core definition is imprecise and lacks essential details.",
+          "grammar_suggestions": "Consider rephrasing 'The function is the set of algorithm which perform specific task and can be reused.' to 'A function is a block of code that performs a specific task and can be reused.' (Correcting 'algorithm' to 'algorithms' or 'a set of algorithms', and 'perform' to 'performs').",
+          "next_steps": "Review the fundamental definition and components of a function in programming, focusing on its structure, inputs, outputs, and execution.",
+          "missing_concepts": [
+            "block of code",
+            "parameters",
+            "return value",
+            "callable"
+          ],
+          "found_concepts": [
+            "reusable",
+            "specific task"
+          ],
+          "accuracy_report": {
+            "question": "What is a function?",
+            "required_concepts": [
+              "block",
+              "reusable",
+              "call",
+              "parameter",
+              "return"
+            ],
+            "matched_concepts": [
+              "reusable",
+              "specific task"
+            ],
+            "missing_concepts": [
+              "block of code",
+              "parameters",
+              "return value",
+              "callable"
+            ],
+            "matched_count": 2,
+            "required_to_pass": 0,
+            "expected_count": 5,
+            "match_percentage": 40.0,
+            "decision_reasons": [
+              "Answer correctly identified reusability and purpose.",
+              "Core definition ('set of algorithm') was imprecise.",
+              "Crucial concepts like parameters, return values, and being a 'block of code' were omitted.",
+              "Grammatical errors were present."
+            ],
+            "concept_evidence": {},
+            "evaluation_source": "ai",
+            "ai_model": "gemini-2.5-flash"
+          }
+        },
+        "verdict": "wrong",
+        "is_correct": false,
+        "evaluation_source": "ai",
+        "timestamp": "2026-05-14T23:44:05.221920"
+      },
+      {
+        "question_id": "q_3",
+        "question": "What is an API?",
+        "question_category": "web",
+        "expected_keywords": [
+          "interface",
+          "request",
+          "response",
+          "communication"
+        ],
+        "answer": "Application programming interface, which is used for requesting and getting the response",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 12,
+          "sentence_count": 1,
+          "avg_word_length": 6.416666666666667,
+          "technical_terms": [
+            "response",
+            "interface"
+          ],
+          "key_phrases": [
+            "application programming",
+            "programming interface",
+            "interface which",
+            "which is",
+            "is used",
+            "used for",
+            "for requesting",
+            "requesting and",
+            "and getting",
+            "getting the"
+          ],
+          "clarity_score": 85,
+          "completeness": 60,
+          "category": "web_development",
+          "sentiment": "neutral",
+          "grammar_quality": 45,
+          "quality_prediction": "average",
+          "low_effort": false,
+          "low_effort_reason": "",
+          "ai_evaluation": {
+            "used": true,
+            "model": "gemini-2.5-flash",
+            "source": "ai"
+          }
+        },
+        "scores": {
+          "content_score": 75,
+          "grammar_score": 75,
+          "technical_score": 75,
+          "confidence_score": 70,
+          "total_score": 75,
+          "grade": "B+",
+          "low_effort": false,
+          "found_keywords": [
+            "interface",
+            "request",
+            "response"
+          ],
+          "missing_keywords": [
+            "communication",
+            "set of rules/protocols",
+            "enables different software components to interact"
+          ],
+          "matched_keyword_count": 3,
+          "expected_keyword_count": 4,
+          "required_keyword_count": 0,
+          "match_percentage": 75.0,
+          "concept_evidence": {},
+          "contradictions": [],
+          "full_form_match": true,
+          "full_form_matches": [],
+          "is_correct": true,
+          "verdict": "correct",
+          "answer_status": "Correct",
+          "decision_reasons": [
+            "The full form 'Application Programming Interface' is correctly stated.",
+            "The core function of 'requesting and getting the response' is a fundamental and correct description of an API's role.",
+            "For a 'fresher' role and a 'medium' difficulty question, this basic understanding is considered correct, though brief."
+          ],
+          "verdict_reason": "The full form 'Application Programming Interface' is correctly stated. The core function of 'requesting and getting the response' is a fundamental and correct description of an API's role. For a 'fresher' role and a 'medium' difficulty question, this basic understanding is considered correct, though brief.",
+          "evaluation_source": "ai",
+          "ai_model": "gemini-2.5-flash"
+        },
+        "feedback": {
+          "overall": "Correct. The answer correctly provides the full form of API and accurately describes its fundamental function of handling requests and responses. To make the answer more comprehensive, consider elaborating on what an 'interface' entails in this context and how it facilitates communication between different software systems.",
+          "verdict": "correct",
+          "answer_status": "Correct",
+          "is_correct": true,
+          "strengths": [
+            "Correctly identified the full form: Application Programming Interface.",
+            "Accurately described the core function of requesting and receiving responses."
+          ],
+          "weaknesses": [
+            "Lacks depth in explaining the 'interface' aspect.",
+            "Does not explicitly mention that APIs define a set of rules or protocols.",
+            "Could further elaborate on how APIs enable different software components or applications to communicate."
+          ],
+          "improvements": [
+            "Explain that an API acts as a messenger or a set of defined rules/protocols that allow different software applications to talk to each other.",
+            "Mention that it abstracts the underlying implementation details, allowing developers to interact with a service without knowing its internal workings.",
+            "Provide a simple analogy if appropriate for the audience (e.g., a waiter in a restaurant)."
+          ],
+          "technical_accuracy": "Accurate",
+          "grammar_suggestions": "Good",
+          "next_steps": "Explore different types of APIs (e.g., REST, SOAP, GraphQL), their common use cases, and the concept of API documentation.",
+          "missing_concepts": [
+            "communication",
+            "set of rules/protocols",
+            "enables different software components to interact"
+          ],
+          "found_concepts": [
+            "interface",
+            "request",
+            "response"
+          ],
+          "accuracy_report": {
+            "question": "What is an API?",
+            "required_concepts": [
+              "interface",
+              "request",
+              "response",
+              "communication"
+            ],
+            "matched_concepts": [
+              "interface",
+              "request",
+              "response"
+            ],
+            "missing_concepts": [
+              "communication",
+              "set of rules/protocols",
+              "enables different software components to interact"
+            ],
+            "matched_count": 3,
+            "required_to_pass": 0,
+            "expected_count": 4,
+            "match_percentage": 75.0,
+            "decision_reasons": [
+              "The full form 'Application Programming Interface' is correctly stated.",
+              "The core function of 'requesting and getting the response' is a fundamental and correct description of an API's role.",
+              "For a 'fresher' role and a 'medium' difficulty question, this basic understanding is considered correct, though brief."
+            ],
+            "concept_evidence": {},
+            "evaluation_source": "ai",
+            "ai_model": "gemini-2.5-flash"
+          }
+        },
+        "verdict": "correct",
+        "is_correct": true,
+        "evaluation_source": "ai",
+        "timestamp": "2026-05-14T23:45:55.432347"
+      }
+    ],
+    "last_updated": "2026-05-14T23:45:55.515039"
+  },
+  "session_1778782870.203349": {
+    "session_id": "session_1778782870.203349",
+    "user_id": "test_user",
+    "answers": [
+      {
+        "question_id": "q_1",
+        "question": "Explain what a database is.",
+        "question_category": "database",
+        "expected_keywords": [
+          "storage",
+          "data",
+          "table",
+          "records"
+        ],
+        "answer": "Application Programming Interface",
+        "answer_type": "text",
+        "analysis": {
+          "word_count": 3,
+          "sentence_count": 1,
+          "avg_word_length": 10.333333333333334,
+          "technical_terms": [
+            "interface"
+          ],
+          "key_phrases": [
+            "application programming",
+            "programming interface"
+          ],
+          "clarity_score": 70,
+          "completeness": 55,
+          "category": "web_development",
+          "sentiment": "neutral",
+          "grammar_quality": 45,
+          "quality_prediction": "average",
+          "low_effort": true,
+          "low_effort_reason": "too_short",
+          "ai_evaluation": {
+            "used": true,
+            "model": "gemini-2.5-flash",
+            "source": "ai"
+          }
+        },
+        "scores": {
+          "content_score": 0,
+          "grammar_score": 75,
+          "technical_score": 0,
+          "confidence_score": 70,
+          "total_score": 0,
+          "grade": "F",
+          "low_effort": false,
+          "found_keywords": [],
+          "missing_keywords": [
+            "storage",
+            "data",
+            "table",
+            "records"
+          ],
+          "matched_keyword_count": 0,
+          "expected_keyword_count": 4,
+          "required_keyword_count": 0,
+          "match_percentage": 0.0,
+          "concept_evidence": {},
+          "contradictions": [],
+          "full_form_match": false,
+          "full_form_matches": [],
+          "is_correct": false,
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "decision_reasons": [
+            "The answer provided a definition for 'Application Programming Interface' which is completely unrelated to the question 'Explain what a database is'.",
+            "None of the expected concepts related to databases (storage, data, table, records) were mentioned."
+          ],
+          "verdict_reason": "The answer provided a definition for 'Application Programming Interface' which is completely unrelated to the question 'Explain what a database is'. None of the expected concepts related to databases (storage, data, table, records) were mentioned.",
+          "evaluation_source": "ai",
+          "ai_model": "gemini-2.5-flash"
+        },
+        "feedback": {
+          "overall": "Wrong. The answer provided a definition for 'Application Programming Interface' which is completely unrelated to the question 'Explain what a database is'. A database is a structured collection of data, typically stored electronically in a computer system.",
+          "verdict": "wrong",
+          "answer_status": "Wrong",
+          "is_correct": false,
+          "strengths": [],
+          "weaknesses": [
+            "Completely misunderstood the question.",
+            "Provided an incorrect definition for the requested concept."
+          ],
+          "improvements": [
+            "Review fundamental database concepts, including its purpose, structure, and common components.",
+            "Ensure a clear understanding of the question before attempting to answer."
+          ],
+          "technical_accuracy": "Incorrect. The answer defines an API, not a database.",
+          "grammar_suggestions": "N/A (The answer is too short and off-topic to provide meaningful grammar suggestions).",
+          "next_steps": "Study the core definition and characteristics of a database. Understand the distinction between a database and an API.",
+          "missing_concepts": [
+            "storage",
+            "data",
+            "table",
+            "records"
+          ],
+          "found_concepts": [],
+          "accuracy_report": {
+            "question": "Explain what a database is.",
+            "required_concepts": [
+              "storage",
+              "data",
+              "table",
+              "records"
+            ],
+            "matched_concepts": [],
+            "missing_concepts": [
+              "storage",
+              "data",
+              "table",
+              "records"
+            ],
+            "matched_count": 0,
+            "required_to_pass": 0,
+            "expected_count": 4,
+            "match_percentage": 0.0,
+            "decision_reasons": [
+              "The answer provided a definition for 'Application Programming Interface' which is completely unrelated to the question 'Explain what a database is'.",
+              "None of the expected concepts related to databases (storage, data, table, records) were mentioned."
+            ],
+            "concept_evidence": {},
+            "evaluation_source": "ai",
+            "ai_model": "gemini-2.5-flash"
+          }
+        },
+        "verdict": "wrong",
+        "is_correct": false,
+        "evaluation_source": "ai",
+        "timestamp": "2026-05-14T23:54:46.247888"
+      }
+    ],
+    "last_updated": "2026-05-14T23:54:46.266184"
   }
 }

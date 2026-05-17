@@ -365,5 +365,541 @@
       }
     ],
     "completed_at": "2026-05-04T22:54:05.435188"
+  },
+  "session_1778606439.95262": {
+    "session_id": "session_1778606439.95262",
+    "job_role": "software_developer",
+    "difficulty": "medium",
+    "total_questions": 10,
+    "correct_answers": 0,
+    "wrong_answers": 10,
+    "accuracy_percentage": 0.0,
+    "average_score": 9.3,
+    "scores_breakdown": {
+      "content": 13.5,
+      "grammar": 40.0,
+      "technical": 6.5,
+      "confidence": 16.0
+    },
+    "answer_results": [
+      {
+        "question_id": "q_2",
+        "question": "Explain ACID properties in databases.",
+        "category": "database",
+        "verdict": "Wrong",
+        "is_correct": false,
+        "score": 0,
+        "technical_score": 0,
+        "matched_concepts": [
+          "atomicity",
+          "consistency",
+          "isolation"
+        ],
+        "missing_concepts": [
+          "durability"
+        ],
+        "reason": "No meaningful answer was provided."
+      },
+      {
+        "question_id": "q_3",
+        "question": "Explain the MVC architecture pattern.",
+        "category": "architecture",
+        "verdict": "Wrong",
+        "is_correct": false,
+        "score": 0,
+        "technical_score": 0,
+        "matched_concepts": [
+          "model",
+          "view",
+          "controller"
+        ],
+        "missing_concepts": [
+          "separation"
+        ],
+        "reason": "No meaningful answer was provided."
+      },
+      {
+        "question_id": "q_4",
+        "question": "Explain the concept of authentication vs authorization.",
+        "category": "security",
+        "verdict": "Wrong",
+        "is_correct": false,
+        "score": 0,
+        "technical_score": 0,
+        "matched_concepts": [],
+        "missing_concepts": [
+          "authentication",
+          "authorization",
+          "identity",
+          "permission"
+        ],
+        "reason": "No meaningful answer was provided."
+      },
+      {
+        "question_id": "q_5",
+        "question": "What is the difference between stack and heap memory?",
+        "category": "programming",
+        "verdict": "Wrong",
+        "is_correct": false,
+        "score": 0,
+        "technical_score": 0,
+        "matched_concepts": [],
+        "missing_concepts": [
+          "stack",
+          "heap",
+          "memory",
+          "allocation",
+          "performance"
+        ],
+        "reason": "No meaningful answer was provided."
+      },
+      {
+        "question_id": "q_6",
+        "question": "What is the purpose of indexing in databases?",
+        "category": "database",
+        "verdict": "Wrong",
+        "is_correct": false,
+        "score": 0,
+        "technical_score": 0,
+        "matched_concepts": [],
+        "missing_concepts": [
+          "index",
+          "performance",
+          "search",
+          "faster"
+        ],
+        "reason": "No meaningful answer was provided."
+      },
+      {
+        "question_id": "q_7",
+        "question": "Explain the difference between REST and SOAP APIs.",
+        "category": "web",
+        "verdict": "Wrong",
+        "is_correct": false,
+        "score": 8,
+        "technical_score": 0,
+        "matched_concepts": [],
+        "missing_concepts": [
+          "rest",
+          "soap",
+          "xml",
+          "json",
+          "http",
+          "protocol"
+        ],
+        "reason": "Matched 0/6 required concepts; at least 5 are needed. The answer is too short to prove understanding. The answer appears off-topic for web question."
+      },
+      {
+        "question_id": "q_8",
+        "question": "Explain the concept of recursion with an example.",
+        "category": "programming",
+        "verdict": "Wrong",
+        "is_correct": false,
+        "score": 29,
+        "technical_score": 25,
+        "matched_concepts": [
+          "function"
+        ],
+        "missing_concepts": [
+          "base case",
+          "stack",
+          "self-call"
+        ],
+        "reason": "Matched 1/4 required concepts; at least 3 are needed. The answer is too short to prove understanding."
+      },
+      {
+        "question_id": "q_9",
+        "question": "What is SQL injection and how can you prevent it?",
+        "category": "security",
+        "verdict": "Wrong",
+        "is_correct": false,
+        "score": 0,
+        "technical_score": 0,
+        "matched_concepts": [],
+        "missing_concepts": [
+          "injection",
+          "parameterized",
+          "validation",
+          "sanitization"
+        ],
+        "reason": "No meaningful answer was provided."
+      },
+      {
+        "question_id": "q_10",
+        "question": "What is the difference between inner join and left join?",
+        "category": "database",
+        "verdict": "Wrong",
+        "is_correct": false,
+        "score": 43,
+        "technical_score": 40,
+        "matched_concepts": [
+          "inner",
+          "left"
+        ],
+        "missing_concepts": [
+          "join",
+          "matching",
+          "null"
+        ],
+        "reason": "Matched 2/5 required concepts; at least 4 are needed. The answer is too short to prove understanding."
+      },
+      {
+        "question_id": "q_11",
+        "question": "Tell me about yourself.",
+        "category": "general",
+        "verdict": "Wrong",
+        "is_correct": false,
+        "score": 13,
+        "technical_score": 0,
+        "matched_concepts": [],
+        "missing_concepts": [
+          "background",
+          "skills",
+          "experience"
+        ],
+        "reason": "Matched 0/3 required concepts; at least 3 are needed."
+      }
+    ],
+    "weak_areas": [
+      {
+        "category": "security",
+        "average_score": 0.0,
+        "question_count": 2,
+        "wrong_count": 2,
+        "missing_concepts": [
+          "authentication",
+          "authorization",
+          "identity",
+          "permission"
+        ],
+        "recommendation": "Study validation, authorization, authentication, and secure coding patterns."
+      },
+      {
+        "category": "architecture",
+        "average_score": 0.0,
+        "question_count": 1,
+        "wrong_count": 1,
+        "missing_concepts": [
+          "separation"
+        ],
+        "recommendation": "Review this topic in depth with examples."
+      },
+      {
+        "category": "web",
+        "average_score": 0.0,
+        "question_count": 1,
+        "wrong_count": 1,
+        "missing_concepts": [
+          "rest",
+          "soap",
+          "xml",
+          "json"
+        ],
+        "recommendation": "Study HTTP, REST APIs, HTML/CSS/JS, and frontend frameworks."
+      },
+      {
+        "category": "general",
+        "average_score": 0.0,
+        "question_count": 1,
+        "wrong_count": 1,
+        "missing_concepts": [
+          "background",
+          "skills",
+          "experience"
+        ],
+        "recommendation": "Practice forming clear, complete answers even when uncertain."
+      },
+      {
+        "category": "programming",
+        "average_score": 12.5,
+        "question_count": 2,
+        "wrong_count": 2,
+        "missing_concepts": [
+          "stack",
+          "heap",
+          "memory",
+          "allocation"
+        ],
+        "recommendation": "Practice coding fundamentals: variables, loops, functions, recursion."
+      },
+      {
+        "category": "database",
+        "average_score": 13.33,
+        "question_count": 3,
+        "wrong_count": 3,
+        "missing_concepts": [
+          "durability",
+          "index",
+          "performance",
+          "search"
+        ],
+        "recommendation": "Practice SQL queries, JOINs, normalization, and ACID properties."
+      }
+    ],
+    "strengths": [],
+    "overall_feedback": "You answered 0.0% correctly. Focus on fundamentals first: definitions, required keywords, and one concrete example for each topic.",
+    "improvement_suggestions": [
+      {
+        "area": "security",
+        "action": "Practice secure input handling and common vulnerability prevention.",
+        "focus_concepts": [
+          "authentication",
+          "authorization",
+          "identity",
+          "permission"
+        ],
+        "resources": [
+          "OWASP Top 10",
+          "PortSwigger Web Security Academy"
+        ],
+        "priority": "high"
+      },
+      {
+        "area": "architecture",
+        "action": "Review and practice this topic with examples.",
+        "focus_concepts": [
+          "separation"
+        ],
+        "resources": [
+          "Online tutorials",
+          "Practice exercises"
+        ],
+        "priority": "high"
+      },
+      {
+        "area": "web",
+        "action": "Build small web projects to understand HTTP, APIs, and frameworks.",
+        "focus_concepts": [
+          "rest",
+          "soap",
+          "xml",
+          "json"
+        ],
+        "resources": [
+          "MDN Web Docs",
+          "React Documentation",
+          "REST API Tutorial"
+        ],
+        "priority": "high"
+      },
+      {
+        "area": "general",
+        "action": "Practice more interview questions and review fundamentals.",
+        "focus_concepts": [
+          "background",
+          "skills",
+          "experience"
+        ],
+        "resources": [
+          "Interview practice notes",
+          "Mock interviews"
+        ],
+        "priority": "high"
+      },
+      {
+        "area": "programming",
+        "action": "Practice coding problems and explain each solution aloud.",
+        "focus_concepts": [
+          "stack",
+          "heap",
+          "memory",
+          "allocation"
+        ],
+        "resources": [
+          "LeetCode",
+          "HackerRank",
+          "GeeksforGeeks"
+        ],
+        "priority": "high"
+      },
+      {
+        "area": "database",
+        "action": "Practice SQL queries and learn database design patterns.",
+        "focus_concepts": [
+          "durability",
+          "index",
+          "performance",
+          "search"
+        ],
+        "resources": [
+          "SQLZoo",
+          "Database Normalization Guide",
+          "Use The Index, Luke"
+        ],
+        "priority": "high"
+      }
+    ],
+    "completed_at": "2026-05-12T22:55:15.393969"
+  },
+  "session_1778776904.393851": {
+    "session_id": "session_1778776904.393851",
+    "job_role": "fresher",
+    "difficulty": "medium",
+    "total_questions": 1,
+    "correct_answers": 0,
+    "wrong_answers": 1,
+    "accuracy_percentage": 0.0,
+    "average_score": 0.0,
+    "scores_breakdown": {
+      "content": 0.0,
+      "grammar": 40.0,
+      "technical": 0.0,
+      "confidence": 0.0
+    },
+    "answer_results": [
+      {
+        "question_id": "q_2",
+        "question": "What is HTML?",
+        "category": "web",
+        "verdict": "Wrong",
+        "is_correct": false,
+        "score": 0,
+        "technical_score": 0,
+        "matched_concepts": [
+          "markup"
+        ],
+        "missing_concepts": [
+          "tags",
+          "structure",
+          "webpage"
+        ],
+        "reason": "The answer is too short or incomplete for this question."
+      }
+    ],
+    "weak_areas": [
+      {
+        "category": "web",
+        "average_score": 0.0,
+        "question_count": 1,
+        "wrong_count": 1,
+        "missing_concepts": [
+          "tags",
+          "structure",
+          "webpage"
+        ],
+        "recommendation": "Study HTTP, REST APIs, HTML/CSS/JS, and frontend frameworks."
+      }
+    ],
+    "strengths": [],
+    "overall_feedback": "You answered 0.0% correctly. Focus on fundamentals first: definitions, required keywords, and one concrete example for each topic.",
+    "improvement_suggestions": [
+      {
+        "area": "web",
+        "action": "Build small web projects to understand HTTP, APIs, and frameworks.",
+        "focus_concepts": [
+          "tags",
+          "structure",
+          "webpage"
+        ],
+        "resources": [
+          "MDN Web Docs",
+          "React Documentation",
+          "REST API Tutorial"
+        ],
+        "priority": "high"
+      }
+    ],
+    "completed_at": "2026-05-14T22:12:05.050889"
+  },
+  "session_1778782398.791689": {
+    "session_id": "session_1778782398.791689",
+    "job_role": "fresher",
+    "difficulty": "medium",
+    "total_questions": 2,
+    "correct_answers": 1,
+    "wrong_answers": 1,
+    "accuracy_percentage": 50.0,
+    "average_score": 57.5,
+    "scores_breakdown": {
+      "content": 57.5,
+      "grammar": 75.0,
+      "technical": 57.5,
+      "confidence": 70.0
+    },
+    "answer_results": [
+      {
+        "question_id": "q_2",
+        "question": "What is a function?",
+        "category": "programming",
+        "verdict": "Wrong",
+        "is_correct": false,
+        "score": 40,
+        "technical_score": 40,
+        "matched_concepts": [
+          "reusable",
+          "specific task"
+        ],
+        "missing_concepts": [
+          "block of code",
+          "parameters",
+          "return value",
+          "callable"
+        ],
+        "reason": "Answer correctly identified reusability and purpose. Core definition ('set of algorithm') was imprecise. Crucial concepts like parameters, return values, and being a 'block of code' were omitted. Grammatical errors were present."
+      },
+      {
+        "question_id": "q_3",
+        "question": "What is an API?",
+        "category": "web",
+        "verdict": "Correct",
+        "is_correct": true,
+        "score": 75,
+        "technical_score": 75,
+        "matched_concepts": [
+          "interface",
+          "request",
+          "response"
+        ],
+        "missing_concepts": [
+          "communication",
+          "set of rules/protocols",
+          "enables different software components to interact"
+        ],
+        "reason": "The full form 'Application Programming Interface' is correctly stated. The core function of 'requesting and getting the response' is a fundamental and correct description of an API's role. For a 'fresher' role and a 'medium' difficulty question, this basic understanding is considered correct, though brief."
+      }
+    ],
+    "weak_areas": [
+      {
+        "category": "programming",
+        "average_score": 40.0,
+        "question_count": 1,
+        "wrong_count": 1,
+        "missing_concepts": [
+          "block of code",
+          "parameters",
+          "return value",
+          "callable"
+        ],
+        "recommendation": "Practice coding fundamentals: variables, loops, functions, recursion."
+      }
+    ],
+    "strengths": [
+      {
+        "category": "web",
+        "average_score": 75.0,
+        "question_count": 1,
+        "correct_count": 1
+      }
+    ],
+    "overall_feedback": "You answered 50.0% correctly. Several answers were related but missed required concepts, so review the weak areas carefully.",
+    "improvement_suggestions": [
+      {
+        "area": "programming",
+        "action": "Practice coding problems and explain each solution aloud.",
+        "focus_concepts": [
+          "block of code",
+          "parameters",
+          "return value",
+          "callable"
+        ],
+        "resources": [
+          "LeetCode",
+          "HackerRank",
+          "GeeksforGeeks"
+        ],
+        "priority": "high"
+      }
+    ],
+    "completed_at": "2026-05-14T23:46:51.667470"
   }
 }

@@ -15,6 +15,7 @@ from resume_parser import ResumeParser
 from nlp_analyzer import NLPAnalyzer
 from question_generator import QuestionGenerator
 from feedback_engine import FeedbackEngine
+from ai_evaluator import AIEvaluator
 from database import DatabaseManager
 
 # Initialize FastAPI
@@ -39,6 +40,7 @@ resume_parser = ResumeParser()
 nlp_analyzer = NLPAnalyzer()
 question_generator = QuestionGenerator()
 feedback_engine = FeedbackEngine()
+ai_evaluator = AIEvaluator()
 
 # Data models
 class InterviewSession(BaseModel):
@@ -73,6 +75,11 @@ async def root():
 @app.get("/api/health")
 async def health_check():
     return {"status": "healthy", "timestamp": datetime.now().isoformat()}
+
+@app.get("/api/ai/status")
+async def ai_status():
+    """Check whether AI answer evaluation is configured."""
+    return ai_evaluator.status()
 
 # ==================== INTERVIEW SETUP ====================
 
@@ -208,23 +215,49 @@ async def submit_answer(submission: AnswerSubmission):
     # Analyze the answer
     analysis = nlp_analyzer.analyze_answer(submission.answer_text)
     
-    # Calculate scores
     expected_keywords = current_q.get("expected_keywords", [])
-    scores = feedback_engine.calculate_scores(
-        answer=submission.answer_text,
-        analysis=analysis,
-        expected_keywords=expected_keywords,
-        question_category=current_q.get("category", "")
-    )
-    
-    # Generate feedback
-    feedback = feedback_engine.generate_feedback(
-        answer=submission.answer_text,
-        analysis=analysis,
-        scores=scores,
+
+    # AI is the default evaluator. The local feedback engine is only a fallback
+    # when the API key is missing, the network call fails, or the response is invalid.
+    ai_result = ai_evaluator.evaluate_answer(
         question=current_q["question"],
+        answer=submission.answer_text,
         expected_keywords=expected_keywords,
+        category=current_q.get("category", ""),
+        difficulty=session.get("difficulty", ""),
+        job_role=session.get("job_role", ""),
+        local_analysis=analysis,
     )
+    if ai_result:
+        scores = ai_result["scores"]
+        feedback = ai_result["feedback"]
+        analysis["ai_evaluation"] = {
+            "used": True,
+            "model": scores.get("ai_model", ""),
+            "source": "ai",
+        }
+    else:
+        scores = feedback_engine.calculate_scores(
+            answer=submission.answer_text,
+            analysis=analysis,
+            expected_keywords=expected_keywords,
+            question_category=current_q.get("category", ""),
+            question=current_q["question"]
+        )
+        
+        feedback = feedback_engine.generate_feedback(
+            answer=submission.answer_text,
+            analysis=analysis,
+            scores=scores,
+            question=current_q["question"],
+            expected_keywords=expected_keywords,
+        )
+        scores["evaluation_source"] = "rule_based"
+        analysis["ai_evaluation"] = {
+            "used": False,
+            "source": "rule_based",
+            "reason": ai_evaluator.last_error,
+        }
     
     # Store answer
     answer_data = {
@@ -239,6 +272,7 @@ async def submit_answer(submission: AnswerSubmission):
         "feedback": feedback,
         "verdict": scores.get("verdict", "wrong"),
         "is_correct": scores.get("is_correct", False),
+        "evaluation_source": scores.get("evaluation_source", "rule_based"),
         "timestamp": datetime.now().isoformat()
     }
     
@@ -257,6 +291,7 @@ async def submit_answer(submission: AnswerSubmission):
         "verdict": scores.get("verdict", "wrong"),
         "answer_status": scores.get("answer_status", "Wrong"),
         "is_correct": scores.get("is_correct", False),
+        "evaluation_source": scores.get("evaluation_source", "rule_based"),
         "analysis": analysis,
         "scores": scores,
         "feedback": feedback,
